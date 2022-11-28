@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import controleur.GestionRegularisationDesCharges;
+
 import java.awt.Font;
 
 public class DetailsLocataire extends JInternalFrame {
@@ -19,7 +22,6 @@ public class DetailsLocataire extends JInternalFrame {
 	private JLabel ancienLocataire;
 	private JLabel loyer;
 	private JLabel adresse;
-	
 	
 	public DetailsLocataire() {
 		setBounds(864, 0, 1204, 300);

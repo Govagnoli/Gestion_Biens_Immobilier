@@ -4,11 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
-
-import vue.DetailsLocataire;
 import vue.FenAccueil;
 import vue.FenBiensImmobilier;
 import vue.FenLocataires;
@@ -17,7 +12,6 @@ import vue.FenStatistiques;
 public class GestionBiensImmobilier implements ActionListener{
 
 	private FenBiensImmobilier fenBiens;
-	private GestionBiensImmobilier gestionClic; 
 	
 	public GestionBiensImmobilier(FenBiensImmobilier fenBiens) {
 		this.fenBiens = fenBiens;

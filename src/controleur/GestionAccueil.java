@@ -13,7 +13,6 @@ import vue.FenStatistiques;
 public class GestionAccueil implements ActionListener{
 
 	private FenAccueil fenAccueil;
-	private GestionAccueil gestionClic; 
 	
 	public GestionAccueil(FenAccueil fenAccueil) {
 		this.fenAccueil = fenAccueil;

@@ -12,10 +12,6 @@ import javax.swing.JButton;
 public class FenAccueil extends JFrame {
 	
 	private GestionAccueil gestionClic;
-	private JMenuItem locataires;
-	private JMenuItem biens;
-	private JMenuItem statistiques;
-	private JMenuItem accueil;
 	
 	/**
 	 * Launch the application.

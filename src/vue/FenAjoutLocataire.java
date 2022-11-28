@@ -1,8 +1,6 @@
 package vue;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -14,23 +12,19 @@ import java.awt.event.ActionListener;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
-import javax.swing.JFormattedTextField;
-import java.awt.Button;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionEvent;
 
 public class FenAjoutLocataire extends JFrame {
 
 	private JPanel contentPane;
-	private ActionListener gestionClic;
 	private JTextField PrenomLocataire;
 	private JTextField NomLocataire;
 	private JTextField TelephoneLocataire;
@@ -39,27 +33,8 @@ public class FenAjoutLocataire extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FenAjoutLocataire frame = new FenAjoutLocataire();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public FenAjoutLocataire() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 633, 462);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -259,38 +234,5 @@ public class FenAjoutLocataire extends JFrame {
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAnnulerAjoutLocataire.setBounds(511, 369, 99, 23);
 		contentPane.add(btnAnnulerAjoutLocataire);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu accueil1 = new JMenu("Accueil");
-		menuBar.add(accueil1);
-		
-		JMenu gestion = new JMenu("Gestion");
-		menuBar.add(gestion);
-		
-		JMenu parametres = new JMenu("Param\u00E8tres");
-		menuBar.add(parametres);
-		
-		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(this.gestionClic);
-		gestion.add(biens);
-		
-		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(this.gestionClic);
-		gestion.add(locataires);
-		
-		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.gestionClic);
-		accueil1.add(accueil);
-				
-		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.gestionClic);
-		parametres.add(statistiques);
-		
-		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(this.gestionClic);
-		parametres.add(fermer);
-		
 	}
 }

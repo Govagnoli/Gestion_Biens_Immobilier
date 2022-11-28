@@ -1,35 +1,63 @@
 package vue;
 
-import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import controleur.GestionStatistiques;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import controleur.GestionRegularisationDesCharges;
 
-public class FenStatistiques extends JFrame {
+public class FenRegularisationCharges extends JFrame {
 
 	private JPanel contentPane;
-	private GestionStatistiques gestionClic;
+	private JTable tableRegularisationCharges;
+	private GestionRegularisationDesCharges gestionClic;
+	private JTable table;
 
-	/**
-	 * Create the frame.
-	 */
-	public FenStatistiques() {
+	
+	public FenRegularisationCharges() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		setUndecorated(false);
+		
+		this.gestionClic = new GestionRegularisationDesCharges(this);
 		setVisible(true);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		this.gestionClic = new GestionStatistiques(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		contentPane.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(5, 37, 300, 239);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+			},
+			new String[] {
+				"Identifiant", "Date"
+			}
+		));
+		scrollPane.setViewportView(table);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -62,6 +90,11 @@ public class FenStatistiques extends JFrame {
 		JMenuItem fermer = new JMenuItem("Fermer");
 		fermer.addActionListener(this.gestionClic);
 		parametres.add(fermer);
+		
 	}
-
+	public JTable getTableRegularisationCharges() {
+		return tableRegularisationCharges;
+	}
 }
+	
+
