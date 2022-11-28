@@ -9,27 +9,27 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import controleur.GestionClicBtnLocataire;
 import controleur.GestionLocataires;
 import controleur.GestionTableLocataires;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JInternalFrame;
 import java.awt.Rectangle;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 
 public class FenLocataires extends JFrame{
 
 	private JPanel contentPane;
 	private GestionLocataires gestionClic;
+	private GestionLocataires gestionClicButton;
 	private JTable tableLocataires;
 	private GestionTableLocataires gestionTable;
 	private DetailsLocataire detailsLocataire;
-	private GestionClicBtnLocataire gestionClicBtn;
 
 	/**
 	 * Create the frame.
@@ -38,7 +38,6 @@ public class FenLocataires extends JFrame{
 		
 		this.gestionTable = new GestionTableLocataires(this);
 		this.gestionClic = new GestionLocataires(this);
-		this.gestionClicBtn = new GestionClicBtnLocataire(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -92,6 +91,9 @@ public class FenLocataires extends JFrame{
 		
 		JMenu parametres = new JMenu("Param\u00E8tres");
 		menuBar.add(parametres);
+
+		JMenu compte = new JMenu("Compte");
+		menuBar.add(compte);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
 		biens.addActionListener(this.gestionClic);
@@ -112,6 +114,10 @@ public class FenLocataires extends JFrame{
 		JMenuItem fermer = new JMenuItem("Fermer");
 		fermer.addActionListener(this.gestionClic);
 		parametres.add(fermer);
+
+		JMenuItem monCompte = new JMenuItem("Mon compte");
+		monCompte.addActionListener(this.gestionClic);
+		compte.add(monCompte);
 		
 		this.detailsLocataire= new DetailsLocataire();
 		detailsLocataire.setNormalBounds(new Rectangle(864, 0, 840, 300));
@@ -120,7 +126,7 @@ public class FenLocataires extends JFrame{
 		panelPopUp.add(this.detailsLocataire);
 		
 		JButton btnAjoutLocataire = new JButton("Ajouter un locataire");
-		btnAjoutLocataire.addActionListener(this.gestionClicBtn);
+		btnAjoutLocataire.addActionListener(this.gestionClicButton);
 		btnAjoutLocataire.setBounds(272, 5, 164, 23);
 		contentPane.add(btnAjoutLocataire);
 		

@@ -12,6 +12,10 @@ import javax.swing.JButton;
 public class FenAccueil extends JFrame {
 	
 	private GestionAccueil gestionClic;
+	private JMenuItem locataires;
+	private JMenuItem biens;
+	private JMenuItem statistiques;
+	private JMenuItem accueil;
 	
 	/**
 	 * Launch the application.
@@ -51,6 +55,9 @@ public class FenAccueil extends JFrame {
 		JMenu parametres = new JMenu("Param\u00E8tres");
 		menuBar.add(parametres);
 		
+		JMenu compte = new JMenu("Compte");
+		menuBar.add(compte);
+		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
 		biens.addActionListener(this.gestionClic);
 		gestion.add(biens);
@@ -70,6 +77,10 @@ public class FenAccueil extends JFrame {
 		JMenuItem fermer = new JMenuItem("Fermer");
 		fermer.addActionListener(this.gestionClic);
 		parametres.add(fermer);
+
+		JMenuItem monCompte = new JMenuItem("Mon compte");
+		monCompte.addActionListener(this.gestionClic);
+		compte.add(monCompte);
 	}
 
 }

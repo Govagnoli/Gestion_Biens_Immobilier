@@ -60,6 +60,9 @@ public class FenBiensImmobilier extends JFrame {
 		
 		JMenu parametres = new JMenu("Param\u00E8tres");
 		menuBar.add(parametres);
+
+		JMenu compte = new JMenu("Compte");
+		menuBar.add(compte);		
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
 		biens.addActionListener(this.gestionClic);
@@ -80,6 +83,11 @@ public class FenBiensImmobilier extends JFrame {
 		JMenuItem fermer = new JMenuItem("Fermer");
 		fermer.addActionListener(this.gestionClic);
 		parametres.add(fermer);
+
+		JMenuItem monCompte = new JMenuItem("Mon compte");
+		monCompte.addActionListener(this.gestionClic);
+		compte.add(monCompte);
+		
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -135,6 +143,24 @@ public class FenBiensImmobilier extends JFrame {
 
 	public DetailsBien getDetailsBien() {
 		return detailsBien;
+	}
+
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 
 	public JTable getTableBien() {

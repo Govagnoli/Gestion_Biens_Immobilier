@@ -7,6 +7,7 @@ import javax.swing.JMenuItem;
 
 import vue.FenAccueil;
 import vue.FenBiensImmobilier;
+import vue.FenInformationsPersonelles;
 import vue.FenLocataires;
 import vue.FenStatistiques;
 
@@ -41,6 +42,11 @@ public class GestionAccueil implements ActionListener{
 			break;
 		case "Fermer":
 			this.fenAccueil.dispose();
+			break;
+		case "Mon compte":
+			FenInformationsPersonelles fenInformationsPersonelles = new FenInformationsPersonelles();
+			this.fenAccueil.dispose();
+			fenInformationsPersonelles.setVisible(true);
 			break;
 		}
 	}

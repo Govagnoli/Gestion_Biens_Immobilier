@@ -1,12 +1,17 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controleur.GestionBiensImmobilier;
 import controleur.GestionStatistiques;
 
 public class FenStatistiques extends JFrame {
@@ -42,6 +47,9 @@ public class FenStatistiques extends JFrame {
 		
 		JMenu parametres = new JMenu("Param\u00E8tres");
 		menuBar.add(parametres);
+
+		JMenu compte = new JMenu("Compte");
+		menuBar.add(compte);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
 		biens.addActionListener(this.gestionClic);
@@ -62,6 +70,10 @@ public class FenStatistiques extends JFrame {
 		JMenuItem fermer = new JMenuItem("Fermer");
 		fermer.addActionListener(this.gestionClic);
 		parametres.add(fermer);
+
+		JMenuItem monCompte = new JMenuItem("Mon compte");
+		monCompte.addActionListener(this.gestionClic);
+		compte.add(monCompte);
 	}
 
 }

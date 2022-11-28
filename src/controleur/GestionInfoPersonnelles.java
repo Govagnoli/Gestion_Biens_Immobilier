@@ -4,58 +4,51 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JMenuItem;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
 
-import vue.DetailsLocataire;
 import vue.FenAccueil;
 import vue.FenBiensImmobilier;
 import vue.FenInformationsPersonelles;
 import vue.FenLocataires;
 import vue.FenStatistiques;
 
-public class GestionBiensImmobilier implements ActionListener{
+public class GestionInfoPersonnelles implements ActionListener{
 
-	private FenBiensImmobilier fenBiens;
-	private GestionBiensImmobilier gestionClic; 
+	private FenInformationsPersonelles fenInformationsPersonelles;
 	
-	public GestionBiensImmobilier(FenBiensImmobilier fenBiens) {
-		this.fenBiens = fenBiens;
+	public GestionInfoPersonnelles(FenInformationsPersonelles fenInformationsPersonelles) {
+		this.fenInformationsPersonelles = fenInformationsPersonelles;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JMenuItem item = (JMenuItem) e.getSource();		
+		JMenuItem item = (JMenuItem) e.getSource();
 		switch(item.getText()) {
 		case "Accueil":
 			FenAccueil fenAccueil = new FenAccueil();
-			this.fenBiens.dispose();
+			this.fenInformationsPersonelles.dispose();
 			fenAccueil.setVisible(true);
 			break;
 		case "Mes Biens Immobilier":
+			FenBiensImmobilier fenBiensImmobiliers = new FenBiensImmobilier();
+			this.fenInformationsPersonelles.dispose();
+			fenBiensImmobiliers.setVisible(true);
 			break;
 		case "Locataires":
 			FenLocataires fenLocataires = new FenLocataires();
-			this.fenBiens.dispose();
+			this.fenInformationsPersonelles.dispose();
 			fenLocataires.setVisible(true);
 			break;
 		case "Statistiques":
 			FenStatistiques fenStatistiques = new FenStatistiques();
-			this.fenBiens.dispose();
+			this.fenInformationsPersonelles.dispose();
 			fenStatistiques.setVisible(true);
 			break;
 		case "Fermer":
-			this.fenBiens.dispose();
+			this.fenInformationsPersonelles.dispose();
 			break;
 		case "Mon compte":
-			FenInformationsPersonelles fenInformationsPersonelles = new FenInformationsPersonelles();
-			this.fenBiens.dispose();
-			fenInformationsPersonelles.setVisible(true);
 			break;
 		}
 	}
-
-	
 
 }

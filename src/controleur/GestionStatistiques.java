@@ -7,15 +7,17 @@ import javax.swing.JMenuItem;
 
 import vue.FenAccueil;
 import vue.FenBiensImmobilier;
+import vue.FenInformationsPersonelles;
 import vue.FenLocataires;
 import vue.FenStatistiques;
 
 public class GestionStatistiques implements ActionListener{
 
-	private FenStatistiques fenStatitiques;
+	private FenStatistiques fenStatistiques;
+	private GestionStatistiques gestionClic; 
 	
-	public GestionStatistiques(FenStatistiques fenStatitiques) {
-		this.fenStatitiques = fenStatitiques;
+	public GestionStatistiques(FenStatistiques fenStatistiques) {
+		this.fenStatistiques = fenStatistiques;
 	}
 	
 	@Override
@@ -24,26 +26,31 @@ public class GestionStatistiques implements ActionListener{
 		switch(item.getText()) {
 		case "Accueil":
 			FenAccueil fenAccueil = new FenAccueil();
-			this.fenStatitiques.dispose();
+			this.fenStatistiques.dispose();
 			fenAccueil.setVisible(true);
 			break;
 		case "Mes Biens Immobilier":
 			FenBiensImmobilier fenBiensImmobiliers = new FenBiensImmobilier();
-			this.fenStatitiques.dispose();
+			this.fenStatistiques.dispose();
 			fenBiensImmobiliers.setVisible(true);
 			break;
 		case "Locataires":
 			FenLocataires fenLocataires = new FenLocataires();
-			this.fenStatitiques.dispose();
+			this.fenStatistiques.dispose();
 			fenLocataires.setVisible(true);
 			break;
 		case "Statistiques":
 			FenStatistiques fenStatistiques = new FenStatistiques();
-			this.fenStatitiques.dispose();
+			this.fenStatistiques.dispose();
 			fenStatistiques.setVisible(true);
 			break;
 		case "Fermer":
-			this.fenStatitiques.dispose();
+			this.fenStatistiques.dispose();
+			break;
+		case "Mon compte":
+			FenInformationsPersonelles fenInformationsPersonelles = new FenInformationsPersonelles();
+			this.fenStatistiques.dispose();
+			fenInformationsPersonelles.setVisible(true);
 			break;
 		}
 	}

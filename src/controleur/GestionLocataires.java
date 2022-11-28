@@ -2,9 +2,14 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import vue.FenAccueil;
+import vue.FenAjoutLocataire;
 import vue.FenBiensImmobilier;
+import vue.FenInformationsPersonelles;
 import vue.FenLocataires;
 import vue.FenStatistiques;
 
@@ -39,6 +44,11 @@ public class GestionLocataires implements ActionListener{
 			break;
 		case "Fermer":
 			this.fenLocataires.dispose();
+			break;
+		case "Mon compte":
+			FenInformationsPersonelles fenInformationsPersonelles = new FenInformationsPersonelles();
+			this.fenLocataires.dispose();
+			fenInformationsPersonelles.setVisible(true);
 			break;
 		}
 	}
