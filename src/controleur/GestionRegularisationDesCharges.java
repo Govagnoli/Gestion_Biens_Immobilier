@@ -28,6 +28,8 @@ public class GestionRegularisationDesCharges implements ActionListener{
 			fenAccueil.setVisible(true);
 			break;
 		case "Mes Biens Immobilier":
+			FenBiensImmobilier fenBiensImmobilier = new FenBiensImmobilier();
+			this.fenRegularisationCharges.dispose();
 			break;
 		case "Locataires":
 			FenLocataires fenLocataires = new FenLocataires();
