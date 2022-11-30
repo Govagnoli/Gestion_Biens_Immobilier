@@ -1,50 +1,46 @@
 package vue;
 
-import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import javax.swing.border.TitledBorder;
+
+import controleur.GestionAjoutLocataire;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
-import javax.swing.JFormattedTextField;
-import java.awt.Button;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 
 public class FenAjoutLocataire extends JInternalFrame {
 
 	private JPanel contentPane;
-	private ActionListener gestionClic;
-	private JTextField PrenomLocataire;
-	private JTextField NomLocataire;
-	private JTextField TelephoneLocataire;
-	private JTextField EmailLocataire;
-	private JTextField DateDeNaissanceLocataire;
-	private JTextField AdresseBienLocataire;
-	private JTextField DateEntrée;
+	private GestionAjoutLocataire gestionClic;
+	private JTextField prenomLocataire;
+	private JTextField nomLocataire;
+	private JTextField telephoneLocataire;
+	private JTextField emailLocataire;
+	private JTextField dateDeNaissanceLocataire;
+	private JTextField adresseBienLocataire;
+	private JTextField dateEntree;
 	private JTextField NomGarant;
-	private JTextField PrenomGarant;
+	private JTextField prenomGarant;
 
 	/**
 	 * Create the frame.
 	 */
 	public FenAjoutLocataire() {
+		
+		this.gestionClic = new GestionAjoutLocataire(this);
+		
 		setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 633, 432);
 		contentPane = new JPanel();
@@ -77,15 +73,15 @@ public class FenAjoutLocataire extends JInternalFrame {
 		gbc_lblPrenomLocataire.gridy = 1;
 		Informations.add(lblPrenomLocataire, gbc_lblPrenomLocataire);
 		
-		NomLocataire = new JTextField();
+		nomLocataire = new JTextField();
 		GridBagConstraints gbc_NomLocataire = new GridBagConstraints();
 		gbc_NomLocataire.gridwidth = 3;
 		gbc_NomLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_NomLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_NomLocataire.gridx = 1;
 		gbc_NomLocataire.gridy = 1;
-		Informations.add(NomLocataire, gbc_NomLocataire);
-		NomLocataire.setColumns(10);
+		Informations.add(nomLocataire, gbc_NomLocataire);
+		nomLocataire.setColumns(10);
 		
 		JLabel lblNomLocataire = new JLabel("Nom :");
 		GridBagConstraints gbc_lblNomLocataire = new GridBagConstraints();
@@ -95,15 +91,15 @@ public class FenAjoutLocataire extends JInternalFrame {
 		gbc_lblNomLocataire.gridy = 2;
 		Informations.add(lblNomLocataire, gbc_lblNomLocataire);
 		
-		TelephoneLocataire = new JTextField();
+		telephoneLocataire = new JTextField();
 		GridBagConstraints gbc_TelephoneLocataire = new GridBagConstraints();
 		gbc_TelephoneLocataire.gridwidth = 3;
 		gbc_TelephoneLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_TelephoneLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_TelephoneLocataire.gridx = 1;
 		gbc_TelephoneLocataire.gridy = 2;
-		Informations.add(TelephoneLocataire, gbc_TelephoneLocataire);
-		TelephoneLocataire.setColumns(10);
+		Informations.add(telephoneLocataire, gbc_TelephoneLocataire);
+		telephoneLocataire.setColumns(10);
 		
 		JLabel lblTelLocataire = new JLabel("T\u00E9l\u00E9phone :");
 		GridBagConstraints gbc_lblTelLocataire = new GridBagConstraints();
@@ -113,15 +109,15 @@ public class FenAjoutLocataire extends JInternalFrame {
 		gbc_lblTelLocataire.gridy = 3;
 		Informations.add(lblTelLocataire, gbc_lblTelLocataire);
 		
-		EmailLocataire = new JTextField();
+		emailLocataire = new JTextField();
 		GridBagConstraints gbc_EmailLocataire = new GridBagConstraints();
 		gbc_EmailLocataire.gridwidth = 3;
 		gbc_EmailLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_EmailLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_EmailLocataire.gridx = 1;
 		gbc_EmailLocataire.gridy = 3;
-		Informations.add(EmailLocataire, gbc_EmailLocataire);
-		EmailLocataire.setColumns(10);
+		Informations.add(emailLocataire, gbc_EmailLocataire);
+		emailLocataire.setColumns(10);
 		
 		JLabel lblEmailLocataire = new JLabel("E-mail :");
 		GridBagConstraints gbc_lblEmailLocataire = new GridBagConstraints();
@@ -131,15 +127,15 @@ public class FenAjoutLocataire extends JInternalFrame {
 		gbc_lblEmailLocataire.gridy = 4;
 		Informations.add(lblEmailLocataire, gbc_lblEmailLocataire);
 		
-		DateDeNaissanceLocataire = new JTextField();
+		dateDeNaissanceLocataire = new JTextField();
 		GridBagConstraints gbc_DateDeNaissanceLocataire = new GridBagConstraints();
 		gbc_DateDeNaissanceLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_DateDeNaissanceLocataire.gridwidth = 3;
 		gbc_DateDeNaissanceLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_DateDeNaissanceLocataire.gridx = 1;
 		gbc_DateDeNaissanceLocataire.gridy = 4;
-		Informations.add(DateDeNaissanceLocataire, gbc_DateDeNaissanceLocataire);
-		DateDeNaissanceLocataire.setColumns(10);
+		Informations.add(dateDeNaissanceLocataire, gbc_DateDeNaissanceLocataire);
+		dateDeNaissanceLocataire.setColumns(10);
 		
 		JLabel lblDateNaissanceLocataire = new JLabel("Date de naissance :");
 		GridBagConstraints gbc_lblDateNaissanceLocataire = new GridBagConstraints();
@@ -149,15 +145,15 @@ public class FenAjoutLocataire extends JInternalFrame {
 		gbc_lblDateNaissanceLocataire.gridy = 5;
 		Informations.add(lblDateNaissanceLocataire, gbc_lblDateNaissanceLocataire);
 		
-		PrenomLocataire = new JTextField();
+		prenomLocataire = new JTextField();
 		GridBagConstraints gbc_PrenomLocataire = new GridBagConstraints();
 		gbc_PrenomLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_PrenomLocataire.gridwidth = 3;
 		gbc_PrenomLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_PrenomLocataire.gridx = 1;
 		gbc_PrenomLocataire.gridy = 5;
-		Informations.add(PrenomLocataire, gbc_PrenomLocataire);
-		PrenomLocataire.setColumns(10);
+		Informations.add(prenomLocataire, gbc_PrenomLocataire);
+		prenomLocataire.setColumns(10);
 		
 		JLabel lblAncien = new JLabel("Ancien :");
 		GridBagConstraints gbc_lblAncien = new GridBagConstraints();
@@ -203,14 +199,14 @@ public class FenAjoutLocataire extends JInternalFrame {
 		gbc_lblAdresseLocataire.gridy = 1;
 		Documents.add(lblAdresseLocataire, gbc_lblAdresseLocataire);
 		
-		AdresseBienLocataire = new JTextField();
+		adresseBienLocataire = new JTextField();
 		GridBagConstraints gbc_AdresseBienLocataire = new GridBagConstraints();
 		gbc_AdresseBienLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_AdresseBienLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_AdresseBienLocataire.gridx = 2;
 		gbc_AdresseBienLocataire.gridy = 1;
-		Documents.add(AdresseBienLocataire, gbc_AdresseBienLocataire);
-		AdresseBienLocataire.setColumns(10);
+		Documents.add(adresseBienLocataire, gbc_AdresseBienLocataire);
+		adresseBienLocataire.setColumns(10);
 		
 		JLabel lblDateEntreeLocataire = new JLabel("Date d'entr\u00E9e :");
 		GridBagConstraints gbc_lblDateEntreeLocataire = new GridBagConstraints();
@@ -220,14 +216,14 @@ public class FenAjoutLocataire extends JInternalFrame {
 		gbc_lblDateEntreeLocataire.gridy = 2;
 		Documents.add(lblDateEntreeLocataire, gbc_lblDateEntreeLocataire);
 		
-		DateEntrée = new JTextField();
-		GridBagConstraints gbc_DateEntrée = new GridBagConstraints();
-		gbc_DateEntrée.insets = new Insets(0, 0, 5, 5);
-		gbc_DateEntrée.fill = GridBagConstraints.HORIZONTAL;
-		gbc_DateEntrée.gridx = 2;
-		gbc_DateEntrée.gridy = 2;
-		Documents.add(DateEntrée, gbc_DateEntrée);
-		DateEntrée.setColumns(10);
+		dateEntree = new JTextField();
+		GridBagConstraints gbc_DateEntree= new GridBagConstraints();
+		gbc_DateEntree.insets = new Insets(0, 0, 5, 5);
+		gbc_DateEntree.fill = GridBagConstraints.HORIZONTAL;
+		gbc_DateEntree.gridx = 2;
+		gbc_DateEntree.gridy = 2;
+		Documents.add(dateEntree, gbc_DateEntree);
+		dateEntree.setColumns(10);
 		
 		JLabel lblBailLocataire = new JLabel("Bail :");
 		GridBagConstraints gbc_lblBailLocataire = new GridBagConstraints();
@@ -262,14 +258,14 @@ public class FenAjoutLocataire extends JInternalFrame {
 		gbc_lblPrenomGarantLocataire.gridy = 6;
 		Documents.add(lblPrenomGarantLocataire, gbc_lblPrenomGarantLocataire);
 		
-		PrenomGarant = new JTextField();
+		prenomGarant = new JTextField();
 		GridBagConstraints gbc_PrenomGarant = new GridBagConstraints();
 		gbc_PrenomGarant.insets = new Insets(0, 0, 0, 5);
 		gbc_PrenomGarant.fill = GridBagConstraints.HORIZONTAL;
 		gbc_PrenomGarant.gridx = 2;
 		gbc_PrenomGarant.gridy = 6;
-		Documents.add(PrenomGarant, gbc_PrenomGarant);
-		PrenomGarant.setColumns(10);
+		Documents.add(prenomGarant, gbc_PrenomGarant);
+		prenomGarant.setColumns(10);
 		
 		JButton btnAjouterLocataire = new JButton("Ajouter");
 		btnAjouterLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
