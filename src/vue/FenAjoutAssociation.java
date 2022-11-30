@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import javax.swing.border.TitledBorder;
+
+import controleur.GestionAjoutAssociation;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -30,32 +33,16 @@ import java.awt.event.ActionEvent;
 public class FenAjoutAssociation extends JFrame {
 
 	private JPanel contentPane;
-	private ActionListener gestionClic;
 	private JTextField NomLocataire;
 	private JTextField TelephoneLocataire;
 	private JTextField EmailLocataire;
 	private JTextField DateDeNaissanceLocataire;
+	private GestionAjoutAssociation gestionAjoutAssociation;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FenAjoutAssociation frame = new FenAjoutAssociation();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public FenAjoutAssociation() {
+		
+		this.gestionAjoutAssociation = new GestionAjoutAssociation(this);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 523, 407);
 		contentPane = new JPanel();
@@ -178,15 +165,13 @@ public class FenAjoutAssociation extends JFrame {
 		Informations.add(rdbtnAncienOui, gbc_rdbtnAncienOui);
 		
 		JButton btnAjouterLocataire = new JButton("Ajouter");
+		btnAjouterLocataire.addActionListener(this.gestionAjoutAssociation);
 		btnAjouterLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAjouterLocataire.setBounds(53, 268, 171, 35);
 		contentPane.add(btnAjouterLocataire);
 		
 		JButton btnAnnulerAjoutLocataire = new JButton("Annuler");
-		btnAnnulerAjoutLocataire.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnAnnulerAjoutLocataire.addActionListener(this.gestionAjoutAssociation);
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAnnulerAjoutLocataire.setBounds(384, 322, 99, 34);
 		contentPane.add(btnAnnulerAjoutLocataire);
