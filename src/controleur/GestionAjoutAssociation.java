@@ -13,7 +13,7 @@ public class GestionAjoutAssociation implements ActionListener{
 	private FenAjoutAssociation fenAjoutAssociation;
 	
 	public GestionAjoutAssociation(FenAjoutAssociation fenAjoutAssociation) {
-		this.fenAjoutAssociation = new FenAjoutAssociation();
+		this.fenAjoutAssociation = fenAjoutAssociation;
 	}
 
 	@Override
