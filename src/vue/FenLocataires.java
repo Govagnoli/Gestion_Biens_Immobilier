@@ -9,6 +9,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controleur.GestionAjoutLocataire;
 import controleur.GestionLocataires;
 import controleur.GestionTableLocataires;
 
@@ -38,6 +40,7 @@ public class FenLocataires extends JFrame{
 		
 		this.gestionTable = new GestionTableLocataires(this);
 		this.gestionClic = new GestionLocataires(this);
+		this.gestionClicButton = new GestionAjoutLocataire();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -70,7 +73,7 @@ public class FenLocataires extends JFrame{
 				{null, null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"Identifiant", "Nom", "Prénom", "Téléphone", "E-mail", "Date de naissance", "Dépôt de Garantie", "Ancien locataire", "Part de possession"
+				"Identifiant", "Nom", "PrÃ©nom", "TÃ©lÃ©phone", "E-mail", "Date de naissance", "DÃ©pÃ´t de Garantie", "Ancien locataire", "Part de possession"
 			}
 		));
 		this.getTableLocataires().getSelectionModel().addListSelectionListener(this.gestionTable);
