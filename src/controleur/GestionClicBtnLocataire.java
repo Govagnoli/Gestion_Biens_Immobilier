@@ -7,12 +7,6 @@ import vue.FenAjoutLocataire;
 import vue.FenLocataires;
 
 public class GestionClicBtnLocataire implements ActionListener{
-
-	private FenLocataires fenLocataires;
-	
-	public GestionClicBtnLocataire(FenLocataires fenLocataires) {
-		this.fenLocataires = fenLocataires;
-	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {		
