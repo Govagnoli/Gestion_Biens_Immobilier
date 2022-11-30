@@ -45,19 +45,19 @@ public class FenRegularisationCharges extends JFrame {
 		tableRegularisationCharges = new JTable();
 		tableRegularisationCharges.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
 			},
 			new String[] {
-				"Date", "Identifiant", "Date"
+				"Identifiant", "Date"
 			}
 		));
 		scrollPane.setViewportView(tableRegularisationCharges);
