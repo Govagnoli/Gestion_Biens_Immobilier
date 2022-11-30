@@ -17,9 +17,11 @@ public class DetailsBien extends JInternalFrame {
 	
 	private JLabel labelAdresse;
 	private JLabel labelNbrLocataire;
+	private GestionDetailsBien gestionDetailsBien;
 
 	public DetailsBien() {
 		setBounds(100, 100, 800, 100);
+		this.gestionDetailsBien = new GestionDetailsBien(this);
 		
 		this.labelAdresse = new JLabel("Adresse");
 		labelAdresse.setHorizontalAlignment(SwingConstants.CENTER);
@@ -35,7 +37,8 @@ public class DetailsBien extends JInternalFrame {
 		JButton butonDiagnostic = new JButton("Diagnostics");
 		panel.add(butonDiagnostic);
 		
-		JButton butonCharges = new JButton("Charges");
+		JButton butonCharges = new JButton("Régularisation des Charges");
+		butonCharges.addActionListener(this.gestionDetailsBien);
 		panel.add(butonCharges);
 		
 		JButton boutonSoldeToutCompte = new JButton("Solde de tout compte");
