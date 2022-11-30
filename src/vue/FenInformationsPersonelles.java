@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import controleur.GestionInfoPersonnelles;
+import controleur.GestionMenu;
 
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -29,8 +29,11 @@ public class FenInformationsPersonelles extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private GestionMenu gestionMenu;
 
 	public FenInformationsPersonelles() {
+		
+		this.gestionMenu = new GestionMenu(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -58,27 +61,27 @@ public class FenInformationsPersonelles extends JFrame {
 		menuBar.add(compte);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(new GestionInfoPersonnelles(this));
+		biens.addActionListener(this.gestionMenu);
 		gestion.add(biens);
 		
 		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(new GestionInfoPersonnelles(this));
+		locataires.addActionListener(this.gestionMenu);
 		gestion.add(locataires);
 		
 		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(new GestionInfoPersonnelles(this));
+		accueil.addActionListener(this.gestionMenu);
 		accueil1.add(accueil);
 				
 		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(new GestionInfoPersonnelles(this));
+		statistiques.addActionListener(this.gestionMenu);
 		parametres.add(statistiques);
 		
 		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(new GestionInfoPersonnelles(this));
+		fermer.addActionListener(this.gestionMenu);
 		parametres.add(fermer);
 		
 		JMenuItem monCompte = new JMenuItem("Mon compte");
-		monCompte.addActionListener(new GestionInfoPersonnelles(this));
+		monCompte.addActionListener(this.gestionMenu);
 		compte.add(monCompte);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		

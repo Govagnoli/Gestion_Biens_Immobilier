@@ -7,7 +7,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import javax.swing.border.TitledBorder;
-import controleur.GestionAjoutLocataire;
+import controleur.GestionMenu;
+
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import java.awt.GridBagLayout;
@@ -23,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class FenAjoutLocataire extends JFrame {
 
 	private JPanel contentPane;
-	private GestionAjoutLocataire gestionClic;
+	private GestionMenu gestionClic;
 	private JTextField prenomLocataire;
 	private JTextField nomLocataire;
 	private JTextField telephoneLocataire;
@@ -39,7 +40,7 @@ public class FenAjoutLocataire extends JFrame {
 	 */
 	public FenAjoutLocataire() {
 		
-		this.gestionClic = new GestionAjoutLocataire(this);
+		this.gestionClic = new GestionMenu(this);
 		
 		setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 633, 432);
@@ -280,5 +281,7 @@ public class FenAjoutLocataire extends JFrame {
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAnnulerAjoutLocataire.setBounds(511, 369, 99, 23);
 		contentPane.add(btnAnnulerAjoutLocataire);
+		
+		
 	}
 }

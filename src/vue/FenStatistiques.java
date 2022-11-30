@@ -1,27 +1,19 @@
 package vue;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import controleur.GestionBiensImmobilier;
-import controleur.GestionStatistiques;
+import controleur.GestionMenu;
 
 public class FenStatistiques extends JFrame {
 
 	private JPanel contentPane;
-	private GestionStatistiques gestionClic;
+	private GestionMenu gestionMenu;
 
-	/**
-	 * Create the frame.
-	 */
 	public FenStatistiques() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +25,7 @@ public class FenStatistiques extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		this.gestionClic = new GestionStatistiques(this);
+		this.gestionMenu = new GestionMenu(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -52,27 +44,27 @@ public class FenStatistiques extends JFrame {
 		menuBar.add(compte);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(this.gestionClic);
+		biens.addActionListener(this.gestionMenu);
 		gestion.add(biens);
 		
 		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(this.gestionClic);
+		locataires.addActionListener(this.gestionMenu);
 		gestion.add(locataires);
 		
 		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.gestionClic);
+		accueil.addActionListener(this.gestionMenu);
 		accueil1.add(accueil);
 				
 		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.gestionClic);
+		statistiques.addActionListener(this.gestionMenu);
 		parametres.add(statistiques);
 		
 		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(this.gestionClic);
+		fermer.addActionListener(this.gestionMenu);
 		parametres.add(fermer);
 
 		JMenuItem monCompte = new JMenuItem("Mon compte");
-		monCompte.addActionListener(this.gestionClic);
+		monCompte.addActionListener(this.gestionMenu);
 		compte.add(monCompte);
 	}
 

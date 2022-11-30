@@ -9,13 +9,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import controleur.GestionRegularisationDesCharges;
+import controleur.GestionMenu;
 
 public class FenRegularisationCharges extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableRegularisationCharges;
-	private GestionRegularisationDesCharges gestionClic;
+	private GestionMenu gestionMenu;
 	private JTable table;
 
 	
@@ -25,7 +25,7 @@ public class FenRegularisationCharges extends JFrame {
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		setUndecorated(false);
 		
-		this.gestionClic = new GestionRegularisationDesCharges(this);
+		this.gestionMenu = new GestionMenu(this);
 		setVisible(true);
 		
 		contentPane = new JPanel();
@@ -72,23 +72,23 @@ public class FenRegularisationCharges extends JFrame {
 		menuBar.add(parametres);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(this.gestionClic);
+		biens.addActionListener(this.gestionMenu);
 		gestion.add(biens);
 		
 		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(this.gestionClic);
+		locataires.addActionListener(this.gestionMenu);
 		gestion.add(locataires);
 		
 		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.gestionClic);
+		accueil.addActionListener(this.gestionMenu);
 		accueil1.add(accueil);
 				
 		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.gestionClic);
+		statistiques.addActionListener(this.gestionMenu);
 		parametres.add(statistiques);
 		
 		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(this.gestionClic);
+		fermer.addActionListener(this.gestionMenu);
 		parametres.add(fermer);
 		
 	}

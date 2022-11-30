@@ -20,7 +20,7 @@ public class GestionDetailsBien implements ActionListener{
 	public void actionPerformed(ActionEvent e) {		
 		JButton item = (JButton) e.getSource();		
 		switch(item.getText()) {
-		case "Régularisation des Charges":
+		case "Regularisation des Charges":
 			FenRegularisationCharges fenRegularisationCharges = new FenRegularisationCharges();
 			fenRegularisationCharges.setVisible(true);
 			detailsBien.dispose();

@@ -1,33 +1,27 @@
 package vue;
 
 import java.awt.BorderLayout;
-
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import controleur.GestionAjoutLocataire;
-import controleur.GestionLocataires;
+import controleur.GestionClicBtnLocataire;
+import controleur.GestionMenu;
 import controleur.GestionTableLocataires;
-
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JInternalFrame;
 import java.awt.Rectangle;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionListener;
 
 public class FenLocataires extends JFrame{
 
 	private JPanel contentPane;
-	private GestionLocataires gestionClic;
+	private GestionMenu gestionMenu;
 	private GestionClicBtnLocataire gestionClicButton;
 	private JTable tableLocataires;
 	private GestionTableLocataires gestionTable;
@@ -39,7 +33,7 @@ public class FenLocataires extends JFrame{
 	public FenLocataires() {
 		
 		this.gestionTable = new GestionTableLocataires(this);
-		this.gestionClic = new GestionLocataires(this);
+		this.gestionMenu = new GestionMenu(this);
 		this.gestionClicButton = new GestionClicBtnLocataire();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,27 +93,27 @@ public class FenLocataires extends JFrame{
 		menuBar.add(compte);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(this.gestionClic);
+		biens.addActionListener(this.gestionMenu);
 		gestion.add(biens);
 		
 		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(this.gestionClic);
+		locataires.addActionListener(this.gestionMenu);
 		gestion.add(locataires);
 		
 		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.gestionClic);
+		accueil.addActionListener(this.gestionMenu);
 		accueil1.add(accueil);
 				
 		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.gestionClic);
+		statistiques.addActionListener(this.gestionMenu);
 		parametres.add(statistiques);
 		
 		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(this.gestionClic);
+		fermer.addActionListener(this.gestionMenu);
 		parametres.add(fermer);
 
 		JMenuItem monCompte = new JMenuItem("Mon compte");
-		monCompte.addActionListener(this.gestionClic);
+		monCompte.addActionListener(this.gestionMenu);
 		compte.add(monCompte);
 		
 		this.detailsLocataire= new DetailsLocataire();
@@ -129,9 +123,10 @@ public class FenLocataires extends JFrame{
 		panelPopUp.add(this.detailsLocataire);
 		
 		JButton btnAjoutLocataire = new JButton("Ajouter un locataire");
-		btnAjoutLocataire.addActionListener(this.gestionClicButton);
 		btnAjoutLocataire.setBounds(272, 5, 164, 23);
+		btnAjoutLocataire.addActionListener(this.gestionClicButton);
 		contentPane.add(btnAjoutLocataire);
+		
 		
 		JLabel lblListeLocataire = new JLabel("Listes des locataires :");
 		lblListeLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));

@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import vue.FenAjoutLocataire;
-import vue.FenLocataires;
 
 public class GestionClicBtnLocataire implements ActionListener{
 	

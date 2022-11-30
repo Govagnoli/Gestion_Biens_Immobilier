@@ -4,22 +4,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import controleur.GestionMenu;
 
-import controleur.GestionAccueil;
 import javax.swing.JMenu;
-import javax.swing.JButton;
 
 public class FenAccueil extends JFrame {
 	
-	private GestionAccueil gestionClic;
-	private JMenuItem locataires;
-	private JMenuItem biens;
-	private JMenuItem statistiques;
-	private JMenuItem accueil;
+	private GestionMenu gestionClic;
 	
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -33,12 +25,9 @@ public class FenAccueil extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public FenAccueil() {
 		
-		this.gestionClic = new GestionAccueil(this);
+		this.gestionClic = new GestionMenu(this);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		setUndecorated(false);
 		setVisible(true);

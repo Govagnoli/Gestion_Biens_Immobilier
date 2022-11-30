@@ -1,47 +1,26 @@
 package vue;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.JSeparator;
-import java.awt.Color;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import controleur.GestionBiensImmobilier;
+import controleur.GestionMenu;
 import controleur.GestionTableBiensImmobiliers;
-
-import javax.swing.JButton;
-import javax.swing.JInternalFrame;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import java.awt.Insets;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.border.TitledBorder;
-import java.awt.Rectangle;
 
 public class FenBiensImmobilier extends JFrame {
 
 	private JTable TableBien;
 	private GestionTableBiensImmobiliers gestionTable;
-	private GestionBiensImmobilier gestionClic;
+	private GestionMenu GestionMenu;
 	private DetailsBien detailsBien;
 
 	public FenBiensImmobilier() {
 		
-		this.gestionClic = new GestionBiensImmobilier(this);
+		this.GestionMenu = new GestionMenu(this);
 		this.gestionTable = new GestionTableBiensImmobiliers(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,27 +44,27 @@ public class FenBiensImmobilier extends JFrame {
 		menuBar.add(compte);		
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(this.gestionClic);
+		biens.addActionListener(this.GestionMenu);
 		gestion.add(biens);
 		
 		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(this.gestionClic);
+		locataires.addActionListener(this.GestionMenu);
 		gestion.add(locataires);
 		
 		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.gestionClic);
+		accueil.addActionListener(this.GestionMenu);
 		accueil1.add(accueil);
 				
 		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.gestionClic);
+		statistiques.addActionListener(this.GestionMenu);
 		parametres.add(statistiques);
 		
 		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(this.gestionClic);
+		fermer.addActionListener(this.GestionMenu);
 		parametres.add(fermer);
 
 		JMenuItem monCompte = new JMenuItem("Mon compte");
-		monCompte.addActionListener(this.gestionClic);
+		monCompte.addActionListener(this.GestionMenu);
 		compte.add(monCompte);
 		
 		getContentPane().setLayout(null);
@@ -143,24 +122,6 @@ public class FenBiensImmobilier extends JFrame {
 
 	public DetailsBien getDetailsBien() {
 		return detailsBien;
-	}
-
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 
 	public JTable getTableBien() {

@@ -2,8 +2,6 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -12,6 +10,8 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+
+import controleur.GestionDetailsBien;
 
 public class DetailsBien extends JInternalFrame {
 	
@@ -37,7 +37,7 @@ public class DetailsBien extends JInternalFrame {
 		JButton butonDiagnostic = new JButton("Diagnostics");
 		panel.add(butonDiagnostic);
 		
-		JButton butonCharges = new JButton("Régularisation des Charges");
+		JButton butonCharges = new JButton("Regularisation des Charges");
 		butonCharges.addActionListener(this.gestionDetailsBien);
 		panel.add(butonCharges);
 		
