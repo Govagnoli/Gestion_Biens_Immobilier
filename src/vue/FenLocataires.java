@@ -7,7 +7,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import controleur.GestionClicBtnLocataire;
+import controleur.GestionLocataire;
 import controleur.GestionMenu;
 import controleur.GestionTableLocataires;
 import javax.swing.JScrollPane;
@@ -22,7 +22,7 @@ public class FenLocataires extends JFrame{
 
 	private JPanel contentPane;
 	private GestionMenu gestionMenu;
-	private GestionClicBtnLocataire gestionClicButton;
+	private GestionLocataire gestionClicButton;
 	private JTable tableLocataires;
 	private GestionTableLocataires gestionTable;
 	private DetailsLocataire detailsLocataire;
@@ -34,7 +34,7 @@ public class FenLocataires extends JFrame{
 		
 		this.gestionTable = new GestionTableLocataires(this);
 		this.gestionMenu = new GestionMenu(this);
-		this.gestionClicButton = new GestionClicBtnLocataire();
+		this.gestionClicButton = new GestionLocataire();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 

@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionInformationsPersonelles;
 import controleur.GestionMenu;
-import controleur.GestionTableInformationsPersonelles;
+import controleur.GestionTableAssociations;
 
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -34,13 +34,13 @@ public class FenInformationsPersonelles extends JFrame {
 	private GestionMenu gestionMenu;
 	private JButton btnModifierAssociation;
 	private GestionInformationsPersonelles gestionInformationsPersonelles;
-	private GestionTableInformationsPersonelles gestionTableInformationsPersonelles;
+	private GestionTableAssociations gestionTableInformationsPersonelles;
 
 	public FenInformationsPersonelles() {
 		
 		this.gestionMenu = new GestionMenu(this);
 		this.gestionInformationsPersonelles = new GestionInformationsPersonelles();
-		this.gestionTableInformationsPersonelles = new GestionTableInformationsPersonelles(this);
+		this.gestionTableInformationsPersonelles = new GestionTableAssociations(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
