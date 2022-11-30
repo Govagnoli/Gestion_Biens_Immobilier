@@ -28,7 +28,7 @@ public class FenLocataires extends JFrame{
 
 	private JPanel contentPane;
 	private GestionLocataires gestionClic;
-	private GestionLocataires gestionClicButton;
+	private GestionClicBtnLocataire gestionClicButton;
 	private JTable tableLocataires;
 	private GestionTableLocataires gestionTable;
 	private DetailsLocataire detailsLocataire;
@@ -40,7 +40,7 @@ public class FenLocataires extends JFrame{
 		
 		this.gestionTable = new GestionTableLocataires(this);
 		this.gestionClic = new GestionLocataires(this);
-		this.gestionClicButton = new GestionAjoutLocataire();
+		this.gestionClicButton = new GestionClicBtnLocataire();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
