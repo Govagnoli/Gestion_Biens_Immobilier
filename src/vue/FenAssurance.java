@@ -47,13 +47,14 @@ public class FenAssurance extends JFrame {
 	private JTextField DateFinVali;
 	private GestionAssurance gestionAssurance;
 	private JTextField DateDebutVali;
+	private JTextField TauxAugm;
 
 	public FenAssurance() {
 		
 		this.gestionAssurance = new GestionAssurance(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 523, 407);
+		setBounds(100, 100, 523, 355);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -67,7 +68,7 @@ public class FenAssurance extends JFrame {
 		
 		JPanel Informations = new JPanel();
 		Informations.setBorder(new TitledBorder(null, "Informations g\u00E9n\u00E9rales", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-		Informations.setBounds(53, 46, 400, 177);
+		Informations.setBounds(84, 46, 345, 217);
 		contentPane.add(Informations);
 		GridBagLayout gbl_Informations = new GridBagLayout();
 		gbl_Informations.columnWidths = new int[] {121, 49, 0, 0, 0, 0, 30};
@@ -87,7 +88,7 @@ public class FenAssurance extends JFrame {
 		NumeroDeContrat = new JTextField();
 		GridBagConstraints gbc_NumeroDeContrat = new GridBagConstraints();
 		gbc_NumeroDeContrat.fill = GridBagConstraints.HORIZONTAL;
-		gbc_NumeroDeContrat.gridwidth = 4;
+		gbc_NumeroDeContrat.gridwidth = 3;
 		gbc_NumeroDeContrat.insets = new Insets(0, 0, 5, 5);
 		gbc_NumeroDeContrat.gridx = 1;
 		gbc_NumeroDeContrat.gridy = 1;
@@ -104,7 +105,6 @@ public class FenAssurance extends JFrame {
 		
 		Prime = new JTextField();
 		GridBagConstraints gbc_Prime = new GridBagConstraints();
-		gbc_Prime.gridwidth = 4;
 		gbc_Prime.fill = GridBagConstraints.HORIZONTAL;
 		gbc_Prime.insets = new Insets(0, 0, 5, 5);
 		gbc_Prime.gridx = 1;
@@ -122,7 +122,7 @@ public class FenAssurance extends JFrame {
 		
 		ProtectionJuridique = new JTextField();
 		GridBagConstraints gbc_ProtectionJuridique = new GridBagConstraints();
-		gbc_ProtectionJuridique.gridwidth = 4;
+		gbc_ProtectionJuridique.gridwidth = 3;
 		gbc_ProtectionJuridique.fill = GridBagConstraints.HORIZONTAL;
 		gbc_ProtectionJuridique.insets = new Insets(0, 0, 5, 5);
 		gbc_ProtectionJuridique.gridx = 1;
@@ -143,7 +143,6 @@ public class FenAssurance extends JFrame {
 		JFormattedTextField DateFinVali = new JFormattedTextField(df);
 		GridBagConstraints gbc_DateFinVali = new GridBagConstraints();
 		gbc_DateFinVali.fill = GridBagConstraints.HORIZONTAL;
-		gbc_DateFinVali.gridwidth = 4;
 		gbc_DateFinVali.insets = new Insets(0, 0, 5, 5);
 		gbc_DateFinVali.gridx = 1;
 		gbc_DateFinVali.gridy = 4;
@@ -161,23 +160,44 @@ public class FenAssurance extends JFrame {
 		JFormattedTextField DateDebutVali = new JFormattedTextField(df);
 		DateDebutVali.setColumns(10);
 		GridBagConstraints gbc_DateDebutVali = new GridBagConstraints();
-		gbc_DateDebutVali.gridwidth = 4;
 		gbc_DateDebutVali.insets = new Insets(0, 0, 5, 5);
 		gbc_DateDebutVali.fill = GridBagConstraints.HORIZONTAL;
 		gbc_DateDebutVali.gridx = 1;
 		gbc_DateDebutVali.gridy = 5;
 		Informations.add(DateDebutVali, gbc_DateDebutVali);
 		
+		JLabel lblTauxAug = new JLabel("Taux augmentation :");
+		GridBagConstraints gbc_lblTauxAug = new GridBagConstraints();
+		gbc_lblTauxAug.anchor = GridBagConstraints.EAST;
+		gbc_lblTauxAug.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTauxAug.gridx = 0;
+		gbc_lblTauxAug.gridy = 6;
+		Informations.add(lblTauxAug, gbc_lblTauxAug);
+		
+		TauxAugm = new JTextField();
+		GridBagConstraints gbc_TauxAugm = new GridBagConstraints();
+		gbc_TauxAugm.insets = new Insets(0, 0, 5, 5);
+		gbc_TauxAugm.fill = GridBagConstraints.HORIZONTAL;
+		gbc_TauxAugm.gridx = 1;
+		gbc_TauxAugm.gridy = 6;
+		Informations.add(TauxAugm, gbc_TauxAugm);
+		TauxAugm.setColumns(10);
+		
 		JButton btnModifierAssurance = new JButton("Modifier");
 		btnModifierAssurance.addActionListener(this.gestionAssurance);
 		btnModifierAssurance.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnModifierAssurance.setBounds(53, 235, 171, 35);
+		btnModifierAssurance.setBounds(100, 273, 99, 35);
 		contentPane.add(btnModifierAssurance);
 		
 		JButton btnAnnulerAssurance = new JButton("Annuler");
 		btnAnnulerAssurance.addActionListener(this.gestionAssurance);
 		btnAnnulerAssurance.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAnnulerAssurance.setBounds(384, 322, 99, 34);
+		btnAnnulerAssurance.setBounds(323, 273, 99, 34);
 		contentPane.add(btnAnnulerAssurance);
+	}
+	private static class __Tmp {
+		private static void __tmp() {
+			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
+		}
 	}
 }
