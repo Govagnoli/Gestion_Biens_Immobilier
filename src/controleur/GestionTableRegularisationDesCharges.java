@@ -2,8 +2,8 @@ package controleur;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import vue.FenDL;
 import vue.FenRegularisationCharges;
+import vue.FenTelecharger;
 
 public class GestionTableRegularisationDesCharges implements ListSelectionListener {
 	private FenRegularisationCharges fenRGC;
@@ -13,12 +13,12 @@ public class GestionTableRegularisationDesCharges implements ListSelectionListen
 	
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		FenDL fenDL = new FenDL();
+		FenTelecharger fenTelecharger = new FenTelecharger();
 		int ligneSelectionnee = this.fenRGC.getTableRegularisationCharges().getSelectedRow();
 		if(ligneSelectionnee < 0) {
-			fenDL.setVisible(false);
+			fenTelecharger.setVisible(false);
 		}else {
-			fenDL.setVisible(true);
+			fenTelecharger.setVisible(true);
 		}		
 	}
 }

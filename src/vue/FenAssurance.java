@@ -1,57 +1,41 @@
 package vue;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionListener;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.DateFormatter;
 
-import controleur.GestionAjoutAssociation;
-import controleur.GestionAjoutLocataire;
 import controleur.GestionAssurance;
-
-import javax.swing.border.EtchedBorder;
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JFormattedTextField;
-import java.awt.Button;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import java.awt.event.ActionEvent;
+import controleur.GestionFermerPages;
 
 public class FenAssurance extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField NumeroDeContrat;
-	private JTextField Prime;
-	private JTextField ProtectionJuridique;
-	private JTextField DateFinVali;
+	private JTextField numeroContrat;
+	private JTextField prime;
+	private JTextField protectionJuridique;
+	private JFormattedTextField dateFinDeValiditee;
 	private GestionAssurance gestionAssurance;
-	private JTextField DateDebutVali;
-	private JTextField TauxAugm;
+	private JFormattedTextField dateDebutDeValiditee;
+	private JTextField tauxAugmentation;
+	private GestionFermerPages gestionFermerPages;
 
 	public FenAssurance() {
 		
 		this.gestionAssurance = new GestionAssurance(this);
+		this.gestionFermerPages = new GestionFermerPages(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 523, 355);
@@ -85,15 +69,15 @@ public class FenAssurance extends JFrame {
 		gbc_lbl.gridy = 1;
 		Informations.add(lbl, gbc_lbl);
 		
-		NumeroDeContrat = new JTextField();
+		numeroContrat = new JTextField();
 		GridBagConstraints gbc_NumeroDeContrat = new GridBagConstraints();
 		gbc_NumeroDeContrat.fill = GridBagConstraints.HORIZONTAL;
 		gbc_NumeroDeContrat.gridwidth = 3;
 		gbc_NumeroDeContrat.insets = new Insets(0, 0, 5, 5);
 		gbc_NumeroDeContrat.gridx = 1;
 		gbc_NumeroDeContrat.gridy = 1;
-		Informations.add(NumeroDeContrat, gbc_NumeroDeContrat);
-		NumeroDeContrat.setColumns(10);
+		Informations.add(numeroContrat, gbc_NumeroDeContrat);
+		numeroContrat.setColumns(10);
 		
 		JLabel lblPrime = new JLabel("Prime :");
 		GridBagConstraints gbc_lblPrime = new GridBagConstraints();
@@ -103,14 +87,14 @@ public class FenAssurance extends JFrame {
 		gbc_lblPrime.gridy = 2;
 		Informations.add(lblPrime, gbc_lblPrime);
 		
-		Prime = new JTextField();
+		prime = new JTextField();
 		GridBagConstraints gbc_Prime = new GridBagConstraints();
 		gbc_Prime.fill = GridBagConstraints.HORIZONTAL;
 		gbc_Prime.insets = new Insets(0, 0, 5, 5);
 		gbc_Prime.gridx = 1;
 		gbc_Prime.gridy = 2;
-		Informations.add(Prime, gbc_Prime);
-		Prime.setColumns(10);
+		Informations.add(prime, gbc_Prime);
+		prime.setColumns(10);
 		
 		JLabel lblTelAssociation = new JLabel("Protection Juridique  :");
 		GridBagConstraints gbc_lblTelAssociation = new GridBagConstraints();
@@ -120,15 +104,15 @@ public class FenAssurance extends JFrame {
 		gbc_lblTelAssociation.gridy = 3;
 		Informations.add(lblTelAssociation, gbc_lblTelAssociation);
 		
-		ProtectionJuridique = new JTextField();
+		protectionJuridique = new JTextField();
 		GridBagConstraints gbc_ProtectionJuridique = new GridBagConstraints();
 		gbc_ProtectionJuridique.gridwidth = 3;
 		gbc_ProtectionJuridique.fill = GridBagConstraints.HORIZONTAL;
 		gbc_ProtectionJuridique.insets = new Insets(0, 0, 5, 5);
 		gbc_ProtectionJuridique.gridx = 1;
 		gbc_ProtectionJuridique.gridy = 3;
-		Informations.add(ProtectionJuridique, gbc_ProtectionJuridique);
-		ProtectionJuridique.setColumns(10);
+		Informations.add(protectionJuridique, gbc_ProtectionJuridique);
+		protectionJuridique.setColumns(10);
 		
 		JLabel lblDateFinVali = new JLabel("Date de Fin de validité :");
 		GridBagConstraints gbc_lblDateFinVali = new GridBagConstraints();
@@ -138,8 +122,9 @@ public class FenAssurance extends JFrame {
 		gbc_lblDateFinVali.gridy = 4;
 		Informations.add(lblDateFinVali, gbc_lblDateFinVali);
 		
-		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		DateFormatter df = new DateFormatter(format);
+		
+		DateFormatter df = new DateFormatter(new SimpleDateFormat("dd/MM/yyyy"));
+		this.dateFinDeValiditee = new JFormattedTextField(df);
 		JFormattedTextField DateFinVali = new JFormattedTextField(df);
 		GridBagConstraints gbc_DateFinVali = new GridBagConstraints();
 		gbc_DateFinVali.fill = GridBagConstraints.HORIZONTAL;
@@ -157,14 +142,14 @@ public class FenAssurance extends JFrame {
 		gbc_lblDateDeDbut.gridy = 5;
 		Informations.add(lblDateDeDbut, gbc_lblDateDeDbut);
 			
-		JFormattedTextField DateDebutVali = new JFormattedTextField(df);
-		DateDebutVali.setColumns(10);
+		this.dateDebutDeValiditee = new JFormattedTextField(df);
+		this.dateDebutDeValiditee.setColumns(10);
 		GridBagConstraints gbc_DateDebutVali = new GridBagConstraints();
 		gbc_DateDebutVali.insets = new Insets(0, 0, 5, 5);
 		gbc_DateDebutVali.fill = GridBagConstraints.HORIZONTAL;
 		gbc_DateDebutVali.gridx = 1;
 		gbc_DateDebutVali.gridy = 5;
-		Informations.add(DateDebutVali, gbc_DateDebutVali);
+		Informations.add(this.dateDebutDeValiditee, gbc_DateDebutVali);
 		
 		JLabel lblTauxAug = new JLabel("Taux augmentation :");
 		GridBagConstraints gbc_lblTauxAug = new GridBagConstraints();
@@ -174,14 +159,14 @@ public class FenAssurance extends JFrame {
 		gbc_lblTauxAug.gridy = 6;
 		Informations.add(lblTauxAug, gbc_lblTauxAug);
 		
-		TauxAugm = new JTextField();
+		tauxAugmentation = new JTextField();
 		GridBagConstraints gbc_TauxAugm = new GridBagConstraints();
 		gbc_TauxAugm.insets = new Insets(0, 0, 5, 5);
 		gbc_TauxAugm.fill = GridBagConstraints.HORIZONTAL;
 		gbc_TauxAugm.gridx = 1;
 		gbc_TauxAugm.gridy = 6;
-		Informations.add(TauxAugm, gbc_TauxAugm);
-		TauxAugm.setColumns(10);
+		Informations.add(tauxAugmentation, gbc_TauxAugm);
+		tauxAugmentation.setColumns(10);
 		
 		JButton btnModifierAssurance = new JButton("Modifier");
 		btnModifierAssurance.addActionListener(this.gestionAssurance);
@@ -190,14 +175,33 @@ public class FenAssurance extends JFrame {
 		contentPane.add(btnModifierAssurance);
 		
 		JButton btnAnnulerAssurance = new JButton("Annuler");
-		btnAnnulerAssurance.addActionListener(this.gestionAssurance);
+		btnAnnulerAssurance.addActionListener(this.gestionFermerPages);
 		btnAnnulerAssurance.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAnnulerAssurance.setBounds(323, 273, 99, 34);
 		contentPane.add(btnAnnulerAssurance);
 	}
-	private static class __Tmp {
-		private static void __tmp() {
-			  javax.swing.JPanel __wbp_panel = new javax.swing.JPanel();
-		}
+
+	public String getNumeroContrat() {
+		return numeroContrat.getText();
+	}
+
+	public String getPrime() {
+		return prime.getText();
+	}
+
+	public String getProtectionJuridique() {
+		return protectionJuridique.getText();
+	}
+
+	public String getDateFinDeValiditee() {
+		return dateFinDeValiditee.getText();
+	}
+
+	public String getDateDebutDeValiditee() {
+		return dateDebutDeValiditee.getText();
+	}
+
+	public String getTauxAugmentation() {
+		return tauxAugmentation.getText();
 	}
 }

@@ -20,7 +20,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controleur.GestionInformationsPersonelles;
 import controleur.GestionMenu;
+import controleur.GestionTableInformationsPersonelles;
 
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -28,12 +30,17 @@ import java.awt.BorderLayout;
 public class FenInformationsPersonelles extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	private JTable tableAssociations;
 	private GestionMenu gestionMenu;
+	private JButton btnModifierAssociation;
+	private GestionInformationsPersonelles gestionInformationsPersonelles;
+	private GestionTableInformationsPersonelles gestionTableInformationsPersonelles;
 
 	public FenInformationsPersonelles() {
 		
 		this.gestionMenu = new GestionMenu(this);
+		this.gestionInformationsPersonelles = new GestionInformationsPersonelles();
+		this.gestionTableInformationsPersonelles = new GestionTableInformationsPersonelles(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -99,8 +106,8 @@ public class FenInformationsPersonelles extends JFrame {
 		scrollPane.setBounds(10, 23, 444, 109);
 		DocCLient.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		tableAssociations = new JTable();
+		tableAssociations.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null},
 				{null, null, null, null},
@@ -127,13 +134,16 @@ public class FenInformationsPersonelles extends JFrame {
 				"Nom association", "Siren", "Date don", "Montant"
 			}
 		));
-		scrollPane.setViewportView(table);
+		this.getTableAssociations().getSelectionModel().addListSelectionListener(this.gestionTableInformationsPersonelles);
+		scrollPane.setViewportView(tableAssociations);
 		
 		JButton btnAjouterAssociation = new JButton("Ajouter");
+		btnAjouterAssociation.addActionListener(this.gestionInformationsPersonelles);
 		btnAjouterAssociation.setBounds(20, 143, 121, 23);
 		DocCLient.add(btnAjouterAssociation);
 		
-		JButton btnModifierAssociation = new JButton("Modifier");
+		this.btnModifierAssociation = new JButton("Supprimer");
+		this.btnModifierAssociation.setVisible(false);
 		btnModifierAssociation.setBounds(329, 143, 89, 23);
 		DocCLient.add(btnModifierAssociation);
 		
@@ -253,5 +263,13 @@ public class FenInformationsPersonelles extends JFrame {
 		lblBienvenue.setBounds(136, 11, 116, 25);
 		Page.add(lblBienvenue);
 		lblBienvenue.setFont(new Font("Tahoma", Font.PLAIN, 20));
+	}
+
+	public JButton getBtnModifierAssociation() {
+		return btnModifierAssociation;
+	}
+
+	public JTable getTableAssociations() {
+		return tableAssociations;
 	}
 }

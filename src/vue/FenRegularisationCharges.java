@@ -63,46 +63,14 @@ public class FenRegularisationCharges extends JFrame {
 				"Identifiant", "Date"
 			}
 		));
+		this.getTableRegularisationCharges().getSelectionModel().addListSelectionListener(this.gestionTableRegularisationDesCharges);	
 		scrollPane.setViewportView(tableRegularisationCharges);
 		
 		JButton btnFermer = new JButton("Fermer");
 		btnFermer.addActionListener(this.gestionFermerPages);
 		btnFermer.setBounds(534, 342, 85, 21);
 		contentPane.add(btnFermer);
-		this.getTableRegularisationCharges().getSelectionModel().addListSelectionListener(this.gestionTableRegularisationDesCharges);
-		
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
-		
-		JMenu accueil1 = new JMenu("Accueil");
-		menuBar.add(accueil1);
-		
-		JMenu gestion = new JMenu("Gestion");
-		menuBar.add(gestion);
-		
-		JMenu parametres = new JMenu("Param\u00E8tres");
-		menuBar.add(parametres);
-		
-		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(this.gestionMenu);
-		gestion.add(biens);
-		
-		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(this.gestionMenu);
-		gestion.add(locataires);
-		
-		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.gestionMenu);
-		accueil1.add(accueil);
-				
-		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.gestionMenu);
-		parametres.add(statistiques);
-		
-		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(this.gestionMenu);
-		parametres.add(fermer);
-		
+			
 	}
 	public JTable getTableRegularisationCharges() {
 		return tableRegularisationCharges;

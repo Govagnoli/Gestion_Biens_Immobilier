@@ -1,43 +1,31 @@
 package vue;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.ActionListener;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import controleur.GestionAjoutAssociation;
 
-import javax.swing.border.EtchedBorder;
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JFormattedTextField;
-import java.awt.Button;
-import javax.swing.JButton;
-import java.awt.event.ActionEvent;
-
 public class FenAjoutAssociation extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField NomLocataire;
-	private JTextField TelephoneLocataire;
-	private JTextField EmailLocataire;
-	private JTextField DateDeNaissanceLocataire;
+	private JTextField nomLocataire;
+	private JTextField telephonelocataire;
+	private JTextField emailLocataire;
+	private JTextField dateDeNaissanceLocataire;
 	private GestionAjoutAssociation gestionAjoutAssociation;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	public FenAjoutAssociation() {
 		
@@ -75,15 +63,15 @@ public class FenAjoutAssociation extends JFrame {
 		gbc_lblNomAssociation.gridy = 1;
 		Informations.add(lblNomAssociation, gbc_lblNomAssociation);
 		
-		NomLocataire = new JTextField();
+		nomLocataire = new JTextField();
 		GridBagConstraints gbc_NomLocataire = new GridBagConstraints();
 		gbc_NomLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_NomLocataire.gridwidth = 4;
 		gbc_NomLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_NomLocataire.gridx = 1;
 		gbc_NomLocataire.gridy = 1;
-		Informations.add(NomLocataire, gbc_NomLocataire);
-		NomLocataire.setColumns(10);
+		Informations.add(nomLocataire, gbc_NomLocataire);
+		nomLocataire.setColumns(10);
 		
 		JLabel lblMailAssociation = new JLabel("E-mail :");
 		GridBagConstraints gbc_lblMailAssociation = new GridBagConstraints();
@@ -93,15 +81,15 @@ public class FenAjoutAssociation extends JFrame {
 		gbc_lblMailAssociation.gridy = 2;
 		Informations.add(lblMailAssociation, gbc_lblMailAssociation);
 		
-		TelephoneLocataire = new JTextField();
+		telephonelocataire = new JTextField();
 		GridBagConstraints gbc_TelephoneLocataire = new GridBagConstraints();
 		gbc_TelephoneLocataire.gridwidth = 4;
 		gbc_TelephoneLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_TelephoneLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_TelephoneLocataire.gridx = 1;
 		gbc_TelephoneLocataire.gridy = 2;
-		Informations.add(TelephoneLocataire, gbc_TelephoneLocataire);
-		TelephoneLocataire.setColumns(10);
+		Informations.add(telephonelocataire, gbc_TelephoneLocataire);
+		telephonelocataire.setColumns(10);
 		
 		JLabel lblTelAssociation = new JLabel("T\u00E9l\u00E9phone  :");
 		GridBagConstraints gbc_lblTelAssociation = new GridBagConstraints();
@@ -111,15 +99,15 @@ public class FenAjoutAssociation extends JFrame {
 		gbc_lblTelAssociation.gridy = 3;
 		Informations.add(lblTelAssociation, gbc_lblTelAssociation);
 		
-		EmailLocataire = new JTextField();
+		emailLocataire = new JTextField();
 		GridBagConstraints gbc_EmailLocataire = new GridBagConstraints();
 		gbc_EmailLocataire.gridwidth = 4;
 		gbc_EmailLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_EmailLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_EmailLocataire.gridx = 1;
 		gbc_EmailLocataire.gridy = 3;
-		Informations.add(EmailLocataire, gbc_EmailLocataire);
-		EmailLocataire.setColumns(10);
+		Informations.add(emailLocataire, gbc_EmailLocataire);
+		emailLocataire.setColumns(10);
 		
 		JLabel lblEmailLocataire = new JLabel("Montant donnation :");
 		GridBagConstraints gbc_lblEmailLocataire = new GridBagConstraints();
@@ -129,15 +117,15 @@ public class FenAjoutAssociation extends JFrame {
 		gbc_lblEmailLocataire.gridy = 4;
 		Informations.add(lblEmailLocataire, gbc_lblEmailLocataire);
 		
-		DateDeNaissanceLocataire = new JTextField();
+		dateDeNaissanceLocataire = new JTextField();
 		GridBagConstraints gbc_DateDeNaissanceLocataire = new GridBagConstraints();
 		gbc_DateDeNaissanceLocataire.fill = GridBagConstraints.HORIZONTAL;
 		gbc_DateDeNaissanceLocataire.gridwidth = 4;
 		gbc_DateDeNaissanceLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_DateDeNaissanceLocataire.gridx = 1;
 		gbc_DateDeNaissanceLocataire.gridy = 4;
-		Informations.add(DateDeNaissanceLocataire, gbc_DateDeNaissanceLocataire);
-		DateDeNaissanceLocataire.setColumns(10);
+		Informations.add(dateDeNaissanceLocataire, gbc_DateDeNaissanceLocataire);
+		dateDeNaissanceLocataire.setColumns(10);
 		
 		JLabel lblAncien = new JLabel("Fr\u00E9quence donation :");
 		GridBagConstraints gbc_lblAncien = new GridBagConstraints();
@@ -148,6 +136,7 @@ public class FenAjoutAssociation extends JFrame {
 		Informations.add(lblAncien, gbc_lblAncien);
 		
 		JRadioButton rdbtnAncienNon = new JRadioButton("Mensuel ");
+		buttonGroup.add(rdbtnAncienNon);
 		rdbtnAncienNon.setSelected(true);
 		GridBagConstraints gbc_rdbtnAncienNon = new GridBagConstraints();
 		gbc_rdbtnAncienNon.anchor = GridBagConstraints.WEST;
@@ -157,6 +146,7 @@ public class FenAjoutAssociation extends JFrame {
 		Informations.add(rdbtnAncienNon, gbc_rdbtnAncienNon);
 		
 		JRadioButton rdbtnAncienOui = new JRadioButton("Ponctuel ");
+		buttonGroup.add(rdbtnAncienOui);
 		GridBagConstraints gbc_rdbtnAncienOui = new GridBagConstraints();
 		gbc_rdbtnAncienOui.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnAncienOui.insets = new Insets(0, 0, 5, 5);
@@ -175,5 +165,20 @@ public class FenAjoutAssociation extends JFrame {
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAnnulerAjoutLocataire.setBounds(384, 322, 99, 34);
 		contentPane.add(btnAnnulerAjoutLocataire);
+	}
+	public String getNomLocataire() {
+		return nomLocataire.getText();
+	}
+
+	public String getTelephonelocataire() {
+		return telephonelocataire.getText();
+	}
+
+	public String getEmailLocataire() {
+		return emailLocataire.getText();
+	}
+
+	public String getDateDeNaissanceLocataire() {
+		return dateDeNaissanceLocataire.getText();
 	}
 }

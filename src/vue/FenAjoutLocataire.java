@@ -1,25 +1,24 @@
 package vue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionListener;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 import controleur.GestionAjoutLocataire;
-
-import javax.swing.border.EtchedBorder;
-import java.awt.Color;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import java.awt.event.ActionEvent;
+import controleur.GestionFermerPages;
 
 public class FenAjoutLocataire extends JFrame{
 
@@ -39,6 +38,7 @@ public class FenAjoutLocataire extends JFrame{
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private GestionFermerPages gestionFermerPages;
 
 	/**
 	 * Create the frame.
@@ -46,6 +46,7 @@ public class FenAjoutLocataire extends JFrame{
 	public FenAjoutLocataire() {
 		
 		this.gestionAjoutLocataire = new GestionAjoutLocataire(this);
+		this.gestionFermerPages = new GestionFermerPages(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 574, 432);
@@ -241,7 +242,7 @@ public class FenAjoutLocataire extends JFrame{
 		contentPane.add(btnAjouterLocataire);
 		
 		JButton btnAnnulerAjoutLocataire = new JButton("Annuler");
-		btnAnnulerAjoutLocataire.addActionListener(this.gestionAjoutLocataire);
+		btnAnnulerAjoutLocataire.addActionListener(this.gestionFermerPages);
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAnnulerAjoutLocataire.setBounds(454, 372, 99, 23);
 		contentPane.add(btnAnnulerAjoutLocataire);

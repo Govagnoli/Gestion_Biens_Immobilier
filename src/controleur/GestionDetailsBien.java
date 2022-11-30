@@ -6,10 +6,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import vue.DetailsBien;
-import vue.Diagnostique;
-import vue.FenLocataires;
+import vue.FenAssurance;
 import vue.FenRegularisationCharges;
-import vue.FenDL;
+import vue.FenTelecharger;
 
 public class GestionDetailsBien implements ActionListener{
 
@@ -28,20 +27,19 @@ public class GestionDetailsBien implements ActionListener{
 			fenRegularisationCharges.setVisible(true);
 			detailsBien.dispose();
 			break;
-		case "Detail Locataire":
-			FenLocataires fenLocataire = new FenLocataires();
-			fenLocataire.setVisible(true);
-			detailsBien.dispose();
-			break;
 		case "Diagnostics":
-			Diagnostique fenDiagnostic = new Diagnostique();
-			fenDiagnostic.setVisible(true);
+			FenTelecharger fenTelecharger = new FenTelecharger();
+			fenTelecharger.setVisible(true);
 			detailsBien.dispose();
 			break;
 		case "Solde de tout compte":
-			FenDL fenSoldeToutCompte = new FenDL();
-			fenSoldeToutCompte.setVisible(true);
+			FenTelecharger fenTelecharger1 = new FenTelecharger();
+			fenTelecharger1.setVisible(true);
 			detailsBien.dispose();
+			break;
+		case "Assurance":
+			FenAssurance fenAssurance = new FenAssurance();
+			fenAssurance.setVisible(true);
 			break;
 		}
 	}

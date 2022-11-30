@@ -2,8 +2,6 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -12,15 +10,18 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import controleur.GestionDetailsBien;
 
 public class DetailsBien extends JInternalFrame {
 	
 	private JLabel labelAdresse;
 	private JLabel labelNbrLocataire;
+	private GestionDetailsBien gestionDetailsBien;
 
 	public DetailsBien() {
+		
+		this.gestionDetailsBien = new GestionDetailsBien(this);
+		
 		setBounds(100, 100, 800, 100);
 		
 		this.labelAdresse = new JLabel("Adresse");
@@ -35,24 +36,22 @@ public class DetailsBien extends JInternalFrame {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
 		JButton butonDiagnostic = new JButton("Diagnostics");
+		butonDiagnostic.addActionListener(this.gestionDetailsBien);
 		panel.add(butonDiagnostic);
 		
-		JButton butonCharges = new JButton("Charges");
+		JButton butonCharges = new JButton("Regularisation des Charges");
+		butonCharges.addActionListener(this.gestionDetailsBien);
 		panel.add(butonCharges);
 		
 		JButton boutonSoldeToutCompte = new JButton("Solde de tout compte");
+		boutonSoldeToutCompte.addActionListener(this.gestionDetailsBien);
 		panel.add(boutonSoldeToutCompte);
 		
 		JSeparator separator = new JSeparator();
 		panel.add(separator);		
 		
 		JButton btnAssurance = new JButton("Assurance");
-		btnAssurance.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FenAssurance fenAssurance = new FenAssurance();
-				fenAssurance.setVisible(true);
-			}
-		});
+		btnAssurance.addActionListener(this.gestionDetailsBien);
 		panel.add(btnAssurance);
 	}
 
