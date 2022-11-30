@@ -8,7 +8,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import javax.swing.border.TitledBorder;
 
-import controleur.GestionAjoutLocataire;
+import controleur.GestionFermerPages;
 import controleur.GestionMenu;
 
 import javax.swing.border.EtchedBorder;
@@ -26,7 +26,7 @@ import java.awt.event.ActionEvent;
 public class FenAjoutLocataire extends JFrame {
 
 	private JPanel contentPane;
-	private GestionAjoutLocataire gestionAjoutLocataire;
+	private GestionFermerPages gestionFermerPages;
 	private JTextField prenomLocataire;
 	private JTextField nomLocataire;
 	private JTextField telephoneLocataire;
@@ -37,12 +37,9 @@ public class FenAjoutLocataire extends JFrame {
 	private JTextField NomGarant;
 	private JTextField prenomGarant;
 
-	/**
-	 * Create the frame.
-	 */
 	public FenAjoutLocataire() {
 		
-		this.gestionAjoutLocataire = new GestionAjoutLocataire(this);
+		this.gestionFermerPages = new GestionFermerPages(this);
 		
 		setDefaultCloseOperation(JInternalFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 633, 432);
@@ -271,13 +268,12 @@ public class FenAjoutLocataire extends JFrame {
 		prenomGarant.setColumns(10);
 		
 		JButton btnAjouterLocataire = new JButton("Ajouter");
-		btnAjouterLocataire.addActionListener(this.gestionAjoutLocataire);
 		btnAjouterLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAjouterLocataire.setBounds(20, 311, 171, 35);
 		contentPane.add(btnAjouterLocataire);
 		
 		JButton btnAnnulerAjoutLocataire = new JButton("Annuler");
-		btnAnnulerAjoutLocataire.addActionListener(this.gestionAjoutLocataire);
+		btnAnnulerAjoutLocataire.addActionListener(this.gestionFermerPages);
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAnnulerAjoutLocataire.setBounds(511, 369, 99, 23);
 		contentPane.add(btnAnnulerAjoutLocataire);
