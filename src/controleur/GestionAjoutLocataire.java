@@ -12,9 +12,8 @@ import vue.FenLocataires;
 import vue.FenStatistiques;
 
 public class GestionAjoutLocataire implements ActionListener{
-
-	private GestionAccueil gestionClic;
-	private FenAjoutLocataire fenAjoutLocataire; 
+	
+	private FenAjoutLocataire fenAjoutLocataire;
 	
 	public GestionAjoutLocataire(FenAjoutLocataire fenAjoutLocataire) {
 		this.fenAjoutLocataire = fenAjoutLocataire;
@@ -46,5 +45,4 @@ public class GestionAjoutLocataire implements ActionListener{
 			break;
 		}
 	}
-
 }
