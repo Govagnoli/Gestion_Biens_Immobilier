@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 public class FenAjoutLocataire extends JFrame{
 
 	private JPanel contentPane;
-	private GestionAjoutLocataire gestionClic;
+	private GestionAjoutLocataire gestionAjoutLocataire;
 	private JTextField prenomLocataire;
 	private JTextField nomLocataire;
 	private JTextField telephoneLocataire;
@@ -45,7 +45,7 @@ public class FenAjoutLocataire extends JFrame{
 	 */
 	public FenAjoutLocataire() {
 		
-		this.gestionClic = new GestionAjoutLocataire(this);
+		this.gestionAjoutLocataire = new GestionAjoutLocataire(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 574, 432);
@@ -235,15 +235,13 @@ public class FenAjoutLocataire extends JFrame{
 		Informations.add(lblBailLocataire, gbc_lblBailLocataire);
 		
 		JButton btnAjouterLocataire = new JButton("Ajouter");
+		btnAjouterLocataire.addActionListener(this.gestionAjoutLocataire);
 		btnAjouterLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAjouterLocataire.setBounds(22, 349, 171, 35);
+		btnAjouterLocataire.setBounds(20, 350, 171, 35);
 		contentPane.add(btnAjouterLocataire);
 		
 		JButton btnAnnulerAjoutLocataire = new JButton("Annuler");
-		btnAnnulerAjoutLocataire.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnAnnulerAjoutLocataire.addActionListener(this.gestionAjoutLocataire);
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnAnnulerAjoutLocataire.setBounds(454, 372, 99, 23);
 		contentPane.add(btnAnnulerAjoutLocataire);
@@ -256,7 +254,7 @@ public class FenAjoutLocataire extends JFrame{
 		gbl_panel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gbl_panel.rowHeights = new int[] {30, 0, 0, 0, 0, 0, 0, 0, 30, 0, 30};
 		gbl_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblNomGarantLocataire = new JLabel("Nom :");
