@@ -123,14 +123,7 @@ public class FenInformationsPersonelles extends JFrame {
 			new String[] {
 				"Nom association", "Siren", "Date don", "Montant"
 			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, String.class, String.class, Integer.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
+		));
 		scrollPane.setViewportView(table);
 		
 		JButton btnAjouterAssociation = new JButton("Ajouter");
@@ -158,16 +151,16 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblDeclarationFiscaleClient.gridy = 0;
 		Documents.add(lblDeclarationFiscaleClient, gbc_lblDeclarationFiscaleClient);
 		
-		JPanel informationsGénéralesCLient = new JPanel();
-		informationsGénéralesCLient.setBounds(136, 47, 231, 204);
-		Page.add(informationsGénéralesCLient);
-		informationsGénéralesCLient.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Information g\u00E9n\u00E9rales", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		GridBagLayout gbl_informationsGénéralesCLient = new GridBagLayout();
-		gbl_informationsGénéralesCLient.columnWidths = new int[] {30, 0, 30, 30};
-		gbl_informationsGénéralesCLient.rowHeights = new int[] {30, 30, 30, 30, 30};
-		gbl_informationsGénéralesCLient.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0};
-		gbl_informationsGénéralesCLient.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
-		informationsGénéralesCLient.setLayout(gbl_informationsGénéralesCLient);
+		JPanel informationsGeneralesCLient = new JPanel();
+		informationsGeneralesCLient.setBounds(136, 47, 231, 204);
+		Page.add(informationsGeneralesCLient);
+		informationsGeneralesCLient.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Information g\u00E9n\u00E9rales", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		GridBagLayout gbl_informationsGeneralesCLient = new GridBagLayout();
+		gbl_informationsGeneralesCLient.columnWidths = new int[] {30, 0, 30, 30};
+		gbl_informationsGeneralesCLient.rowHeights = new int[] {30, 30, 30, 30, 30};
+		gbl_informationsGeneralesCLient.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0};
+		gbl_informationsGeneralesCLient.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
+		informationsGeneralesCLient.setLayout(gbl_informationsGeneralesCLient);
 		
 		JLabel lblNomClient = new JLabel("Nom :");
 		lblNomClient.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -176,7 +169,7 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblNomClient.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNomClient.gridx = 1;
 		gbc_lblNomClient.gridy = 0;
-		informationsGénéralesCLient.add(lblNomClient, gbc_lblNomClient);
+		informationsGeneralesCLient.add(lblNomClient, gbc_lblNomClient);
 		
 		JLabel NomClient = new JLabel("nom");
 		GridBagConstraints gbc_NomClient = new GridBagConstraints();
@@ -184,7 +177,7 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_NomClient.insets = new Insets(0, 0, 5, 5);
 		gbc_NomClient.gridx = 2;
 		gbc_NomClient.gridy = 0;
-		informationsGénéralesCLient.add(NomClient, gbc_NomClient);
+		informationsGeneralesCLient.add(NomClient, gbc_NomClient);
 		
 		JLabel lblPrenomClient = new JLabel("Pr\u00E9nom :");
 		lblPrenomClient.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -193,7 +186,7 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblPrenomClient.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrenomClient.gridx = 1;
 		gbc_lblPrenomClient.gridy = 1;
-		informationsGénéralesCLient.add(lblPrenomClient, gbc_lblPrenomClient);
+		informationsGeneralesCLient.add(lblPrenomClient, gbc_lblPrenomClient);
 		
 		JLabel PrenomClient = new JLabel("Pr\u00E9nom");
 		GridBagConstraints gbc_PrenomClient = new GridBagConstraints();
@@ -201,7 +194,7 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_PrenomClient.insets = new Insets(0, 0, 5, 5);
 		gbc_PrenomClient.gridx = 2;
 		gbc_PrenomClient.gridy = 1;
-		informationsGénéralesCLient.add(PrenomClient, gbc_PrenomClient);
+		informationsGeneralesCLient.add(PrenomClient, gbc_PrenomClient);
 		
 		JLabel lblTelephoneClient = new JLabel("T\u00E9l\u00E9phone :");
 		lblTelephoneClient.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -210,7 +203,7 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblTelephoneClient.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTelephoneClient.gridx = 1;
 		gbc_lblTelephoneClient.gridy = 2;
-		informationsGénéralesCLient.add(lblTelephoneClient, gbc_lblTelephoneClient);
+		informationsGeneralesCLient.add(lblTelephoneClient, gbc_lblTelephoneClient);
 		
 		JLabel TelephoneClient = new JLabel("00-00-00-00-00");
 		GridBagConstraints gbc_TelephoneClient = new GridBagConstraints();
@@ -218,7 +211,7 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_TelephoneClient.insets = new Insets(0, 0, 5, 5);
 		gbc_TelephoneClient.gridx = 2;
 		gbc_TelephoneClient.gridy = 2;
-		informationsGénéralesCLient.add(TelephoneClient, gbc_TelephoneClient);
+		informationsGeneralesCLient.add(TelephoneClient, gbc_TelephoneClient);
 		
 		JLabel lblEmailClient = new JLabel("E-mail :");
 		lblEmailClient.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -227,14 +220,14 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblEmailClient.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEmailClient.gridx = 1;
 		gbc_lblEmailClient.gridy = 3;
-		informationsGénéralesCLient.add(lblEmailClient, gbc_lblEmailClient);
+		informationsGeneralesCLient.add(lblEmailClient, gbc_lblEmailClient);
 		
 		JLabel EmailClient = new JLabel("nomprenom@gmail.com");
 		GridBagConstraints gbc_EmailClient = new GridBagConstraints();
 		gbc_EmailClient.insets = new Insets(0, 0, 5, 5);
 		gbc_EmailClient.gridx = 2;
 		gbc_EmailClient.gridy = 3;
-		informationsGénéralesCLient.add(EmailClient, gbc_EmailClient);
+		informationsGeneralesCLient.add(EmailClient, gbc_EmailClient);
 		
 		JLabel lblAdresseClient = new JLabel("Adresse :");
 		lblAdresseClient.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -243,7 +236,7 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblAdresseClient.insets = new Insets(0, 0, 0, 5);
 		gbc_lblAdresseClient.gridx = 1;
 		gbc_lblAdresseClient.gridy = 4;
-		informationsGénéralesCLient.add(lblAdresseClient, gbc_lblAdresseClient);
+		informationsGeneralesCLient.add(lblAdresseClient, gbc_lblAdresseClient);
 		
 		JLabel AdresseClient = new JLabel("14 rue des tuilerie");
 		GridBagConstraints gbc_AdresseClient = new GridBagConstraints();
@@ -251,7 +244,7 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_AdresseClient.anchor = GridBagConstraints.WEST;
 		gbc_AdresseClient.gridx = 2;
 		gbc_AdresseClient.gridy = 4;
-		informationsGénéralesCLient.add(AdresseClient, gbc_AdresseClient);
+		informationsGeneralesCLient.add(AdresseClient, gbc_AdresseClient);
 		
 		JLabel lblBienvenue = new JLabel("Bienvenue,");
 		lblBienvenue.setBounds(136, 11, 116, 25);
