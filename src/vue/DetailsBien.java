@@ -2,6 +2,8 @@ package vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.EventQueue;
+
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -12,13 +14,17 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import controleur.GestionDetailsBien;
+import controleur.GestionLocataires;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DetailsBien extends JInternalFrame {
 	
 	private JLabel labelAdresse;
 	private JLabel labelNbrLocataire;
 	private GestionDetailsBien gestionDetailsBien;
-
+	
 	public DetailsBien() {
 		setBounds(100, 100, 800, 100);
 		this.gestionDetailsBien = new GestionDetailsBien(this);
@@ -35,6 +41,7 @@ public class DetailsBien extends JInternalFrame {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		
 		JButton butonDiagnostic = new JButton("Diagnostics");
+		butonDiagnostic.addActionListener(this.gestionDetailsBien);
 		panel.add(butonDiagnostic);
 		
 		JButton butonCharges = new JButton("Regularisation des Charges");
@@ -42,10 +49,15 @@ public class DetailsBien extends JInternalFrame {
 		panel.add(butonCharges);
 		
 		JButton boutonSoldeToutCompte = new JButton("Solde de tout compte");
+		boutonSoldeToutCompte.addActionListener(this.gestionDetailsBien);
 		panel.add(boutonSoldeToutCompte);
 		
 		JSeparator separator = new JSeparator();
 		panel.add(separator);		
+		
+		JButton detailLocataire = new JButton("Detail Locataire");
+		detailLocataire.addActionListener(this.gestionDetailsBien);
+		panel.add(detailLocataire);
 	}
 
 	public void setLabelAdresse(String labelAdresse) {
@@ -54,5 +66,10 @@ public class DetailsBien extends JInternalFrame {
 
 	public void setLabelLoyerEtNbrLocataire(String loyer, String labelNbrLocataire) {
 		this.labelNbrLocataire.setText(loyer+" "+labelNbrLocataire);
-	}	
+	}
+
+
+
+
+
 }

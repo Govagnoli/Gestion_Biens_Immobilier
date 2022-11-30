@@ -9,14 +9,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import controleur.GestionMenu;
+import controleur.GestionRegularisationDesCharges;
+import controleur.GestionTableRegularisationDesCharges;
 
 public class FenRegularisationCharges extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableRegularisationCharges;
-	private GestionMenu gestionMenu;
-	private JTable table;
+	private GestionRegularisationDesCharges gestionClic;
+	private GestionTableRegularisationDesCharges gestionTableRegularisationDesCharges;
 
 	
 	public FenRegularisationCharges() {
@@ -25,8 +26,10 @@ public class FenRegularisationCharges extends JFrame {
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		setUndecorated(false);
 		
-		this.gestionMenu = new GestionMenu(this);
+		this.gestionClic = new GestionRegularisationDesCharges(this);
+		this.gestionTableRegularisationDesCharges = new GestionTableRegularisationDesCharges(this);
 		setVisible(true);
+		
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -39,25 +42,26 @@ public class FenRegularisationCharges extends JFrame {
 		scrollPane.setBounds(5, 37, 300, 239);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		tableRegularisationCharges = new JTable();
+		tableRegularisationCharges.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
-				{null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
 			},
 			new String[] {
-				"Identifiant", "Date"
+				"Date", "Identifiant", "Date"
 			}
 		));
-		scrollPane.setViewportView(table);
+		scrollPane.setViewportView(tableRegularisationCharges);
+		this.getTableRegularisationCharges().getSelectionModel().addListSelectionListener(this.gestionTableRegularisationDesCharges);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -72,23 +76,23 @@ public class FenRegularisationCharges extends JFrame {
 		menuBar.add(parametres);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(this.gestionMenu);
+		biens.addActionListener(this.gestionClic);
 		gestion.add(biens);
 		
 		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(this.gestionMenu);
+		locataires.addActionListener(this.gestionClic);
 		gestion.add(locataires);
 		
 		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.gestionMenu);
+		accueil.addActionListener(this.gestionClic);
 		accueil1.add(accueil);
 				
 		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.gestionMenu);
+		statistiques.addActionListener(this.gestionClic);
 		parametres.add(statistiques);
 		
 		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(this.gestionMenu);
+		fermer.addActionListener(this.gestionClic);
 		parametres.add(fermer);
 		
 	}
