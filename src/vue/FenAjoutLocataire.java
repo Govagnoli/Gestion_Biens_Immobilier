@@ -33,16 +33,15 @@ public class FenAjoutLocataire extends JFrame{
 	private JTextField dateEntree;
 	private JTextField NomGarant;
 	private JTextField prenomGarant;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField adresseGarant;
+	private JTextField villeGarant;
+	private JTextField codePostalGarant;
+	private JTextField telephoneGarant;
+	private JTextField emailGarant;
 	private GestionFermerPages gestionFermerPages;
+	private JRadioButton rdbtnAncienNon;
+	private JRadioButton rdbtnAncienOui;
 
-	/**
-	 * Create the frame.
-	 */
 	public FenAjoutLocataire() {
 		
 		this.gestionAjoutLocataire = new GestionAjoutLocataire(this);
@@ -170,25 +169,26 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_lblAncien.gridy = 6;
 		Informations.add(lblAncien, gbc_lblAncien);
 		
-		JRadioButton rdbtnAncienNon = new JRadioButton("Non");
-		rdbtnAncienNon.setSelected(true);
+		this.rdbtnAncienNon = new JRadioButton("Non");
+		this.rdbtnAncienNon.addItemListener(this.gestionAjoutLocataire);
+		this.rdbtnAncienNon.setSelected(true);
 		GridBagConstraints gbc_rdbtnAncienNon = new GridBagConstraints();
 		gbc_rdbtnAncienNon.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnAncienNon.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnAncienNon.gridx = 1;
 		gbc_rdbtnAncienNon.gridy = 6;
-		Informations.add(rdbtnAncienNon, gbc_rdbtnAncienNon);
+		Informations.add(this.rdbtnAncienNon, gbc_rdbtnAncienNon);
 		
 		ButtonGroup group = new ButtonGroup();
 		
-		JRadioButton rdbtnAncienOui = new JRadioButton("oui");
+		this.rdbtnAncienOui = new JRadioButton("oui");
 		GridBagConstraints gbc_rdbtnAncienOui = new GridBagConstraints();
 		gbc_rdbtnAncienOui.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnAncienOui.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnAncienOui.gridx = 2;
 		gbc_rdbtnAncienOui.gridy = 6;
-		Informations.add(rdbtnAncienOui, gbc_rdbtnAncienOui);
-		group.add(rdbtnAncienOui);
+		Informations.add(this.rdbtnAncienOui, gbc_rdbtnAncienOui);
+		group.add(this.rdbtnAncienOui);
 		
 		JLabel lblAdresseLocataire = new JLabel("Adresse bien :");
 		GridBagConstraints gbc_lblAdresseLocataire = new GridBagConstraints();
@@ -302,15 +302,15 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_lblAdresseGarant.gridy = 3;
 		panel.add(lblAdresseGarant, gbc_lblAdresseGarant);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 3;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 2;
-		gbc_textField.gridy = 3;
-		panel.add(textField, gbc_textField);
-		textField.setColumns(10);
+		adresseGarant = new JTextField();
+		GridBagConstraints gbc_adresseGarant = new GridBagConstraints();
+		gbc_adresseGarant.gridwidth = 3;
+		gbc_adresseGarant.insets = new Insets(0, 0, 5, 5);
+		gbc_adresseGarant.fill = GridBagConstraints.HORIZONTAL;
+		gbc_adresseGarant.gridx = 2;
+		gbc_adresseGarant.gridy = 3;
+		panel.add(adresseGarant, gbc_adresseGarant);
+		adresseGarant.setColumns(10);
 		
 		JLabel lblVilleGarant = new JLabel("Ville :");
 		GridBagConstraints gbc_lblVilleGarant = new GridBagConstraints();
@@ -320,15 +320,15 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_lblVilleGarant.gridy = 4;
 		panel.add(lblVilleGarant, gbc_lblVilleGarant);
 		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 3;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 2;
-		gbc_textField_1.gridy = 4;
-		panel.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		villeGarant = new JTextField();
+		GridBagConstraints gbc_villeGarant = new GridBagConstraints();
+		gbc_villeGarant.gridwidth = 3;
+		gbc_villeGarant.insets = new Insets(0, 0, 5, 5);
+		gbc_villeGarant.fill = GridBagConstraints.HORIZONTAL;
+		gbc_villeGarant.gridx = 2;
+		gbc_villeGarant.gridy = 4;
+		panel.add(villeGarant, gbc_villeGarant);
+		villeGarant.setColumns(10);
 		
 		JLabel lblCPGarant = new JLabel("CP :");
 		GridBagConstraints gbc_lblCPGarant = new GridBagConstraints();
@@ -338,15 +338,15 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_lblCPGarant.gridy = 5;
 		panel.add(lblCPGarant, gbc_lblCPGarant);
 		
-		textField_2 = new JTextField();
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.gridwidth = 3;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 2;
-		gbc_textField_2.gridy = 5;
-		panel.add(textField_2, gbc_textField_2);
-		textField_2.setColumns(10);
+		codePostalGarant = new JTextField();
+		GridBagConstraints gbc_codePostalGarant = new GridBagConstraints();
+		gbc_codePostalGarant.gridwidth = 3;
+		gbc_codePostalGarant.insets = new Insets(0, 0, 5, 5);
+		gbc_codePostalGarant.fill = GridBagConstraints.HORIZONTAL;
+		gbc_codePostalGarant.gridx = 2;
+		gbc_codePostalGarant.gridy = 5;
+		panel.add(codePostalGarant, gbc_codePostalGarant);
+		codePostalGarant.setColumns(10);
 		
 		JLabel lblTelephoneGarant = new JLabel("Téléphone :");
 		GridBagConstraints gbc_lblTelephoneGarant = new GridBagConstraints();
@@ -356,15 +356,15 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_lblTelephoneGarant.gridy = 6;
 		panel.add(lblTelephoneGarant, gbc_lblTelephoneGarant);
 		
-		textField_3 = new JTextField();
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.gridwidth = 3;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 2;
-		gbc_textField_3.gridy = 6;
-		panel.add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
+		telephoneGarant = new JTextField();
+		GridBagConstraints gbc_telephoneGarant = new GridBagConstraints();
+		gbc_telephoneGarant.gridwidth = 3;
+		gbc_telephoneGarant.insets = new Insets(0, 0, 5, 5);
+		gbc_telephoneGarant.fill = GridBagConstraints.HORIZONTAL;
+		gbc_telephoneGarant.gridx = 2;
+		gbc_telephoneGarant.gridy = 6;
+		panel.add(telephoneGarant, gbc_telephoneGarant);
+		telephoneGarant.setColumns(10);
 		
 		JLabel lblEmailGarant = new JLabel("Email :");
 		GridBagConstraints gbc_lblEmailGarant = new GridBagConstraints();
@@ -374,17 +374,18 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_lblEmailGarant.gridy = 7;
 		panel.add(lblEmailGarant, gbc_lblEmailGarant);
 		
-		textField_4 = new JTextField();
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.gridwidth = 3;
-		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 2;
-		gbc_textField_4.gridy = 7;
-		panel.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
+		emailGarant = new JTextField();
+		GridBagConstraints gbc_emailGarant = new GridBagConstraints();
+		gbc_emailGarant.gridwidth = 3;
+		gbc_emailGarant.insets = new Insets(0, 0, 5, 5);
+		gbc_emailGarant.fill = GridBagConstraints.HORIZONTAL;
+		gbc_emailGarant.gridx = 2;
+		gbc_emailGarant.gridy = 7;
+		panel.add(emailGarant, gbc_emailGarant);
+		emailGarant.setColumns(10);
 		
 		JButton btnAjoutGarant = new JButton("Ajouter un garant");
+		btnAjoutGarant.addActionListener(this.gestionAjoutLocataire);
 		GridBagConstraints gbc_btnAjoutGarant = new GridBagConstraints();
 		gbc_btnAjoutGarant.gridwidth = 4;
 		gbc_btnAjoutGarant.insets = new Insets(0, 0, 5, 5);
@@ -393,5 +394,69 @@ public class FenAjoutLocataire extends JFrame{
 		panel.add(btnAjoutGarant, gbc_btnAjoutGarant);
 		
 		
+	}
+
+	public String getPrenomLocataire() {
+		return prenomLocataire.getText();
+	}
+
+	public String getNomLocataire() {
+		return nomLocataire.getText();
+	}
+
+	public String getTelephoneLocataire() {
+		return telephoneLocataire.getText();
+	}
+
+	public String getEmailLocataire() {
+		return emailLocataire.getText();
+	}
+
+	public String getDateDeNaissanceLocataire() {
+		return dateDeNaissanceLocataire.getText();
+	}
+
+	public String getAdresseBienLocataire() {
+		return adresseBienLocataire.getText();
+	}
+
+	public String getDateEntree() {
+		return dateEntree.getText();
+	}
+
+	public String getNomGarant() {
+		return NomGarant.getText();
+	}
+
+	public String getPrenomGarant() {
+		return prenomGarant.getText();
+	}
+
+	public String getAdresseGarant() {
+		return adresseGarant.getText();
+	}
+
+	public String getVilleGarant() {
+		return villeGarant.getText();
+	}
+
+	public String getCodePostalGarant() {
+		return codePostalGarant.getText();
+	}
+
+	public String getTelephoneGarant() {
+		return telephoneGarant.getText();
+	}
+
+	public String getEmailGarant() {
+		return emailGarant.getText();
+	}
+
+	public JRadioButton getRdbtnAncienNon() {
+		return rdbtnAncienNon;
+	}
+
+	public JRadioButton getRdbtnAncienOui() {
+		return rdbtnAncienOui;
 	}
 }
