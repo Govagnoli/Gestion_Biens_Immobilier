@@ -8,8 +8,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import controleur.GestionBiensImmobilier;
 import controleur.GestionMenu;
 import controleur.GestionTableBiensImmobiliers;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.Font;
 
 public class FenBiensImmobilier extends JFrame {
 
@@ -17,11 +22,13 @@ public class FenBiensImmobilier extends JFrame {
 	private GestionTableBiensImmobiliers gestionTable;
 	private GestionMenu gestionMenu;
 	private DetailsBien detailsBien;
+	private GestionBiensImmobilier gestionBiensImmobilier;
 
 	public FenBiensImmobilier() {
 		
 		this.gestionMenu = new GestionMenu(this);
 		this.gestionTable = new GestionTableBiensImmobiliers(this);
+		this.gestionBiensImmobilier = new GestionBiensImmobilier();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -64,7 +71,7 @@ public class FenBiensImmobilier extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane);
-		scrollPane.setBounds(0, 0, 1540, 500);
+		scrollPane.setBounds(10, 52, 1540, 500);
 		
 		TableBien = new JTable();
 		TableBien.setModel(new DefaultTableModel(
@@ -110,6 +117,17 @@ public class FenBiensImmobilier extends JFrame {
 		this.detailsBien = new DetailsBien();
 		this.detailsBien.setVisible(false);
 		panelPopUp.add(this.detailsBien);
+		
+		JLabel lblAjoutBien = new JLabel("Ajouter un bien immobilier : ");
+		lblAjoutBien.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblAjoutBien.setBounds(10, 11, 185, 14);
+		getContentPane().add(lblAjoutBien);
+		
+		JButton btnAjoutBien = new JButton("Ajouter un bien");
+		btnAjoutBien.addActionListener(this.gestionBiensImmobilier);
+		btnAjoutBien.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAjoutBien.setBounds(286, 7, 148, 23);
+		getContentPane().add(btnAjoutBien);
 		
 	}
 

@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
-import vue.FenAccueil;
 import vue.FenBiensImmobilier;
 import vue.FenInformationsPersonelles;
 import vue.FenLocataires;
@@ -22,11 +21,6 @@ public class GestionMenu implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		JMenuItem item = (JMenuItem) e.getSource();
 		switch(item.getText()) {
-		case "Accueil":
-			FenAccueil fenAccueil = new FenAccueil();
-			this.fen.dispose();
-			fenAccueil.setVisible(true);
-			break;
 		case "Mes Biens Immobilier":
 			FenBiensImmobilier fenBiensImmobiliers = new FenBiensImmobilier();
 			this.fen.dispose();

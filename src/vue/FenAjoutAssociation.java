@@ -163,7 +163,7 @@ public class FenAjoutAssociation extends JFrame {
 		JButton btnAnnulerAjoutLocataire = new JButton("Annuler");
 		btnAnnulerAjoutLocataire.addActionListener(this.gestionAjoutAssociation);
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAnnulerAjoutLocataire.setBounds(384, 322, 99, 34);
+		btnAnnulerAjoutLocataire.setBounds(398, 323, 99, 34);
 		contentPane.add(btnAnnulerAjoutLocataire);
 	}
 	public String getNomLocataire() {

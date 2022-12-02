@@ -122,9 +122,9 @@ public class FenAssurance extends JFrame {
 		Informations.add(lblDateFinVali, gbc_lblDateFinVali);
 		
 		
-		DateFormatter df = new DateFormatter(new SimpleDateFormat("dd/MM/yyyy"));
+		DateFormatter formatDate = new DateFormatter(new SimpleDateFormat("dd/MM/yyyy"));
 		
-		this.dateFinDeValiditee = new JFormattedTextField(df);
+		this.dateFinDeValiditee = new JFormattedTextField(formatDate);
 		this.dateFinDeValiditee.setColumns(10);
 		GridBagConstraints gbc_DateFinVali = new GridBagConstraints();
 		gbc_DateFinVali.fill = GridBagConstraints.HORIZONTAL;
@@ -141,7 +141,7 @@ public class FenAssurance extends JFrame {
 		gbc_lblDateDeDbut.gridy = 5;
 		Informations.add(lblDateDeDbut, gbc_lblDateDeDbut);
 			
-		this.dateDebutDeValiditee = new JFormattedTextField(df);
+		this.dateDebutDeValiditee = new JFormattedTextField(formatDate);
 		this.dateDebutDeValiditee.setColumns(10);
 		GridBagConstraints gbc_DateDebutVali = new GridBagConstraints();
 		gbc_DateDebutVali.insets = new Insets(0, 0, 5, 5);

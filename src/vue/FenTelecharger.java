@@ -34,7 +34,5 @@ public class FenTelecharger extends JFrame {
 		btnNo.addActionListener(this.gestionTelecharger);
 		contentPane.add(btnNo);
 	}
-
-
 }
 
