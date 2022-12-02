@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
@@ -124,15 +123,15 @@ public class FenAssurance extends JFrame {
 		
 		
 		DateFormatter df = new DateFormatter(new SimpleDateFormat("dd/MM/yyyy"));
+		
 		this.dateFinDeValiditee = new JFormattedTextField(df);
-		JFormattedTextField DateFinVali = new JFormattedTextField(df);
+		this.dateFinDeValiditee.setColumns(10);
 		GridBagConstraints gbc_DateFinVali = new GridBagConstraints();
 		gbc_DateFinVali.fill = GridBagConstraints.HORIZONTAL;
 		gbc_DateFinVali.insets = new Insets(0, 0, 5, 5);
 		gbc_DateFinVali.gridx = 1;
 		gbc_DateFinVali.gridy = 4;
-		Informations.add(DateFinVali, gbc_DateFinVali);
-		DateFinVali.setColumns(10);
+		Informations.add(this.dateFinDeValiditee, gbc_DateFinVali);
 		
 		JLabel lblDateDeDbut = new JLabel("Date de début de validité :");
 		GridBagConstraints gbc_lblDateDeDbut = new GridBagConstraints();
