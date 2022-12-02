@@ -50,17 +50,22 @@ public class FenStatistiques extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu accueil1 = new JMenu("Accueil");
-		menuBar.add(accueil1);
+		JMenu informations = new JMenu("Informations");
+		menuBar.add(informations);
 		
 		JMenu gestion = new JMenu("Gestion");
 		menuBar.add(gestion);
-		
-		JMenu parametres = new JMenu("Param\u00E8tres");
-		menuBar.add(parametres);
 
-		JMenu compte = new JMenu("Compte");
-		menuBar.add(compte);
+		JMenu deconnexion = new JMenu("Fermer");
+		menuBar.add(deconnexion);
+		
+		JMenuItem statistiques = new JMenuItem("Statistiques");
+		statistiques.addActionListener(this.gestionMenu);
+		informations.add(statistiques);
+		
+		JMenuItem monCompte = new JMenuItem("Mon compte");
+		monCompte.addActionListener(this.gestionMenu);
+		informations.add(monCompte);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
 		biens.addActionListener(this.gestionMenu);
@@ -69,22 +74,10 @@ public class FenStatistiques extends JFrame {
 		JMenuItem locataires = new JMenuItem("Locataires");
 		locataires.addActionListener(this.gestionMenu);
 		gestion.add(locataires);
-		
-		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.gestionMenu);
-		accueil1.add(accueil);
-				
-		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.gestionMenu);
-		parametres.add(statistiques);
-		
+
 		JMenuItem fermer = new JMenuItem("Fermer");
 		fermer.addActionListener(this.gestionMenu);
-		parametres.add(fermer);
-
-		JMenuItem monCompte = new JMenuItem("Mon compte");
-		monCompte.addActionListener(this.gestionMenu);
-		compte.add(monCompte);
+		deconnexion.add(fermer);
 	}
 
 }
