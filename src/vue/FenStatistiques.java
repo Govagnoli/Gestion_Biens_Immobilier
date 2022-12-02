@@ -1,6 +1,8 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -8,11 +10,25 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import controleur.GestionMenu;
+import javax.swing.JLabel;
 
 public class FenStatistiques extends JFrame {
 
 	private JPanel contentPane;
 	private GestionMenu gestionMenu;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FenStatistiques frame = new FenStatistiques();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	public FenStatistiques() {
 		
@@ -24,6 +40,9 @@ public class FenStatistiques extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		JLabel lbltest = new JLabel("Statistiques");
+		contentPane.add(lbltest, BorderLayout.CENTER);
 		
 		this.gestionMenu = new GestionMenu(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
