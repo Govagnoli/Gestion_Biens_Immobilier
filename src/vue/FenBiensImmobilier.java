@@ -15,12 +15,12 @@ public class FenBiensImmobilier extends JFrame {
 
 	private JTable TableBien;
 	private GestionTableBiensImmobiliers gestionTable;
-	private GestionMenu GestionMenu;
+	private GestionMenu gestionMenu;
 	private DetailsBien detailsBien;
 
 	public FenBiensImmobilier() {
 		
-		this.GestionMenu = new GestionMenu(this);
+		this.gestionMenu = new GestionMenu(this);
 		this.gestionTable = new GestionTableBiensImmobiliers(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,41 +31,34 @@ public class FenBiensImmobilier extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu accueil1 = new JMenu("Accueil");
-		menuBar.add(accueil1);
+		JMenu informations = new JMenu("Informations");
+		menuBar.add(informations);
 		
 		JMenu gestion = new JMenu("Gestion");
 		menuBar.add(gestion);
-		
-		JMenu parametres = new JMenu("Param\u00E8tres");
-		menuBar.add(parametres);
 
-		JMenu compte = new JMenu("Compte");
-		menuBar.add(compte);		
+		JMenu deconnexion = new JMenu("Fermer");
+		menuBar.add(deconnexion);
+		
+		JMenuItem statistiques = new JMenuItem("Statistiques");
+		statistiques.addActionListener(this.gestionMenu);
+		informations.add(statistiques);
+		
+		JMenuItem monCompte = new JMenuItem("Mon compte");
+		monCompte.addActionListener(this.gestionMenu);
+		informations.add(monCompte);
 		
 		JMenuItem biens = new JMenuItem("Mes Biens Immobilier");
-		biens.addActionListener(this.GestionMenu);
+		biens.addActionListener(this.gestionMenu);
 		gestion.add(biens);
 		
 		JMenuItem locataires = new JMenuItem("Locataires");
-		locataires.addActionListener(this.GestionMenu);
+		locataires.addActionListener(this.gestionMenu);
 		gestion.add(locataires);
-		
-		JMenuItem accueil = new JMenuItem("Accueil");
-		accueil.addActionListener(this.GestionMenu);
-		accueil1.add(accueil);
-				
-		JMenuItem statistiques = new JMenuItem("Statistiques");
-		statistiques.addActionListener(this.GestionMenu);
-		parametres.add(statistiques);
-		
-		JMenuItem fermer = new JMenuItem("Fermer");
-		fermer.addActionListener(this.GestionMenu);
-		parametres.add(fermer);
 
-		JMenuItem monCompte = new JMenuItem("Mon compte");
-		monCompte.addActionListener(this.GestionMenu);
-		compte.add(monCompte);
+		JMenuItem fermer = new JMenuItem("Fermer");
+		fermer.addActionListener(this.gestionMenu);
+		deconnexion.add(fermer);
 		
 		getContentPane().setLayout(null);
 		
