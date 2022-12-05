@@ -12,9 +12,7 @@ import javax.swing.border.LineBorder;
 public class UnBien extends JPanel {
 
 	public UnBien() {
-		
-		
-		
+
 		JPanel block4 = new JPanel();
 		block4.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
 		this.add(block4);
@@ -68,5 +66,4 @@ public class UnBien extends JPanel {
 		block4.add(lblRevenu4, gbc_lblRevenu4);
 
 	}
-
 }

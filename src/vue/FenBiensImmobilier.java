@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionBiensImmobilier;
 import controleur.GestionMenu;
-import controleur.GestionTableBiensImmobiliers;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -19,7 +18,6 @@ import java.awt.Font;
 public class FenBiensImmobilier extends JFrame {
 
 	private JTable TableBien;
-	private GestionTableBiensImmobiliers gestionTable;
 	private GestionMenu gestionMenu;
 	private DetailsBien detailsBien;
 	private GestionBiensImmobilier gestionBiensImmobilier;
@@ -27,8 +25,7 @@ public class FenBiensImmobilier extends JFrame {
 	public FenBiensImmobilier() {
 		
 		this.gestionMenu = new GestionMenu(this);
-		this.gestionTable = new GestionTableBiensImmobiliers(this);
-		this.gestionBiensImmobilier = new GestionBiensImmobilier();
+		this.gestionBiensImmobilier = new GestionBiensImmobilier(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -106,7 +103,7 @@ public class FenBiensImmobilier extends JFrame {
 			}
 		));
 		
-		this.getTableBien().getSelectionModel().addListSelectionListener(this.gestionTable);
+		this.getTableBien().getSelectionModel().addListSelectionListener(this.gestionBiensImmobilier);
 		
 		scrollPane.setViewportView(TableBien);
 		

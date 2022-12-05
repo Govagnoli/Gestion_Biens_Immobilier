@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import controleur.GestionLocataire;
 import controleur.GestionMenu;
-import controleur.GestionTableLocataires;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,16 +21,14 @@ public class FenLocataires extends JFrame{
 
 	private JPanel contentPane;
 	private GestionMenu gestionMenu;
-	private GestionLocataire gestionClicButton;
+	private GestionLocataire gestionLocataire;
 	private JTable tableLocataires;
-	private GestionTableLocataires gestionTable;
 	private DetailsLocataire detailsLocataire;
 
 	public FenLocataires() {
 		
-		this.gestionTable = new GestionTableLocataires(this);
 		this.gestionMenu = new GestionMenu(this);
-		this.gestionClicButton = new GestionLocataire();
+		this.gestionLocataire = new GestionLocataire(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -67,7 +64,7 @@ public class FenLocataires extends JFrame{
 				"Identifiant", "Nom", "Prénom", "Téléphone", "E-mail", "Date de naissance", "Dépôt de Garantie", "Ancien locataire", "Part de possession"
 			}
 		));
-		this.getTableLocataires().getSelectionModel().addListSelectionListener(this.gestionTable);
+		this.getTableLocataires().getSelectionModel().addListSelectionListener(this.gestionLocataire);
 		scrollPane.setViewportView(tableLocataires);
 		
 		JPanel panelPopUp = new JPanel();
@@ -114,7 +111,7 @@ public class FenLocataires extends JFrame{
 		
 		JButton btnAjoutLocataire = new JButton("Ajouter un locataire");
 		btnAjoutLocataire.setBounds(272, 5, 164, 23);
-		btnAjoutLocataire.addActionListener(this.gestionClicButton);
+		btnAjoutLocataire.addActionListener(this.gestionLocataire);
 		contentPane.add(btnAjoutLocataire);
 		
 		

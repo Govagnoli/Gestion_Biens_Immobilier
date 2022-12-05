@@ -151,8 +151,6 @@ public class DetailsLocataire extends JInternalFrame {
 		panel.add(btnModifierLocataire);
 
 	}
-
-
 	public JLabel getNom() {
 		return nom;
 	}

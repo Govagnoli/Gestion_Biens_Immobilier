@@ -50,10 +50,8 @@ public class GestionAjoutBien implements ActionListener, ItemListener{
 	public void itemStateChanged(ItemEvent e) {
 		if(this.fenAjoutBien.getRdbtnLogement().getSelectedObjects() == null) {
 			this.Logement = false;
-			System.out.println("Garage");
 		} else {
 			this.Logement = true;
-			System.out.println("Logement");
 		}		
 	}
 }

@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionFermerPages;
 import controleur.GestionMenu;
-import controleur.GestionTableRegularisationDesCharges;
+import controleur.GestionRegularisationDesCharges;
 import javax.swing.JButton;
 
 public class FenRegularisationCharges extends JFrame {
@@ -20,7 +20,7 @@ public class FenRegularisationCharges extends JFrame {
 	private JPanel contentPane;
 	private JTable tableRegularisationCharges;
 	private GestionMenu gestionMenu;
-	private GestionTableRegularisationDesCharges gestionTableRegularisationDesCharges;
+	private GestionRegularisationDesCharges gestionTableRegularisationDesCharges;
 	private GestionFermerPages gestionFermerPages;
 
 	
@@ -30,7 +30,7 @@ public class FenRegularisationCharges extends JFrame {
 		
 		setBounds(100, 100, 633, 432);
 		this.gestionMenu = new GestionMenu(this);
-		this.gestionTableRegularisationDesCharges = new GestionTableRegularisationDesCharges(this);
+		this.gestionTableRegularisationDesCharges = new GestionRegularisationDesCharges(this);
 		setVisible(true);
 		
 		

@@ -21,7 +21,6 @@ import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionInformationsPersonelles;
 import controleur.GestionMenu;
-import controleur.GestionTableAssociations;
 
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -33,13 +32,11 @@ public class FenInformationsPersonelles extends JFrame {
 	private GestionMenu gestionMenu;
 	private JButton btnModifierAssociation;
 	private GestionInformationsPersonelles gestionInformationsPersonelles;
-	private GestionTableAssociations gestionTableInformationsPersonelles;
 
 	public FenInformationsPersonelles() {
 		
 		this.gestionMenu = new GestionMenu(this);
-		this.gestionInformationsPersonelles = new GestionInformationsPersonelles();
-		this.gestionTableInformationsPersonelles = new GestionTableAssociations(this);
+		this.gestionInformationsPersonelles = new GestionInformationsPersonelles(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -127,7 +124,7 @@ public class FenInformationsPersonelles extends JFrame {
 				"Nom association", "Siren", "Date don", "Montant"
 			}
 		));
-		this.getTableAssociations().getSelectionModel().addListSelectionListener(this.gestionTableInformationsPersonelles);
+		this.getTableAssociations().getSelectionModel().addListSelectionListener(this.gestionInformationsPersonelles);
 		scrollPane.setViewportView(tableAssociations);
 		
 		JButton btnAjouterAssociation = new JButton("Ajouter");

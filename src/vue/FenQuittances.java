@@ -12,8 +12,8 @@ import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionFermerPages;
 import controleur.GestionMenu;
-import controleur.GestionTableQuittances;
-import controleur.GestionTableRegularisationDesCharges;
+import controleur.GestionQuittances;
+import controleur.GestionRegularisationDesCharges;
 import javax.swing.JButton;
 
 public class FenQuittances extends JFrame {
@@ -21,7 +21,7 @@ public class FenQuittances extends JFrame {
 	private JPanel contentPane;
 	private JTable tableQuittance;
 	private GestionMenu gestionMenu;
-	private GestionTableQuittances gestionTableQuittance;
+	private GestionQuittances gestionTableQuittance;
 	private GestionFermerPages gestionFermerPages;
 
 	
@@ -31,7 +31,7 @@ public class FenQuittances extends JFrame {
 		
 		setBounds(100, 100, 633, 432);
 		this.gestionMenu = new GestionMenu(this);
-		this.gestionTableQuittance = new GestionTableQuittances(this);
+		this.gestionTableQuittance = new GestionQuittances(this);
 		setVisible(true);
 		
 		
