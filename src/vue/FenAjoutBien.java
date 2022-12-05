@@ -65,6 +65,27 @@ public class FenAjoutBien extends JFrame {
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
+		//pour formatter les nombres
+		NumberFormat formatNumberCp = NumberFormat.getInstance(java.util.Locale.FRENCH);
+		formatNumberCp.setMinimumIntegerDigits(5);
+		formatNumberCp.setMaximumIntegerDigits(5);
+		formatNumberCp.setMaximumFractionDigits(0);
+		
+		NumberFormat formatNumberLoyer = NumberFormat.getInstance(java.util.Locale.FRENCH);
+		formatNumberLoyer.setMinimumFractionDigits(2);
+		formatNumberLoyer.setMaximumFractionDigits(2);
+		formatNumberLoyer.setMaximumIntegerDigits(5);
+		
+		NumberFormat formatNumberTantiemes = NumberFormat.getInstance(java.util.Locale.FRENCH);
+		formatNumberTantiemes.setMinimumFractionDigits(2);
+		formatNumberTantiemes.setMaximumFractionDigits(2);
+		formatNumberTantiemes.setMaximumIntegerDigits(5);
+		
+		NumberFormat formatNumberSuperficie = NumberFormat.getInstance(java.util.Locale.FRENCH);
+		formatNumberSuperficie.setMinimumFractionDigits(2);
+		formatNumberSuperficie.setMaximumFractionDigits(2);
+		formatNumberSuperficie.setMaximumIntegerDigits(4);
+		
 		JLabel lblAdresse = new JLabel("Adresse : ");
 		GridBagConstraints gbc_lblAdresse = new GridBagConstraints();
 		gbc_lblAdresse.anchor = GridBagConstraints.EAST;
@@ -107,7 +128,7 @@ public class FenAjoutBien extends JFrame {
 		gbc_lblCodePostal.gridy = 4;
 		panel.add(lblCodePostal, gbc_lblCodePostal);
 		
-		this.textCP = new JFormattedTextField();
+		this.textCP = new JFormattedTextField(formatNumberCp);
 		textCP.setColumns(5);
 		GridBagConstraints gbc_textCP = new GridBagConstraints();
 		gbc_textCP.insets = new Insets(0, 0, 5, 5);
@@ -124,7 +145,7 @@ public class FenAjoutBien extends JFrame {
 		gbc_lblPrixLoyer.gridy = 5;
 		panel.add(lblPrixLoyer, gbc_lblPrixLoyer);
 		
-		this.textLoyer = new JFormattedTextField();
+		this.textLoyer = new JFormattedTextField(formatNumberLoyer);
 		textLoyer.setColumns(7);
 		GridBagConstraints gbc_textLoyer = new GridBagConstraints();
 		gbc_textLoyer.insets = new Insets(0, 0, 5, 5);
@@ -141,7 +162,7 @@ public class FenAjoutBien extends JFrame {
 		gbc_lblSuperficie.gridy = 6;
 		panel.add(lblSuperficie, gbc_lblSuperficie);
 		
-		this.TextSuperficie = new JFormattedTextField();
+		this.TextSuperficie = new JFormattedTextField(formatNumberSuperficie);
 		TextSuperficie.setColumns(6);
 		GridBagConstraints gbc_TextSuperficie = new GridBagConstraints();
 		gbc_TextSuperficie.insets = new Insets(0, 0, 5, 5);
@@ -158,7 +179,7 @@ public class FenAjoutBien extends JFrame {
 		gbc_lblTantième.gridy = 7;
 		panel.add(lblTantième, gbc_lblTantième);
 		
-		this.textTantiemes = new JFormattedTextField();
+		this.textTantiemes = new JFormattedTextField(formatNumberTantiemes);
 		GridBagConstraints gbc_textTantiemes = new GridBagConstraints();
 		gbc_textTantiemes.insets = new Insets(0, 0, 5, 5);
 		gbc_textTantiemes.fill = GridBagConstraints.HORIZONTAL;
@@ -192,8 +213,7 @@ public class FenAjoutBien extends JFrame {
 		gbc_lblDateAcquisition.gridy = 9;
 		panel.add(lblDateAcquisition, gbc_lblDateAcquisition);
 		
-		//pour formatter les nombres
-		//NumberFormat formatNumber = new NumberFormat();
+		
 		DateFormatter formatDate = new DateFormatter(new SimpleDateFormat("dd/MM/yyyy"));
 		
 		this.textDateAcquisition = new JFormattedTextField(formatDate);
