@@ -1,18 +1,17 @@
 package vue;
 
+import java.awt.BorderLayout;
+import java.awt.Font;
+
+import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
-import controleur.GestionQuittance;
-import controleur.GestionTableGarant;
-
-import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
+
+import controleur.GestionDetailsLocataire;
 
 public class DetailsLocataire extends JInternalFrame {
 	private JTable tableGarant;
@@ -24,12 +23,11 @@ public class DetailsLocataire extends JInternalFrame {
 	private JLabel ancienLocataire;
 	private JLabel loyer;
 	private JLabel adresse;
-	private GestionQuittance gestionQuittance;
-	private GestionTableGarant gestionTableGarant;
+	private GestionDetailsLocataire gestionDetailsLocataire;
+	
 	public DetailsLocataire() {
 		
-		this.gestionQuittance = new GestionQuittance();
-		this.gestionTableGarant = new GestionTableGarant(this);
+		this.gestionDetailsLocataire = new GestionDetailsLocataire(this);
 		setBounds(864, 0, 1204, 300);
 		
 		JPanel panel = new JPanel();
@@ -49,7 +47,7 @@ public class DetailsLocataire extends JInternalFrame {
 		JButton buttonQuittanceDeLoyer = new JButton("Les Quittances de Loyer");
 		buttonQuittanceDeLoyer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		buttonQuittanceDeLoyer.setBounds(130, 209, 209, 27);
-		buttonQuittanceDeLoyer.addActionListener(this.gestionQuittance);
+		buttonQuittanceDeLoyer.addActionListener(this.gestionDetailsLocataire);
 		panel.add(buttonQuittanceDeLoyer);
 		
 		this.telephone = new JLabel("Telephone");
@@ -103,7 +101,7 @@ public class DetailsLocataire extends JInternalFrame {
 				"Nom"
 			}
 		));
-		this.getTableGarant().getSelectionModel().addListSelectionListener(this.gestionTableGarant);
+		this.getTableGarant().getSelectionModel().addListSelectionListener(this.gestionDetailsLocataire);
 		scrollPaneGarants.setViewportView(tableGarant);
 		
 		JLabel label = new JLabel("New label");
@@ -134,9 +132,9 @@ public class DetailsLocataire extends JInternalFrame {
 		lblDateNaissance.setBounds(31, 127, 116, 14);
 		panel.add(lblDateNaissance);
 		
-		JLabel lblNewLabel = new JLabel("Ancien locataire :");
-		lblNewLabel.setBounds(31, 173, 117, 14);
-		panel.add(lblNewLabel);
+		JLabel lblAncienLocataire = new JLabel("Ancien locataire :");
+		lblAncienLocataire.setBounds(31, 173, 117, 14);
+		panel.add(lblAncienLocataire);
 		
 		JLabel lblMontantloyer = new JLabel("Montant du loyer :");
 		lblMontantloyer.setBounds(355, 127, 116, 14);

@@ -19,12 +19,12 @@ public class GestionAssurance implements ActionListener{
 		JButton item = (JButton) e.getSource();
 		switch(item.getText()) {
 		case "Modifier":
-			String numeroContrat = this.fenAssurance.getNumeroContrat();
-			String prime = this.fenAssurance.getPrime();
-			String protectionJuridique = this.fenAssurance.getProtectionJuridique();
-			String dateFinDeValiditee = this.fenAssurance.getDateFinDeValiditee();
-			String numerdateDebutDeValiditeeContrat = this.fenAssurance.getDateDebutDeValiditee();
-			String tauxAugmentation = this.fenAssurance.getTauxAugmentation();
+			String numeroContrat = this.fenAssurance.getTextFieldNumContrat();
+			String prime = this.fenAssurance.getTextField_Prime();
+			String protectionJuridique = this.fenAssurance.getTextField_protectionJuridique();
+			String dateFinDeValiditee = this.fenAssurance.getTextField_DateFinValiditee();
+			String numerdateDebutDeValiditeeContrat = this.fenAssurance.getTextField_DateDebutValiditee();
+			String tauxAugmentation = this.fenAssurance.getTextField_TauxAugmentation();
 			System.out.println(numeroContrat);
 			
 			if(numeroContrat.isBlank() ||prime.isBlank() ||protectionJuridique.isBlank() ||dateFinDeValiditee.isBlank() ||numerdateDebutDeValiditeeContrat.isBlank() ||tauxAugmentation.isBlank()) {
