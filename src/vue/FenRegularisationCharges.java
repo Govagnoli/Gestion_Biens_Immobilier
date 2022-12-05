@@ -1,25 +1,22 @@
 package vue;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionFermerPages;
-import controleur.GestionMenu;
 import controleur.GestionRegularisationDesCharges;
-import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class FenRegularisationCharges extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableRegularisationCharges;
-	private GestionMenu gestionMenu;
 	private GestionRegularisationDesCharges gestionTableRegularisationDesCharges;
 	private GestionFermerPages gestionFermerPages;
 
@@ -28,12 +25,10 @@ public class FenRegularisationCharges extends JFrame {
 		
 		this.gestionFermerPages = new GestionFermerPages(this);
 		
-		setBounds(100, 100, 633, 432);
-		this.gestionMenu = new GestionMenu(this);
+		setBounds(100, 100, 392, 386);
 		this.gestionTableRegularisationDesCharges = new GestionRegularisationDesCharges(this);
 		setVisible(true);
-		
-		
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -42,7 +37,7 @@ public class FenRegularisationCharges extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(5, 37, 300, 239);
+		scrollPane.setBounds(46, 58, 300, 239);
 		contentPane.add(scrollPane);
 		
 		tableRegularisationCharges = new JTable();
@@ -68,8 +63,13 @@ public class FenRegularisationCharges extends JFrame {
 		
 		JButton btnFermer = new JButton("Fermer");
 		btnFermer.addActionListener(this.gestionFermerPages);
-		btnFermer.setBounds(534, 342, 85, 21);
+		btnFermer.setBounds(281, 315, 85, 21);
 		contentPane.add(btnFermer);
+		
+		JLabel lblTitre = new JLabel("Régularisation des charges");
+		lblTitre.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTitre.setBounds(10, 11, 278, 14);
+		contentPane.add(lblTitre);
 			
 	}
 	public JTable getTableRegularisationCharges() {

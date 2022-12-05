@@ -48,7 +48,7 @@ public class FenAjoutLocataire extends JFrame{
 		this.gestionFermerPages = new GestionFermerPages(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 574, 432);
+		setBounds(100, 100, 575, 434);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -244,7 +244,7 @@ public class FenAjoutLocataire extends JFrame{
 		JButton btnAnnulerAjoutLocataire = new JButton("Annuler");
 		btnAnnulerAjoutLocataire.addActionListener(this.gestionFermerPages);
 		btnAnnulerAjoutLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAnnulerAjoutLocataire.setBounds(454, 372, 99, 23);
+		btnAnnulerAjoutLocataire.setBounds(454, 356, 99, 23);
 		contentPane.add(btnAnnulerAjoutLocataire);
 		
 		JPanel panel = new JPanel();

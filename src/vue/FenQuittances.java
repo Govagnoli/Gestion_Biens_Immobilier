@@ -1,37 +1,31 @@
 package vue;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionFermerPages;
-import controleur.GestionMenu;
 import controleur.GestionQuittances;
-import controleur.GestionRegularisationDesCharges;
-import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class FenQuittances extends JFrame {
 
 	private JPanel contentPane;
 	private JTable tableQuittance;
-	private GestionMenu gestionMenu;
 	private GestionQuittances gestionTableQuittance;
 	private GestionFermerPages gestionFermerPages;
 
 	
 	public FenQuittances() {
-		
 		this.gestionFermerPages = new GestionFermerPages(this);
-		
-		setBounds(100, 100, 633, 432);
-		this.gestionMenu = new GestionMenu(this);
 		this.gestionTableQuittance = new GestionQuittances(this);
+		
+		setBounds(100, 100, 404, 386);
 		setVisible(true);
 		
 		
@@ -43,7 +37,7 @@ public class FenQuittances extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(5, 37, 300, 239);
+		scrollPane.setBounds(44, 60, 300, 239);
 		contentPane.add(scrollPane);
 		
 		tableQuittance = new JTable();
@@ -69,8 +63,13 @@ public class FenQuittances extends JFrame {
 		
 		JButton btnFermer = new JButton("Fermer");
 		btnFermer.addActionListener(this.gestionFermerPages);
-		btnFermer.setBounds(534, 342, 85, 21);
+		btnFermer.setBounds(293, 315, 85, 21);
 		contentPane.add(btnFermer);
+		
+		JLabel lblTitre = new JLabel("Quitances de loyer");
+		lblTitre.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblTitre.setBounds(10, 11, 259, 28);
+		contentPane.add(lblTitre);
 			
 	}
 	public JTable getTableQuittances() {

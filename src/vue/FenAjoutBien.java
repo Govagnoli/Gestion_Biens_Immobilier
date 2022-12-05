@@ -266,7 +266,7 @@ public class FenAjoutBien extends JFrame {
 		btnAnnuler.setBounds(397, 398, 99, 34);
 		contentPane.add(btnAnnuler);
 		
-		JLabel lblTitreAjoutBien = new JLabel("Ajouter d'un bien immobilier :");
+		JLabel lblTitreAjoutBien = new JLabel("Ajouter un bien immobilier :");
 		lblTitreAjoutBien.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblTitreAjoutBien.setBounds(10, 9, 292, 25);
 		contentPane.add(lblTitreAjoutBien);

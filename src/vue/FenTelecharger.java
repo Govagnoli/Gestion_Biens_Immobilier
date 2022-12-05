@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import controleur.GestionTelecharger;
 
 public class FenTelecharger extends JFrame {
-	private  GestionTelecharger gestionTelecharger;
+	private GestionTelecharger gestionTelecharger;
 	private JPanel contentPane;
 	
 	public FenTelecharger() {

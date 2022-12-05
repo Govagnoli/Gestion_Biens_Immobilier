@@ -23,26 +23,26 @@ public class GestionMenu implements ActionListener{
 		switch(item.getText()) {
 		case "Mes Biens Immobilier":
 			FenBiensImmobilier fenBiensImmobiliers = new FenBiensImmobilier();
-			this.fen.dispose();
 			fenBiensImmobiliers.setVisible(true);
+			this.fen.dispose();
 			break;
 		case "Locataires":
 			FenLocataires fenLocataires = new FenLocataires();
-			this.fen.dispose();
 			fenLocataires.setVisible(true);
+			this.fen.dispose();
 			break;
 		case "Statistiques":
 			FenStatistiques fenStatistiques = new FenStatistiques();
-			this.fen.dispose();
 			fenStatistiques.setVisible(true);
+			this.fen.dispose();
 			break;
 		case "Fermer":
 			this.fen.dispose();
 			break;
 		case "Mon compte":
 			FenInformationsPersonelles fenInformationsPersonelles = new FenInformationsPersonelles();
-			this.fen.dispose();
 			fenInformationsPersonelles.setVisible(true);
+			this.fen.dispose();
 			break;
 		}
 	}

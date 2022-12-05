@@ -117,6 +117,23 @@ public class DetailsLocataire extends JInternalFrame {
 		panel.add(scrollPaneColocataire);
 		
 		tableColocataire = new JTable();
+		tableColocataire.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+			},
+			new String[] {
+				"Nom", "Prénom"
+			}
+		));
 		scrollPaneColocataire.setViewportView(tableColocataire);
 		
 		JLabel labelColocataires = new JLabel("Colocataire(s) :");

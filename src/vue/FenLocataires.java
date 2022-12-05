@@ -43,7 +43,7 @@ public class FenLocataires extends JFrame{
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(5, 37, 1278, 239);
+		scrollPane.setBounds(5, 84, 1278, 239);
 		contentPane.add(scrollPane);
 		
 		tableLocataires = new JTable();
@@ -110,15 +110,20 @@ public class FenLocataires extends JFrame{
 		panelPopUp.add(this.detailsLocataire);
 		
 		JButton btnAjoutLocataire = new JButton("Ajouter un locataire");
-		btnAjoutLocataire.setBounds(272, 5, 164, 23);
+		btnAjoutLocataire.setBounds(190, 52, 127, 23);
 		btnAjoutLocataire.addActionListener(this.gestionLocataire);
 		contentPane.add(btnAjoutLocataire);
 		
 		
-		JLabel lblListeLocataire = new JLabel("Listes des locataires :");
-		lblListeLocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblListeLocataire.setBounds(5, 3, 183, 23);
-		contentPane.add(lblListeLocataire);
+		JLabel lblAjouterlocataire = new JLabel("Ajouter un locataire :");
+		lblAjouterlocataire.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblAjouterlocataire.setBounds(29, 50, 133, 23);
+		contentPane.add(lblAjouterlocataire);
+		
+		JLabel lblTitre = new JLabel("Mes locataires");
+		lblTitre.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTitre.setBounds(10, 11, 152, 14);
+		contentPane.add(lblTitre);
 		
 	}
 

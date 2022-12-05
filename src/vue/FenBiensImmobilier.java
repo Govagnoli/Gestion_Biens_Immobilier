@@ -68,7 +68,7 @@ public class FenBiensImmobilier extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane);
-		scrollPane.setBounds(10, 52, 1540, 500);
+		scrollPane.setBounds(10, 80, 1540, 500);
 		
 		TableBien = new JTable();
 		TableBien.setModel(new DefaultTableModel(
@@ -117,14 +117,19 @@ public class FenBiensImmobilier extends JFrame {
 		
 		JLabel lblAjoutBien = new JLabel("Ajouter un bien immobilier : ");
 		lblAjoutBien.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblAjoutBien.setBounds(10, 11, 185, 14);
+		lblAjoutBien.setBounds(32, 50, 185, 14);
 		getContentPane().add(lblAjoutBien);
 		
 		JButton btnAjoutBien = new JButton("Ajouter un bien");
 		btnAjoutBien.addActionListener(this.gestionBiensImmobilier);
 		btnAjoutBien.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAjoutBien.setBounds(286, 7, 148, 23);
+		btnAjoutBien.setBounds(232, 46, 132, 23);
 		getContentPane().add(btnAjoutBien);
+		
+		JLabel lblTitre = new JLabel("Mes biens immobilier");
+		lblTitre.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblTitre.setBounds(10, 11, 238, 14);
+		getContentPane().add(lblTitre);
 		
 	}
 
