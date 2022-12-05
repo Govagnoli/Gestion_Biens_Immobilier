@@ -110,7 +110,7 @@ public class FenLocataires extends JFrame{
 		panelPopUp.add(this.detailsLocataire);
 		
 		JButton btnAjoutLocataire = new JButton("Ajouter un locataire");
-		btnAjoutLocataire.setBounds(190, 52, 127, 23);
+		btnAjoutLocataire.setBounds(190, 52, 159, 23);
 		btnAjoutLocataire.addActionListener(this.gestionLocataire);
 		contentPane.add(btnAjoutLocataire);
 		

@@ -162,6 +162,7 @@ public class DetailsLocataire extends JInternalFrame {
 		panel.add(lblAdresse);
 		
 		JButton btnModifierLocataire = new JButton("Modifier");
+		btnModifierLocataire.addActionListener(gestionDetailsLocataire);
 		btnModifierLocataire.setBounds(325, 27, 107, 20);
 		panel.add(btnModifierLocataire);
 

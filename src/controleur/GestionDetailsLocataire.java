@@ -8,7 +8,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import vue.DetailsLocataire;
+import vue.FenAjoutLocataire;
 import vue.FenGarant;
+import vue.FenModifierLocataire;
 import vue.FenQuittances;
 
 public class GestionDetailsLocataire implements ActionListener, ListSelectionListener{
@@ -26,6 +28,10 @@ public class GestionDetailsLocataire implements ActionListener, ListSelectionLis
 		case "Les Quittances de Loyer":
 			FenQuittances fenQuittance = new FenQuittances();
 			fenQuittance.setVisible(true);
+			break;
+		case "Modifier":
+			FenModifierLocataire fenModifierLocataire = new FenModifierLocataire();
+			fenModifierLocataire.setVisible(true);
 			break;
 		}
 	}

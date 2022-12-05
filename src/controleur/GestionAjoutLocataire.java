@@ -51,7 +51,7 @@ public class GestionAjoutLocataire implements ActionListener, ItemListener{
 			String dateEntree = this.fenAjoutLocataire.getDateEntree();
 			
 			//ATTENTION, à faire lors de l'ajout de la BDD.
-			//Verifier que l'adresse du bien du locataire à ajouter est bien une adresse d'un bien appartenant au propriétaire.
+			//Verifier que l'adresse du locataire à ajouter est bien une adresse d'un bien appartenant au propriétaire.
 			
 			if(nomLocataire.isBlank() || prenomLocataire.isBlank() || telephoneLocataire.isBlank() || emailLocataire.isBlank() || dateDeNaissanceLocataire.isBlank() || adresseBienLocataire.isBlank() || dateEntree.isBlank()) {
 				javax.swing.JOptionPane.showMessageDialog(this.fenAjoutLocataire,"Il manque des informations.", "Erreur", javax.swing.JOptionPane.ERROR_MESSAGE);
