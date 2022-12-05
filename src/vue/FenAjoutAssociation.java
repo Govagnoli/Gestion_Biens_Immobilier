@@ -25,6 +25,7 @@ public class FenAjoutAssociation extends JFrame {
 	private JTextField emailLocataire;
 	private JTextField dateDeNaissanceLocataire;
 	private GestionAjoutAssociation gestionAjoutAssociation;
+	private JRadioButton rdbtnMensuel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	public FenAjoutAssociation() {
@@ -135,24 +136,25 @@ public class FenAjoutAssociation extends JFrame {
 		gbc_lblAncien.gridy = 6;
 		Informations.add(lblAncien, gbc_lblAncien);
 		
-		JRadioButton rdbtnAncienNon = new JRadioButton("Mensuel ");
-		buttonGroup.add(rdbtnAncienNon);
-		rdbtnAncienNon.setSelected(true);
+		this.rdbtnMensuel = new JRadioButton("Mensuel");
+		this.rdbtnMensuel.addItemListener(this.gestionAjoutAssociation);
+		this.rdbtnMensuel.setSelected(true);
+		buttonGroup.add(this.rdbtnMensuel);
 		GridBagConstraints gbc_rdbtnAncienNon = new GridBagConstraints();
 		gbc_rdbtnAncienNon.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnAncienNon.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnAncienNon.gridx = 1;
 		gbc_rdbtnAncienNon.gridy = 6;
-		Informations.add(rdbtnAncienNon, gbc_rdbtnAncienNon);
+		Informations.add(this.rdbtnMensuel, gbc_rdbtnAncienNon);
 		
-		JRadioButton rdbtnAncienOui = new JRadioButton("Ponctuel ");
-		buttonGroup.add(rdbtnAncienOui);
+		JRadioButton rdbtnPonctuel = new JRadioButton("Ponctuel");
+		buttonGroup.add(rdbtnPonctuel);
 		GridBagConstraints gbc_rdbtnAncienOui = new GridBagConstraints();
 		gbc_rdbtnAncienOui.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnAncienOui.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnAncienOui.gridx = 2;
 		gbc_rdbtnAncienOui.gridy = 6;
-		Informations.add(rdbtnAncienOui, gbc_rdbtnAncienOui);
+		Informations.add(rdbtnPonctuel, gbc_rdbtnAncienOui);
 		
 		JButton btnAjouterLocataire = new JButton("Ajouter");
 		btnAjouterLocataire.addActionListener(this.gestionAjoutAssociation);
@@ -180,5 +182,9 @@ public class FenAjoutAssociation extends JFrame {
 
 	public String getDateDeNaissanceLocataire() {
 		return dateDeNaissanceLocataire.getText();
+	}
+	
+	public JRadioButton getRdbtnMensuel() {
+		return rdbtnMensuel;
 	}
 }
