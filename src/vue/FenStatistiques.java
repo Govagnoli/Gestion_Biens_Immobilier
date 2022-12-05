@@ -250,9 +250,6 @@ public class FenStatistiques extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu accueil1 = new JMenu("Accueil");
-		menuBar.add(accueil1);
-		
 		JMenu gestion = new JMenu("Gestion");
 		menuBar.add(gestion);
 		
