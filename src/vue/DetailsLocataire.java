@@ -7,7 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import controleur.GestionQuittance;
+import controleur.GestionTableGarant;
+
 import java.awt.Font;
+import javax.swing.table.DefaultTableModel;
 
 public class DetailsLocataire extends JInternalFrame {
 	private JTable tableGarant;
@@ -19,9 +24,12 @@ public class DetailsLocataire extends JInternalFrame {
 	private JLabel ancienLocataire;
 	private JLabel loyer;
 	private JLabel adresse;
-	
-	
+	private GestionQuittance gestionQuittance;
+	private GestionTableGarant gestionTableGarant;
 	public DetailsLocataire() {
+		
+		this.gestionQuittance = new GestionQuittance();
+		this.gestionTableGarant = new GestionTableGarant(this);
 		setBounds(864, 0, 1204, 300);
 		
 		JPanel panel = new JPanel();
@@ -41,9 +49,10 @@ public class DetailsLocataire extends JInternalFrame {
 		JButton buttonQuittanceDeLoyer = new JButton("Les Quittances de Loyer");
 		buttonQuittanceDeLoyer.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		buttonQuittanceDeLoyer.setBounds(130, 209, 209, 27);
+		buttonQuittanceDeLoyer.addActionListener(this.gestionQuittance);
 		panel.add(buttonQuittanceDeLoyer);
 		
-		this.telephone = new JLabel("T\u00E9l\u00E9phone");
+		this.telephone = new JLabel("Telephone");
 		this.telephone.setBounds(168, 85, 122, 13);
 		panel.add(this.telephone);
 		
@@ -69,6 +78,32 @@ public class DetailsLocataire extends JInternalFrame {
 		panel.add(scrollPaneGarants);
 		
 		tableGarant = new JTable();
+		tableGarant.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
+			},
+			new String[] {
+				"Nom"
+			}
+		));
+		this.getTableGarant().getSelectionModel().addListSelectionListener(this.gestionTableGarant);
 		scrollPaneGarants.setViewportView(tableGarant);
 		
 		JLabel label = new JLabel("New label");
@@ -91,7 +126,7 @@ public class DetailsLocataire extends JInternalFrame {
 		labelColocataires.setBounds(890, 58, 108, 27);
 		panel.add(labelColocataires);
 		
-		JLabel lblTelephone = new JLabel("T\u00E9l\u00E9phone :");
+		JLabel lblTelephone = new JLabel("Telephone :");
 		lblTelephone.setBounds(31, 84, 116, 14);
 		panel.add(lblTelephone);
 		
