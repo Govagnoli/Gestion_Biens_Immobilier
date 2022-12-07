@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionListener;
 
 import vue.FenAjoutAssociation;
 import vue.FenInformationsPersonelles;
+import vue.FenTelecharger;
 
 public class GestionInformationsPersonelles implements ActionListener, ListSelectionListener{
 	
@@ -28,6 +29,10 @@ public class GestionInformationsPersonelles implements ActionListener, ListSelec
 			break;
 		case "Supprimer":
 			//Supprime l'élément sélectionné
+			break;
+		case "Telecharger":
+			FenTelecharger fenTelecharger = new FenTelecharger();
+			fenTelecharger.setVisible(true);
 			break;
 		}
 	}

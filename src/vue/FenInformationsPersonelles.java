@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionInformationsPersonelles;
 import controleur.GestionMenu;
+import controleur.GestionTelecharger;
 
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -138,21 +139,19 @@ public class FenInformationsPersonelles extends JFrame {
 		DocCLient.add(btnModifierAssociation);
 		
 		JPanel Documents = new JPanel();
-		Documents.setBounds(473, 47, 220, 204);
+		Documents.setBounds(473, 47, 250, 120);
 		Page.add(Documents);
-		Documents.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Documents", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		GridBagLayout gbl_Documents = new GridBagLayout();
-		gbl_Documents.columnWidths = new int[]{0, 0};
-		gbl_Documents.rowHeights = new int[]{0, 0};
-		gbl_Documents.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_Documents.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		Documents.setLayout(gbl_Documents);
+		Documents.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Ma d\u00E9claration Fiscale", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		Documents.setLayout(null);
 		
-		JLabel lblDeclarationFiscaleClient = new JLabel("D\u00E9claration fiscale :");
-		GridBagConstraints gbc_lblDeclarationFiscaleClient = new GridBagConstraints();
-		gbc_lblDeclarationFiscaleClient.gridx = 0;
-		gbc_lblDeclarationFiscaleClient.gridy = 0;
-		Documents.add(lblDeclarationFiscaleClient, gbc_lblDeclarationFiscaleClient);
+		JLabel lblDeclarationFiscaleClient = new JLabel("Télécharger ma déclaration fiscale :");
+		lblDeclarationFiscaleClient.setBounds(25, 25, 200, 13);
+		Documents.add(lblDeclarationFiscaleClient);
+		
+		JButton btnTelecharger = new JButton("Telecharger");
+		btnTelecharger.addActionListener(this.gestionInformationsPersonelles);
+		btnTelecharger.setBounds(69, 55, 105, 30);
+		Documents.add(btnTelecharger);
 		
 		JPanel informationsGeneralesCLient = new JPanel();
 		informationsGeneralesCLient.setBounds(136, 47, 231, 204);
