@@ -13,7 +13,7 @@
     CREATE TABLE Locataire(
    Id_Locataire INT,
    Nom VARCHAR2(50) NOT NULL,
-   prénom VARCHAR2(50) NOT NULL,
+   prÃ©nom VARCHAR2(50) NOT NULL,
    tel DECIMAL(10,0) NOT NULL,
    email VARCHAR2(70),
    date_naissance DATE NOT NULL,
@@ -84,7 +84,7 @@
    PRIMARY KEY(Id_Garant)
 );
 
-    CREATE TABLE Propriétaire(
+    CREATE TABLE PropriÃ©taire(
    Nom VARCHAR2(50),
    Prenom VARCHAR2(50),
    Adresse VARCHAR2(50) NOT NULL,
@@ -92,24 +92,24 @@
    Cp VARCHAR2(50) NOT NULL,
    email VARCHAR2(50) NOT NULL,
    telephone DECIMAL(10,0) NOT NULL,
-   PRIMARY KEY(Nom, Prénom)
+   PRIMARY KEY(Nom, PrÃ©nom)
 );  
 
     CREATE TABLE bien_immobilier(
    Id_BienImmobilier INT,
    Garage CHAR(1) NOT NULL,
    superficie DECIMAL(6,2) NOT NULL,
-   tantièmes DECIMAL(7,2),
+   tantiÃ¨mes DECIMAL(7,2),
    loyer DECIMAL(7,2) NOT NULL,
    date_acquisition DATE NOT NULL,
    nbr_locataires_max DECIMAL(1,0) NOT NULL,
    Nom VARCHAR2(50) NOT NULL,
-   Prénom VARCHAR2(50) NOT NULL,
+   PrÃ©nom VARCHAR2(50) NOT NULL,
    Adresse VARCHAR2(50) NOT NULL,
    ville VARCHAR2(50) NOT NULL,
    cp DECIMAL(5,0) NOT NULL,
    PRIMARY KEY(Id_BienImmobilier),
-   FOREIGN KEY(Nom, Prénom) REFERENCES Propriétaire(Nom, Prénom),
+   FOREIGN KEY(Nom, PrÃ©nom) REFERENCES PropriÃ©taire(Nom, PrÃ©nom),
    FOREIGN KEY(Adresse, ville, cp) REFERENCES Immeuble(Adresse, ville, cp)
 );
 
@@ -119,9 +119,9 @@
    date_donnations DATE NOT NULL,
    montant_donnation DECIMAL(7,2),
    Nom VARCHAR2(50) NOT NULL,
-   Prénom VARCHAR2(50) NOT NULL,
+   PrÃ©nom VARCHAR2(50) NOT NULL,
    PRIMARY KEY(Siren),
-   FOREIGN KEY(Nom, Prénom) REFERENCES Propriétaire(Nom, Prénom)
+   FOREIGN KEY(Nom, PrÃ©nom) REFERENCES PropriÃ©taire(Nom, PrÃ©nom)
 );
 
     CREATE TABLE Quittance_loyer(
@@ -156,7 +156,7 @@
     CREATE TABLE Location(
    Id_Location INT,
    taxe_fonciere VARCHAR2(50),
-   durée DECIMAL(2,0),
+   durÃ©e DECIMAL(2,0),
    date_debut_contrat DATE NOT NULL,
    document_bail BFILE NOT NULL,
    Id_BienImmobilier INT NOT NULL,
@@ -214,16 +214,16 @@
 
     CREATE TABLE Assurance(
    Id_Assurance INT,
-   numéro_de_contrat VARCHAR2(50) NOT NULL,
+   numÃ©ro_de_contrat VARCHAR2(50) NOT NULL,
    Prime DECIMAL(7,2) NOT NULL,
    protection_juridique DECIMAL(7,2) NOT NULL,
-   date_fin_de_validité DATE NOT NULL,
+   date_fin_de_validitÃ© DATE NOT NULL,
    date_debut_validite DATE NOT NULL,
    taux_augmentation DECIMAL(4,3) NOT NULL,
    Nom VARCHAR2(50) NOT NULL,
-   Prénom VARCHAR2(50) NOT NULL,
+   PrÃ©nom VARCHAR2(50) NOT NULL,
    PRIMARY KEY(Id_Assurance),
-   FOREIGN KEY(Nom, Prénom) REFERENCES Propriétaire(Nom, Prénom)
+   FOREIGN KEY(Nom, PrÃ©nom) REFERENCES PropriÃ©taire(Nom, PrÃ©nom)
    ); 
 
     CREATE TABLE declaration_fiscale(
@@ -234,14 +234,14 @@
    Autres_frais_gestions DECIMAL(6,2) NOT NULL,
    indemnite_eviction DECIMAL(7,2),
    Nom VARCHAR2(50) NOT NULL,
-   Prénom VARCHAR2(50) NOT NULL,
+   PrÃ©nom VARCHAR2(50) NOT NULL,
    PRIMARY KEY(Id_declaration_fiscale),
-    FOREIGN KEY(Nom, Prénom) REFERENCES Propriétaire(Nom, Prénom)
+    FOREIGN KEY(Nom, PrÃ©nom) REFERENCES PropriÃ©taire(Nom, PrÃ©nom)
 );
 
     CREATE TABLE Facture_Agence_location(
    Siret VARCHAR2(50),
-   Numéro_facture VARCHAR2(50),
+   NumÃ©ro_facture VARCHAR2(50),
    montant_honorair DECIMAL(5,2) NOT NULL,
    date_honoraire DATE NOT NULL,
    date_emission VARCHAR2(50) NOT NULL,
@@ -250,7 +250,7 @@
    num_Cheque DECIMAL(7,0),
    document BFILE NOT NULL,
    Id_Location INT NOT NULL,
-   PRIMARY KEY(Siret, Numéro_facture),
+   PRIMARY KEY(Siret, NumÃ©ro_facture),
    FOREIGN KEY(Id_Location) REFERENCES Location(Id_Location)
 );
 
