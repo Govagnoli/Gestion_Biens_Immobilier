@@ -17,7 +17,7 @@ import java.awt.Font;
 
 public class FenBiensImmobilier extends JFrame {
 
-	private JTable TableBien;
+	private JTable tableBien;
 	private GestionMenu gestionMenu;
 	private DetailsBien detailsBien;
 	private GestionBiensImmobilier gestionBiensImmobilier;
@@ -70,10 +70,10 @@ public class FenBiensImmobilier extends JFrame {
 		getContentPane().add(scrollPane);
 		scrollPane.setBounds(10, 80, 1540, 500);
 		
-		TableBien = new JTable();
-		TableBien.setModel(new DefaultTableModel(
+		tableBien = new JTable();
+		tableBien.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, "", null, null, null},
+				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
@@ -99,13 +99,13 @@ public class FenBiensImmobilier extends JFrame {
 				{null, null, null, null, null, null},
 			},
 			new String[] {
-				"Identifiant", "Ville", "Adresse", "Code Postal", "superficie", "Nombre locataire", "Loyer"
+					"Ville", "Adresse", "Code Postal", "Numéro", "superficie", "GARAGE", "Loyer" 
 			}
 		));
 		
 		this.getTableBien().getSelectionModel().addListSelectionListener(this.gestionBiensImmobilier);
 		
-		scrollPane.setViewportView(TableBien);
+		scrollPane.setViewportView(tableBien);
 		
 		JPanel panelPopUp = new JPanel();
 		panelPopUp.setBounds(0, 500, 1540, 154);
@@ -126,6 +126,12 @@ public class FenBiensImmobilier extends JFrame {
 		btnAjoutBien.setBounds(232, 46, 132, 23);
 		getContentPane().add(btnAjoutBien);
 		
+		JButton btnCharger = new JButton("Charger");
+		btnCharger.addActionListener(this.gestionBiensImmobilier);
+		btnCharger.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCharger.setBounds(232, 11, 125, 25);
+		getContentPane().add(btnCharger);
+		
 		JLabel lblTitre = new JLabel("Mes biens immobilier");
 		lblTitre.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblTitre.setBounds(10, 11, 238, 14);
@@ -138,6 +144,10 @@ public class FenBiensImmobilier extends JFrame {
 	}
 
 	public JTable getTableBien() {
-		return this.TableBien;
+		return this.tableBien;
+	}
+	
+	public DefaultTableModel getModelTableBien() {
+		return (DefaultTableModel) this.tableBien.getModel();
 	}
 }

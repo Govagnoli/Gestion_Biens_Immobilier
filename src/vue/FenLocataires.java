@@ -125,6 +125,12 @@ public class FenLocataires extends JFrame{
 		lblTitre.setBounds(10, 11, 152, 14);
 		contentPane.add(lblTitre);
 		
+		JButton buttonCharger = new JButton("Charger");
+		buttonCharger.addActionListener(this.gestionLocataire);
+		buttonCharger.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		buttonCharger.setBounds(202, 9, 127, 21);
+		contentPane.add(buttonCharger);
+		
 	}
 
 	public JTable getTableLocataires() {
