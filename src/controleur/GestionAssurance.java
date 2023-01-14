@@ -2,8 +2,11 @@ package controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
+
+import modele.Assurance;
 import vue.FenAssurance;
 
 public class GestionAssurance implements ActionListener{
@@ -34,6 +37,21 @@ public class GestionAssurance implements ActionListener{
 				this.fenAssurance.dispose();
 			}
 			break;
+		}
+	}
+	
+	public void AffichageValeursCourantes() {
+		try {
+			Assurance assurance = new Assurance(this.fenAssurance.getIdentifiant());
+			this.fenAssurance.setIdentifiant(assurance.getIdAssurance());
+			this.fenAssurance.setNumContrat(assurance.getNumContrant());
+			this.fenAssurance.setPrime(assurance.getPrime());
+			this.fenAssurance.setProtectionJuridique(assurance.getProtectionJuridique());
+			this.fenAssurance.setDateDebutValiditee(assurance.getDebutDeValidite());
+			this.fenAssurance.setDateFinValiditee(assurance.getFinDeValidite());
+			this.fenAssurance.setTauxAugmentation(assurance.getTauxAugmentation());
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }

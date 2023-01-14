@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import JDBC.CictOracleDataSource;
+import modele.BienImmobilier;
 import oracle.jdbc.pool.OracleDataSource;
 import vue.FenAjoutBien;
 import vue.FenBiensImmobilier;
@@ -63,18 +64,20 @@ public class GestionBiensImmobilier implements ActionListener, ListSelectionList
 		} else {
 			DefaultTableModel modeleTableBien = (DefaultTableModel) this.fenBiens.getTableBien().getModel();
 			this.fenBiens.getDetailsBien().setVisible(true);
+			String ville = modeleTableBien.getValueAt(ligneSelectionnee, 0).toString();
+			String adresse = modeleTableBien.getValueAt(ligneSelectionnee, 1).toString();
+			String cp = modeleTableBien.getValueAt(ligneSelectionnee, 2).toString();
+			String numero = modeleTableBien.getValueAt(ligneSelectionnee, 3).toString();
+			BienImmobilier bien = null;
 			try {
-				String adresse = modeleTableBien.getValueAt(ligneSelectionnee, 2).toString();
-				String loyer = modeleTableBien.getValueAt(ligneSelectionnee, 6).toString();
-				String nbrLocataires = modeleTableBien.getValueAt(ligneSelectionnee, 5).toString();
-				
+				bien = new BienImmobilier(adresse, ville, Integer.parseInt(cp), Integer.parseInt(numero));
+				this.fenBiens.getDetailsBien().setBien(bien);
 				this.fenBiens.getDetailsBien().setLabelAdresse(adresse);
-				this.fenBiens.getDetailsBien().setLabelLoyerEtNbrLocataire(loyer, nbrLocataires);
+				this.fenBiens.getDetailsBien().setLabelLoyerEtNbrLocataire(Float.toString(bien.getLoyer()),bien.getGarage());
 				this.fenBiens.getDetailsBien().setVisible(true);
-			} catch(java.lang.NullPointerException z) {
-				System.out.println("La chaine de caract�re adresse, loyer ou nbrLocataires est null car la ligne s�lectionn�e est null. \n");
-				System.out.println("Lignes 26 � 28");
-			} 
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 	
@@ -88,10 +91,4 @@ public class GestionBiensImmobilier implements ActionListener, ListSelectionList
 		modeleTable.setValueAt(res.getString("GARAGE"), numeroLigne, 5);
 		modeleTable.setValueAt(res.getFloat("LOYER"), numeroLigne, 6);
 	}
-	
-	
-	
-	
-	
-	
 }

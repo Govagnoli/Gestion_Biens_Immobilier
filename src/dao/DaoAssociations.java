@@ -42,7 +42,7 @@ public class DaoAssociations extends DaoModele implements Dao<Association> {
 		ResultSet res = st.executeQuery("Select * from S3_ASSOCIATIONS");
 		
 		if(res.getFetchSize() == 0) {
-			System.out.println("Le locataire n'a pas de garant.");
+			System.out.println("Le propriétaire n'a pas effectué de donnations.");
 			return null;
 		}
 		while(res.next()) {

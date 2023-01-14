@@ -11,6 +11,9 @@ public class GestionRegularisationDesCharges implements ListSelectionListener {
 	
 	public GestionRegularisationDesCharges(FenRegularisationCharges fenRGC) {
 		this.fenRGC = fenRGC;
+		
+		
+		
 	}
 	
 	@Override

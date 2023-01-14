@@ -33,8 +33,9 @@ public class Association {
 		CictOracleDataSource.creerAcces("BNL4208A", "$iutinfo");
 		this.connexion = CictOracleDataSource.getConnexion();
 		String req = "Select * from S3_ASSOCIATIONS WHERE SIREN = ?";
-		Statement st = this.connexion.createStatement();
-		ResultSet res = st.executeQuery(req);
+		PreparedStatement st = this.connexion.prepareStatement(req);
+		st.setInt(1, siren);
+		ResultSet res = st.executeQuery();
 		while(res.next()) {
 			this.setSiren(res.getInt("Siren"));
 			this.setLibelle(res.getString("LIBELLE"));

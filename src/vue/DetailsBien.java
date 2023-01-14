@@ -11,12 +11,14 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import controleur.GestionDetailsBien;
+import modele.BienImmobilier;
 
 public class DetailsBien extends JInternalFrame {
 	
 	private JLabel labelAdresse;
 	private JLabel labelNbrLocataire;
 	private GestionDetailsBien gestionDetailsBien;
+	private BienImmobilier bien;
 
 	public DetailsBien() {
 		
@@ -61,5 +63,15 @@ public class DetailsBien extends JInternalFrame {
 
 	public void setLabelLoyerEtNbrLocataire(String loyer, String labelNbrLocataire) {
 		this.labelNbrLocataire.setText(loyer+" "+labelNbrLocataire);
-	}	
+	}
+
+	public BienImmobilier getBien() {
+		return bien;
+	}
+
+	public void setBien(BienImmobilier bien) {
+		this.bien = bien;
+	}
+	
+	
 }

@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
@@ -309,6 +310,8 @@ public class FenAssurance extends JFrame {
 		gbc_tauxAugmentation.gridx = 2;
 		gbc_tauxAugmentation.gridy = 7;
 		panelInformationAssurance.add(this.tauxAugmentation, gbc_tauxAugmentation);
+		
+		this.gestionAssurance.AffichageValeursCourantes();
 	}
 
 	public String getTextFieldNumContrat() {
@@ -335,35 +338,41 @@ public class FenAssurance extends JFrame {
 		return textField_DateFinValiditee.getText();
 	}
 
-	public void setDateFinValiditee(JLabel dateFinValiditee) {
-		this.dateFinValiditee = dateFinValiditee;
+	public void setDateFinValiditee(Date dateFinValiditee) {
+		this.dateFinValiditee.setText(dateFinValiditee.toString());
 	}
 
 	public void setLblPrimeCourante(JLabel lblPrimeCourante) {
 		this.lblPrimeCourante = lblPrimeCourante;
 	}
 
-	public void setDateDebutValiditee(JLabel dateDebutValiditee) {
-		this.dateDebutValiditee = dateDebutValiditee;
+	public void setDateDebutValiditee(Date dateDebutValiditee) {
+		this.dateDebutValiditee.setText(dateDebutValiditee.toString());
 	}
 
-	public void setIdentifiant(JLabel identifiant) {
-		Identifiant = identifiant;
+	public void setIdentifiant(int identifiant) {
+		this.Identifiant.setText(Integer.toString(identifiant));;
 	}
 
-	public void setTauxAugmentation(JLabel tauxAugmentation) {
-		this.tauxAugmentation = tauxAugmentation;
+	public void setTauxAugmentation(float tauxAugmentation) {
+		this.tauxAugmentation.setText(Float.toString(tauxAugmentation));
 	}
 
-	public void setProtectionJuridique(JLabel protectionJuridique) {
-		this.protectionJuridique = protectionJuridique;
+	public void setProtectionJuridique(float protectionJuridique) {
+		this.protectionJuridique.setText(Float.toString(protectionJuridique));
 	}
 
-	public void setPrime(JLabel prime) {
-		this.prime = prime;
+	public void setPrime(float prime) {
+		this.prime.setText(Float.toString(prime));
 	}
 
-	public void setNumContrat(JLabel numContrat) {
-		this.numContrat = numContrat;
+	public void setNumContrat(String numContrat) {
+		this.numContrat.setText(numContrat);;
 	}
+
+	public int getIdentifiant() {
+		return Integer.parseInt(Identifiant.getText());
+	}
+	
+	
 }

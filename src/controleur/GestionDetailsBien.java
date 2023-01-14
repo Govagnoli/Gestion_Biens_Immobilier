@@ -39,6 +39,7 @@ public class GestionDetailsBien implements ActionListener{
 			break;
 		case "Assurance":
 			FenAssurance fenAssurance = new FenAssurance();
+			fenAssurance.setIdentifiant(this.detailsBien.getBien().getIdAssurance());
 			fenAssurance.setVisible(true);
 			break;
 		}

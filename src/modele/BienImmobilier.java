@@ -1,6 +1,12 @@
 package modele;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import JDBC.CictOracleDataSource;
 
 public class BienImmobilier {
 	private String adresse;
@@ -16,12 +22,14 @@ public class BienImmobilier {
 	private int idAssurance;
 	private static final String NOMPROPRIO = "MILLANT";
 	private static final String PRENOMPROPRIO = "Thierry";
+	private Connection connexion;
 	
 	private String nom;
 	private String prenom;
 	public BienImmobilier(String adresse, String ville, int cp, int numero, String garage, float superficie,
-			float tantiemes, float loyer, Date date_acquisition, int nbrLocataireMax, int idAssurance) {
-		super();
+			float tantiemes, float loyer, Date date_acquisition, int nbrLocataireMax, int idAssurance) throws SQLException {
+		CictOracleDataSource.creerAcces("BNL4208A", "$iutinfo");
+		this.connexion = CictOracleDataSource.getConnexion();
 		this.adresse = adresse;
 		this.ville = ville;
 		this.cp = cp;
@@ -33,6 +41,30 @@ public class BienImmobilier {
 		this.date_acquisition = date_acquisition;
 		this.nbrLocataireMax = nbrLocataireMax;
 		this.idAssurance = idAssurance;
+	}
+	public BienImmobilier(String adresse, String ville, int cp, int numero) throws SQLException {
+		CictOracleDataSource.creerAcces("BNL4208A", "$iutinfo");
+		this.connexion = CictOracleDataSource.getConnexion();
+		String req = "Select * from S3_BIEN_IMMOBILIER WHERE ADRESSE = ? AND VILLE = ? AND CP = ? AND NUMERO = ?";
+		PreparedStatement st = this.connexion.prepareStatement(req);
+		st.setString(1, adresse);
+		st.setString(2, ville);
+		st.setInt(3, cp);
+		st.setInt(4, numero);	
+		ResultSet res = st.executeQuery();
+		while(res.next()) {
+			this.setAdresse(res.getString("ADRESSE"));
+			this.setVille(res.getString("VILLE"));
+			this.setCp(res.getInt("CP"));
+			this.setNumero(res.getInt("NUMERO"));
+			this.setGarage(res.getString("GARAGE"));
+			this.setSuperficie(res.getFloat("SUPERFICIE"));
+			this.setTantiemes(res.getFloat("TANTIEMES"));
+			this.setLoyer(res.getFloat("LOYER"));
+			this.setDate_acquisition(res.getDate("DATE_ACQUISITION"));
+			this.setNbrLocataireMax(res.getInt("NBR_LOCATAIRES_MAX"));
+			this.setIdAssurance(res.getInt("ID_ASSURANCE"));
+		}
 	}
 	
 	
