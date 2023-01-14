@@ -58,7 +58,7 @@ public class GestionBiensImmobilier implements ActionListener, ListSelectionList
 	public void valueChanged(ListSelectionEvent e) {
 		int ligneSelectionnee = this.fenBiens.getTableBien().getSelectedRow();
 		if(ligneSelectionnee < 0) {
-			System.out.println("Aucune ligne s�lectionn�e");
+			System.out.println("Aucune ligne selectionnée");
 			this.fenBiens.getDetailsBien().setVisible(false);
 		} else {
 			DefaultTableModel modeleTableBien = (DefaultTableModel) this.fenBiens.getTableBien().getModel();

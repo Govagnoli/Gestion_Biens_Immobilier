@@ -16,6 +16,11 @@ import controleur.GestionDetailsLocataire;
 public class DetailsLocataire extends JInternalFrame {
 	private JTable tableGarant;
 	private JTable tableColocataire;
+	private int idLocataire;
+	private String email;
+	private float depotGarantie;
+	private float partPossession;
+
 	private JLabel nom;
 	private JLabel prenom;
 	private JLabel telephone;
@@ -36,17 +41,17 @@ public class DetailsLocataire extends JInternalFrame {
 		
 		this.nom = new JLabel("Nom");
 		this.nom.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		this.nom.setBounds(31, 11, 116, 50);
+		this.nom.setBounds(10, 11, 191, 50);
 		panel.add(this.nom);
 		
 		this.prenom = new JLabel("Prenom");
 		this.prenom.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		this.prenom.setBounds(157, 11, 158, 50);
+		this.prenom.setBounds(211, 11, 158, 50);
 		panel.add(this.prenom);
 		
 		JButton buttonQuittanceDeLoyer = new JButton("Les Quittances de Loyer");
 		buttonQuittanceDeLoyer.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		buttonQuittanceDeLoyer.setBounds(130, 209, 209, 27);
+		buttonQuittanceDeLoyer.setBounds(130, 209, 278, 27);
 		buttonQuittanceDeLoyer.addActionListener(this.gestionDetailsLocataire);
 		panel.add(buttonQuittanceDeLoyer);
 		
@@ -163,12 +168,17 @@ public class DetailsLocataire extends JInternalFrame {
 		
 		JButton btnModifierLocataire = new JButton("Modifier");
 		btnModifierLocataire.addActionListener(gestionDetailsLocataire);
-		btnModifierLocataire.setBounds(325, 27, 107, 20);
+		btnModifierLocataire.setBounds(420, 32, 107, 20);
 		panel.add(btnModifierLocataire);
+		
+		JButton btnCharger = new JButton("Charger les tableaux");
+		btnCharger.addActionListener(gestionDetailsLocataire);
+		btnCharger.setBounds(553, 240, 175, 21);
+		panel.add(btnCharger);
 
 	}
-	public JLabel getNom() {
-		return nom;
+	public String getNom() {
+		return nom.getText();
 	}
 
 
@@ -177,8 +187,8 @@ public class DetailsLocataire extends JInternalFrame {
 	}
 
 
-	public JLabel getPrenom() {
-		return prenom;
+	public String getPrenom() {
+		return prenom.getText();
 	}
 
 
@@ -187,8 +197,8 @@ public class DetailsLocataire extends JInternalFrame {
 	}
 
 
-	public JLabel getTelephone() {
-		return telephone;
+	public String getTelephone() {
+		return telephone.getText();
 	}
 
 
@@ -197,8 +207,8 @@ public class DetailsLocataire extends JInternalFrame {
 	}
 
 
-	public JLabel getDateNaissance() {
-		return dateNaissance;
+	public String getDateNaissance() {
+		return dateNaissance.getText();
 	}
 
 
@@ -207,22 +217,18 @@ public class DetailsLocataire extends JInternalFrame {
 	}
 
 
-	public JLabel getAncienLocataire() {
-		return ancienLocataire;
+	public String getAncienLocataire() {
+		return ancienLocataire.getText();
 	}
 
 
-	public void setAncienLocataire(boolean ancienLocataire) {
-		if(ancienLocataire) {
-			this.ancienLocataire.setText("Oui");
-		} else {
-			this.ancienLocataire.setText("Non");
-		}
+	public void setAncienLocataire(String ancienLocataire) {
+		this.ancienLocataire.setText(ancienLocataire);
 	}
 
 
-	public JLabel getLoyer() {
-		return loyer;
+	public String getLoyer() {
+		return loyer.getText();
 	}
 
 
@@ -231,8 +237,8 @@ public class DetailsLocataire extends JInternalFrame {
 	}
 
 
-	public JLabel getAdresse() {
-		return adresse;
+	public String getAdresse() {
+		return adresse.getText();
 	}
 
 
@@ -249,4 +255,32 @@ public class DetailsLocataire extends JInternalFrame {
 	public JTable getTableColocataire() {
 		return tableColocataire;
 	}
+	
+	
+	public int getIdLocataire() {
+		return idLocataire;
+	}
+	public void setIdLocataire(int idLocataire) {
+		this.idLocataire = idLocataire;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public float getDepotGarantie() {
+		return depotGarantie;
+	}
+	public void setDepotGarantie(float depotGarantie) {
+		this.depotGarantie = depotGarantie;
+	}
+	public float getPartPossession() {
+		return partPossession;
+	}
+	public void setPartPossession(float partPossession) {
+		this.partPossession = partPossession;
+	}
+	
+	
 }

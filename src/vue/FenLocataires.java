@@ -12,6 +12,8 @@ import controleur.GestionMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 import java.awt.Rectangle;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -64,6 +66,11 @@ public class FenLocataires extends JFrame{
 				"Identifiant", "Nom", "Prénom", "Téléphone", "E-mail", "Date de naissance", "Dépôt de Garantie", "Ancien locataire", "Part de possession"
 			}
 		));
+		TableColumn columnId = tableLocataires.getColumnModel().getColumn(0);
+		columnId.setMaxWidth(20);
+		TableColumn columnExLoc = tableLocataires.getColumnModel().getColumn(7);
+		columnExLoc.setMaxWidth(60);
+		
 		this.getTableLocataires().getSelectionModel().addListSelectionListener(this.gestionLocataire);
 		scrollPane.setViewportView(tableLocataires);
 		

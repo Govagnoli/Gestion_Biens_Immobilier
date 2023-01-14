@@ -20,12 +20,11 @@ import controleur.GestionAjoutAssociation;
 public class FenAjoutAssociation extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField nomLocataire;
-	private JTextField telephonelocataire;
-	private JTextField emailLocataire;
-	private JTextField dateDeNaissanceLocataire;
+	private JTextField sirenAssociation;
+	private JTextField NomAssociation;
+	private JTextField DateDonnation;
+	private JTextField MontantDonnation;
 	private GestionAjoutAssociation gestionAjoutAssociation;
-	private JRadioButton rdbtnMensuel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	public FenAjoutAssociation() {
@@ -56,105 +55,77 @@ public class FenAjoutAssociation extends JFrame {
 		gbl_Informations.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		Informations.setLayout(gbl_Informations);
 		
-		JLabel lblNomAssociation = new JLabel("Nom Association :");
+		JLabel lblSiren = new JLabel("Siren Association :");
+		GridBagConstraints gbc_lblSiren = new GridBagConstraints();
+		gbc_lblSiren.anchor = GridBagConstraints.EAST;
+		gbc_lblSiren.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSiren.gridx = 0;
+		gbc_lblSiren.gridy = 1;
+		Informations.add(lblSiren, gbc_lblSiren);
+		
+		sirenAssociation = new JTextField();
+		GridBagConstraints gbc_sirenAssociation = new GridBagConstraints();
+		gbc_sirenAssociation.fill = GridBagConstraints.HORIZONTAL;
+		gbc_sirenAssociation.gridwidth = 4;
+		gbc_sirenAssociation.insets = new Insets(0, 0, 5, 5);
+		gbc_sirenAssociation.gridx = 1;
+		gbc_sirenAssociation.gridy = 1;
+		Informations.add(sirenAssociation, gbc_sirenAssociation);
+		sirenAssociation.setColumns(10);
+		
+		JLabel lblNomAssociation = new JLabel("Nom association :");
 		GridBagConstraints gbc_lblNomAssociation = new GridBagConstraints();
 		gbc_lblNomAssociation.anchor = GridBagConstraints.EAST;
 		gbc_lblNomAssociation.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNomAssociation.gridx = 0;
-		gbc_lblNomAssociation.gridy = 1;
+		gbc_lblNomAssociation.gridy = 2;
 		Informations.add(lblNomAssociation, gbc_lblNomAssociation);
 		
-		nomLocataire = new JTextField();
-		GridBagConstraints gbc_NomLocataire = new GridBagConstraints();
-		gbc_NomLocataire.fill = GridBagConstraints.HORIZONTAL;
-		gbc_NomLocataire.gridwidth = 4;
-		gbc_NomLocataire.insets = new Insets(0, 0, 5, 5);
-		gbc_NomLocataire.gridx = 1;
-		gbc_NomLocataire.gridy = 1;
-		Informations.add(nomLocataire, gbc_NomLocataire);
-		nomLocataire.setColumns(10);
+		NomAssociation = new JTextField();
+		GridBagConstraints gbc_NomAssociation = new GridBagConstraints();
+		gbc_NomAssociation.gridwidth = 4;
+		gbc_NomAssociation.fill = GridBagConstraints.HORIZONTAL;
+		gbc_NomAssociation.insets = new Insets(0, 0, 5, 5);
+		gbc_NomAssociation.gridx = 1;
+		gbc_NomAssociation.gridy = 2;
+		Informations.add(NomAssociation, gbc_NomAssociation);
+		NomAssociation.setColumns(10);
 		
-		JLabel lblMailAssociation = new JLabel("E-mail :");
-		GridBagConstraints gbc_lblMailAssociation = new GridBagConstraints();
-		gbc_lblMailAssociation.anchor = GridBagConstraints.EAST;
-		gbc_lblMailAssociation.insets = new Insets(0, 0, 5, 5);
-		gbc_lblMailAssociation.gridx = 0;
-		gbc_lblMailAssociation.gridy = 2;
-		Informations.add(lblMailAssociation, gbc_lblMailAssociation);
+		JLabel lblDateDonnation = new JLabel("Date du don :");
+		GridBagConstraints gbc_lblDateDonnation = new GridBagConstraints();
+		gbc_lblDateDonnation.anchor = GridBagConstraints.EAST;
+		gbc_lblDateDonnation.insets = new Insets(0, 0, 5, 5);
+		gbc_lblDateDonnation.gridx = 0;
+		gbc_lblDateDonnation.gridy = 3;
+		Informations.add(lblDateDonnation, gbc_lblDateDonnation);
 		
-		telephonelocataire = new JTextField();
-		GridBagConstraints gbc_TelephoneLocataire = new GridBagConstraints();
-		gbc_TelephoneLocataire.gridwidth = 4;
-		gbc_TelephoneLocataire.fill = GridBagConstraints.HORIZONTAL;
-		gbc_TelephoneLocataire.insets = new Insets(0, 0, 5, 5);
-		gbc_TelephoneLocataire.gridx = 1;
-		gbc_TelephoneLocataire.gridy = 2;
-		Informations.add(telephonelocataire, gbc_TelephoneLocataire);
-		telephonelocataire.setColumns(10);
+		DateDonnation = new JTextField();
+		GridBagConstraints gbc_DateDonnation = new GridBagConstraints();
+		gbc_DateDonnation.gridwidth = 4;
+		gbc_DateDonnation.fill = GridBagConstraints.HORIZONTAL;
+		gbc_DateDonnation.insets = new Insets(0, 0, 5, 5);
+		gbc_DateDonnation.gridx = 1;
+		gbc_DateDonnation.gridy = 3;
+		Informations.add(DateDonnation, gbc_DateDonnation);
+		DateDonnation.setColumns(10);
 		
-		JLabel lblTelAssociation = new JLabel("T\u00E9l\u00E9phone  :");
-		GridBagConstraints gbc_lblTelAssociation = new GridBagConstraints();
-		gbc_lblTelAssociation.anchor = GridBagConstraints.EAST;
-		gbc_lblTelAssociation.insets = new Insets(0, 0, 5, 5);
-		gbc_lblTelAssociation.gridx = 0;
-		gbc_lblTelAssociation.gridy = 3;
-		Informations.add(lblTelAssociation, gbc_lblTelAssociation);
+		JLabel lblMontantDon = new JLabel("Montant donnation :");
+		GridBagConstraints gbc_lblMontantDon = new GridBagConstraints();
+		gbc_lblMontantDon.anchor = GridBagConstraints.EAST;
+		gbc_lblMontantDon.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMontantDon.gridx = 0;
+		gbc_lblMontantDon.gridy = 4;
+		Informations.add(lblMontantDon, gbc_lblMontantDon);
 		
-		emailLocataire = new JTextField();
-		GridBagConstraints gbc_EmailLocataire = new GridBagConstraints();
-		gbc_EmailLocataire.gridwidth = 4;
-		gbc_EmailLocataire.fill = GridBagConstraints.HORIZONTAL;
-		gbc_EmailLocataire.insets = new Insets(0, 0, 5, 5);
-		gbc_EmailLocataire.gridx = 1;
-		gbc_EmailLocataire.gridy = 3;
-		Informations.add(emailLocataire, gbc_EmailLocataire);
-		emailLocataire.setColumns(10);
-		
-		JLabel lblEmailLocataire = new JLabel("Montant donnation :");
-		GridBagConstraints gbc_lblEmailLocataire = new GridBagConstraints();
-		gbc_lblEmailLocataire.anchor = GridBagConstraints.EAST;
-		gbc_lblEmailLocataire.insets = new Insets(0, 0, 5, 5);
-		gbc_lblEmailLocataire.gridx = 0;
-		gbc_lblEmailLocataire.gridy = 4;
-		Informations.add(lblEmailLocataire, gbc_lblEmailLocataire);
-		
-		dateDeNaissanceLocataire = new JTextField();
-		GridBagConstraints gbc_DateDeNaissanceLocataire = new GridBagConstraints();
-		gbc_DateDeNaissanceLocataire.fill = GridBagConstraints.HORIZONTAL;
-		gbc_DateDeNaissanceLocataire.gridwidth = 4;
-		gbc_DateDeNaissanceLocataire.insets = new Insets(0, 0, 5, 5);
-		gbc_DateDeNaissanceLocataire.gridx = 1;
-		gbc_DateDeNaissanceLocataire.gridy = 4;
-		Informations.add(dateDeNaissanceLocataire, gbc_DateDeNaissanceLocataire);
-		dateDeNaissanceLocataire.setColumns(10);
-		
-		JLabel lblAncien = new JLabel("Fr\u00E9quence donation :");
-		GridBagConstraints gbc_lblAncien = new GridBagConstraints();
-		gbc_lblAncien.anchor = GridBagConstraints.EAST;
-		gbc_lblAncien.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAncien.gridx = 0;
-		gbc_lblAncien.gridy = 6;
-		Informations.add(lblAncien, gbc_lblAncien);
-		
-		this.rdbtnMensuel = new JRadioButton("Mensuel");
-		this.rdbtnMensuel.addItemListener(this.gestionAjoutAssociation);
-		this.rdbtnMensuel.setSelected(true);
-		buttonGroup.add(this.rdbtnMensuel);
-		GridBagConstraints gbc_rdbtnAncienNon = new GridBagConstraints();
-		gbc_rdbtnAncienNon.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnAncienNon.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnAncienNon.gridx = 1;
-		gbc_rdbtnAncienNon.gridy = 6;
-		Informations.add(this.rdbtnMensuel, gbc_rdbtnAncienNon);
-		
-		JRadioButton rdbtnPonctuel = new JRadioButton("Ponctuel");
-		buttonGroup.add(rdbtnPonctuel);
-		GridBagConstraints gbc_rdbtnAncienOui = new GridBagConstraints();
-		gbc_rdbtnAncienOui.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnAncienOui.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnAncienOui.gridx = 2;
-		gbc_rdbtnAncienOui.gridy = 6;
-		Informations.add(rdbtnPonctuel, gbc_rdbtnAncienOui);
+		MontantDonnation = new JTextField();
+		GridBagConstraints gbc_MontantDonnation = new GridBagConstraints();
+		gbc_MontantDonnation.fill = GridBagConstraints.HORIZONTAL;
+		gbc_MontantDonnation.gridwidth = 4;
+		gbc_MontantDonnation.insets = new Insets(0, 0, 5, 5);
+		gbc_MontantDonnation.gridx = 1;
+		gbc_MontantDonnation.gridy = 4;
+		Informations.add(MontantDonnation, gbc_MontantDonnation);
+		MontantDonnation.setColumns(10);
 		
 		JButton btnAjouterLocataire = new JButton("Ajouter");
 		btnAjouterLocataire.addActionListener(this.gestionAjoutAssociation);
@@ -168,23 +139,21 @@ public class FenAjoutAssociation extends JFrame {
 		btnAnnulerAjoutLocataire.setBounds(398, 323, 99, 34);
 		contentPane.add(btnAnnulerAjoutLocataire);
 	}
-	public String getNomLocataire() {
-		return nomLocataire.getText();
+	public String getSirenAssociation() {
+		return sirenAssociation.getText();
 	}
 
-	public String getTelephonelocataire() {
-		return telephonelocataire.getText();
+	public String getNomAssociation() {
+		return NomAssociation.getText();
 	}
 
-	public String getEmailLocataire() {
-		return emailLocataire.getText();
+	public String getDateDonnation() {
+		return DateDonnation.getText();
 	}
 
-	public String getDateDeNaissanceLocataire() {
-		return dateDeNaissanceLocataire.getText();
+	public String getMontantDonnation() {
+		return MontantDonnation.getText();
 	}
 	
-	public JRadioButton getRdbtnMensuel() {
-		return rdbtnMensuel;
-	}
+	
 }
