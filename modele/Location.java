@@ -18,7 +18,7 @@ public class Location {
 		super();
 		this.idLocation = idLocation;
 		this.taxe_fonciere = taxe_fonciere;
-		this.duree = duree;
+		this.duree = duree; 
 		this.dateDebContrat = dateDebContrat;
 		this.adresse = adresse;
 		this.ville = ville;

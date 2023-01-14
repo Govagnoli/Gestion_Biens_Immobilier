@@ -66,7 +66,7 @@ public class Locataire {
 		LinkedList<Locataire> colocataires = new LinkedList<>();
 		
 		String req = "Select l.* "
-				+ "from S3_Locataire l, S3_Location lo"
+				+ "from S3_Locataire l, S3_Location lo "
 				+ "where l.ancien_locataire = 'NON' "
 				+ "and lo.adresse = ? "
 				+ "and lo.ville = ? "
@@ -83,26 +83,25 @@ public class Locataire {
 		st.setInt(5, this.idLocataire);
 		
 		ResultSet res = st.executeQuery();
-		
-		if(res.getFetchSize() != 0) {
-			while(res.next()) {
-				int idLocataire = res.getInt("ID_LOCATAIRE");
-				String nom = res.getString("NOM");
-				String prenom = res.getString("PRENOM");
-				int tel = res.getInt("TEL");
-				String email = res.getString("EMAIL");
-				Date dateNaissance = res.getDate("DATE_NAISSANCE");
-				float depotGarantie = res.getFloat("DEPOT_GARANTIE");
-				String ancienLocataire = res.getString("ANCIEN_LOCATAIRE");
-				float partPossession = res.getFloat("PART_POSSESSION");
-				Locataire locataire = new Locataire(idLocataire, nom, prenom, tel, email, dateNaissance, depotGarantie, ancienLocataire, partPossession);
-				colocataires.add(locataire);
-			}
-			return colocataires;
-		} else {
+		if(res.getFetchSize() == 0) {
 			System.out.println("Le locataire n'a pas de colocataire");
+			return null;
 		}
-		return null;
+		
+		while(res.next()) {
+			int idLocataire = res.getInt("ID_LOCATAIRE");
+			String nom = res.getString("NOM");
+			String prenom = res.getString("PRENOM");
+			int tel = res.getInt("TEL");
+			String email = res.getString("EMAIL");
+			Date dateNaissance = res.getDate("DATE_NAISSANCE");
+			float depotGarantie = res.getFloat("DEPOT_GARANTIE");
+			String ancienLocataire = res.getString("ANCIEN_LOCATAIRE");
+			float partPossession = res.getFloat("PART_POSSESSION");
+			Locataire locataire = new Locataire(idLocataire, nom, prenom, tel, email, dateNaissance, depotGarantie, ancienLocataire, partPossession);
+			colocataires.add(locataire);
+		}
+		return colocataires;
 				
 	}
 	
@@ -110,12 +109,16 @@ public class Locataire {
 	public Location LocationLocataire() throws SQLException {
 		String req="Select l.* "
 				+ "from S3_Locataire loc, S3_louer louer, S3_Location l "
-				+ "WHERE and loc.id_locataire = ? "
+				+ "WHERE loc.id_locataire = ? "
 				+ "and louer.id_locataire = loc.id_locataire "
 				+ "and l.id_location = louer.id_location ";
 		PreparedStatement st = this.connexion.prepareStatement(req);
-		st.setString(1, Integer.toString(this.idLocataire));
+		st.setInt(1, this.idLocataire);
 		ResultSet res = st.executeQuery();
+		if(res.getFetchSize() == 0) {
+			System.out.println("Le locataire n'a pas de location");
+			return null;
+		}
 		Location location = null;
 		while(res.next()) {
 			int idLocation = res.getInt("ID_LOCATION");
@@ -146,8 +149,7 @@ public class Locataire {
 		st.setFloat(7, this.getDepotGarantie());
 		st.setString(8, this.getAncienLocataire());
 		st.setFloat(9, this.getPartPossession());
-		
-		int rowsInserted = st.executeUpdate();
+		st.executeUpdate();
 	}
 	
 	//Update la table Locataire sur la bd 
@@ -167,8 +169,7 @@ public class Locataire {
 		st.setString(8, this.getAncienLocataire());
 		st.setFloat(9, this.getPartPossession());
 		st.setInt(10, this.getIdLocataire());
-		
-		int rowsInserted = st.executeUpdate();
+		st.executeUpdate();
 	}
 	
 	
@@ -182,6 +183,11 @@ public class Locataire {
 	    PreparedStatement st = this.connexion.prepareStatement(req);
 	    st.setInt(1, this.getIdLocataire());
 	    ResultSet res = st.executeQuery();
+	    
+	    if(res.getFetchSize() == 0) {
+			System.out.println("Le locataire n'a pas de garant.");
+			return null;
+		}
 	    while(res.next()) {
 	        int idGarant = res.getInt("id_garant");
 	        String nom = res.getString("nom");
