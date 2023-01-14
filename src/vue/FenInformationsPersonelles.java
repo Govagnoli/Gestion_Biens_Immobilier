@@ -15,13 +15,14 @@ import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.sql.SQLException;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import controleur.GestionInformationsPersonelles;
 import controleur.GestionMenu;
-import controleur.GestionTelecharger;
 
 import javax.swing.JButton;
 import java.awt.BorderLayout;
@@ -252,6 +253,8 @@ public class FenInformationsPersonelles extends JFrame {
 		lblBienvenue.setBounds(136, 11, 116, 25);
 		Page.add(lblBienvenue);
 		lblBienvenue.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		this.gestionInformationsPersonelles.chargerTableauAssociation();
 	}
 
 	public JButton getBtnModifierAssociation() {
