@@ -21,6 +21,14 @@ public class FenGarant extends JFrame {
 
 	private JPanel contentPane;
 	private GestionFermerPages gestionFermerPages;
+	private JLabel identifiant;
+	private JLabel NomClient;
+	private JLabel PrenomClient;
+	private JLabel AdresseClient;
+	private JLabel ville;
+	private JLabel cp;
+	private JLabel TelephoneClient;
+	private JLabel EmailClient;
 
 	public FenGarant() {
 		
@@ -60,7 +68,7 @@ public class FenGarant extends JFrame {
 		gbc_lblIdentifiant.gridy = 0;
 		informations.add(lblIdentifiant, gbc_lblIdentifiant);
 		
-		JLabel identifiant = new JLabel("5");
+		identifiant = new JLabel("5");
 		GridBagConstraints gbc_identifiant = new GridBagConstraints();
 		gbc_identifiant.anchor = GridBagConstraints.WEST;
 		gbc_identifiant.insets = new Insets(0, 0, 5, 5);
@@ -77,7 +85,7 @@ public class FenGarant extends JFrame {
 		gbc_lblNomClient.gridy = 1;
 		informations.add(lblNomClient, gbc_lblNomClient);
 		
-		JLabel NomClient = new JLabel("nom");
+		NomClient = new JLabel("nom");
 		GridBagConstraints gbc_NomClient = new GridBagConstraints();
 		gbc_NomClient.anchor = GridBagConstraints.WEST;
 		gbc_NomClient.insets = new Insets(0, 0, 5, 5);
@@ -94,7 +102,7 @@ public class FenGarant extends JFrame {
 		gbc_lblPrenomClient.gridy = 2;
 		informations.add(lblPrenomClient, gbc_lblPrenomClient);
 		
-		JLabel PrenomClient = new JLabel("Pr\u00E9nom");
+		PrenomClient = new JLabel("Pr\u00E9nom");
 		GridBagConstraints gbc_PrenomClient = new GridBagConstraints();
 		gbc_PrenomClient.anchor = GridBagConstraints.WEST;
 		gbc_PrenomClient.insets = new Insets(0, 0, 5, 5);
@@ -111,7 +119,7 @@ public class FenGarant extends JFrame {
 		gbc_lblAdresse.gridy = 3;
 		informations.add(lblAdresse, gbc_lblAdresse);
 		
-		JLabel AdresseClient = new JLabel("14 rue des tuilerie");
+		AdresseClient = new JLabel("14 rue des tuilerie");
 		GridBagConstraints gbc_AdresseClient = new GridBagConstraints();
 		gbc_AdresseClient.anchor = GridBagConstraints.WEST;
 		gbc_AdresseClient.insets = new Insets(0, 0, 5, 5);
@@ -128,7 +136,7 @@ public class FenGarant extends JFrame {
 		gbc_lblVille.gridy = 4;
 		informations.add(lblVille, gbc_lblVille);
 		
-		JLabel ville = new JLabel("Toulouse");
+		ville = new JLabel("Toulouse");
 		GridBagConstraints gbc_ville = new GridBagConstraints();
 		gbc_ville.anchor = GridBagConstraints.WEST;
 		gbc_ville.insets = new Insets(0, 0, 5, 5);
@@ -144,7 +152,7 @@ public class FenGarant extends JFrame {
 		gbc_lblCP.gridy = 5;
 		informations.add(lblCP, gbc_lblCP);
 		
-		JLabel cp = new JLabel("31000");
+		cp = new JLabel("31000");
 		GridBagConstraints gbc_cp = new GridBagConstraints();
 		gbc_cp.anchor = GridBagConstraints.WEST;
 		gbc_cp.insets = new Insets(0, 0, 5, 5);
@@ -161,7 +169,7 @@ public class FenGarant extends JFrame {
 		gbc_lblTelephoneClient.gridy = 6;
 		informations.add(lblTelephoneClient, gbc_lblTelephoneClient);
 		
-		JLabel TelephoneClient = new JLabel("00-00-00-00-00");
+		TelephoneClient = new JLabel("00-00-00-00-00");
 		GridBagConstraints gbc_TelephoneClient = new GridBagConstraints();
 		gbc_TelephoneClient.anchor = GridBagConstraints.WEST;
 		gbc_TelephoneClient.insets = new Insets(0, 0, 5, 5);
@@ -178,7 +186,7 @@ public class FenGarant extends JFrame {
 		gbc_lblEmailClient.gridy = 7;
 		informations.add(lblEmailClient, gbc_lblEmailClient);
 		
-		JLabel EmailClient = new JLabel("nomprenom@gmail.com");
+		EmailClient = new JLabel("nomprenom@gmail.com");
 		GridBagConstraints gbc_EmailClient = new GridBagConstraints();
 		gbc_EmailClient.insets = new Insets(0, 0, 5, 5);
 		gbc_EmailClient.gridx = 2;
@@ -195,4 +203,70 @@ public class FenGarant extends JFrame {
 		btnFermer.setBounds(337, 339, 89, 23);
 		Page.add(btnFermer);
 	}
+
+	public JLabel getIdentifiant() {
+		return identifiant;
+	}
+
+	public void setIdentifiant(String identifiant) {
+		this.identifiant.setText(identifiant);
+	}
+
+	public JLabel getNomClient() {
+		return NomClient;
+	}
+
+	public void setNomClient(String nomClient) {
+		NomClient.setText(nomClient);
+	}
+
+	public JLabel getPrenomClient() {
+		return PrenomClient;
+	}
+
+	public void setPrenomClient(String prenomClient) {
+		PrenomClient.setText(prenomClient);
+	}
+
+	public JLabel getAdresseClient() {
+		return AdresseClient;
+	}
+
+	public void setAdresseClient(String adresseClient) {
+		AdresseClient.setText(adresseClient);
+	}
+
+	public JLabel getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville.setText(ville);
+	}
+
+	public JLabel getCp() {
+		return cp;
+	}
+
+	public void setCp(String cp) {
+		this.cp.setText(cp);
+	}
+
+	public JLabel getTelephoneClient() {
+		return TelephoneClient;
+	}
+
+	public void setTelephoneClient(String telephoneClient) {
+		TelephoneClient.setText(telephoneClient);
+	}
+
+	public JLabel getEmailClient() {
+		return EmailClient;
+	}
+
+	public void setEmailClient(String emailClient) {
+		EmailClient.setText(emailClient);
+	}
+	
+	
 }
