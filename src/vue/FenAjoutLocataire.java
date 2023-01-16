@@ -41,6 +41,7 @@ public class FenAjoutLocataire extends JFrame{
 	private GestionFermerPages gestionFermerPages;
 	private JRadioButton rdbtnAncienNon;
 	private JRadioButton rdbtnAncienOui;
+	private JTextField numeroBienLocataire;
 
 	public FenAjoutLocataire() {
 		
@@ -166,8 +167,10 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_lblAncien.anchor = GridBagConstraints.EAST;
 		gbc_lblAncien.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAncien.gridx = 0;
-		gbc_lblAncien.gridy = 6;
+		gbc_lblAncien.gridy = 5;
 		Informations.add(lblAncien, gbc_lblAncien);
+		
+		ButtonGroup group = new ButtonGroup();
 		
 		this.rdbtnAncienNon = new JRadioButton("Non");
 		this.rdbtnAncienNon.addItemListener(this.gestionAjoutLocataire);
@@ -176,17 +179,16 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_rdbtnAncienNon.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnAncienNon.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnAncienNon.gridx = 1;
-		gbc_rdbtnAncienNon.gridy = 6;
+		gbc_rdbtnAncienNon.gridy = 5;
 		Informations.add(this.rdbtnAncienNon, gbc_rdbtnAncienNon);
-		
-		ButtonGroup group = new ButtonGroup();
+		group.add(rdbtnAncienNon);
 		
 		this.rdbtnAncienOui = new JRadioButton("oui");
 		GridBagConstraints gbc_rdbtnAncienOui = new GridBagConstraints();
 		gbc_rdbtnAncienOui.anchor = GridBagConstraints.WEST;
 		gbc_rdbtnAncienOui.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnAncienOui.gridx = 2;
-		gbc_rdbtnAncienOui.gridy = 6;
+		gbc_rdbtnAncienOui.gridy = 5;
 		Informations.add(this.rdbtnAncienOui, gbc_rdbtnAncienOui);
 		group.add(this.rdbtnAncienOui);
 		
@@ -195,9 +197,8 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_lblAdresseLocataire.anchor = GridBagConstraints.EAST;
 		gbc_lblAdresseLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_lblAdresseLocataire.gridx = 0;
-		gbc_lblAdresseLocataire.gridy = 7;
+		gbc_lblAdresseLocataire.gridy = 6;
 		Informations.add(lblAdresseLocataire, gbc_lblAdresseLocataire);
-		group.add(rdbtnAncienNon);
 		
 		adresseBienLocataire = new JTextField();
 		GridBagConstraints gbc_adresseBienLocataire = new GridBagConstraints();
@@ -205,9 +206,26 @@ public class FenAjoutLocataire extends JFrame{
 		gbc_adresseBienLocataire.gridwidth = 3;
 		gbc_adresseBienLocataire.insets = new Insets(0, 0, 5, 5);
 		gbc_adresseBienLocataire.gridx = 1;
-		gbc_adresseBienLocataire.gridy = 7;
+		gbc_adresseBienLocataire.gridy = 6;
 		Informations.add(adresseBienLocataire, gbc_adresseBienLocataire);
 		adresseBienLocataire.setColumns(10);
+		
+		JLabel lblNumeroBien = new JLabel("Numero du bien : ");
+		GridBagConstraints gbc_lblNumeroBien = new GridBagConstraints();
+		gbc_lblNumeroBien.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNumeroBien.anchor = GridBagConstraints.EAST;
+		gbc_lblNumeroBien.gridx = 0;
+		gbc_lblNumeroBien.gridy = 7;
+		Informations.add(lblNumeroBien, gbc_lblNumeroBien);
+		
+		numeroBienLocataire = new JTextField();
+		GridBagConstraints gbc_numeroBienLocataire = new GridBagConstraints();
+		gbc_numeroBienLocataire.insets = new Insets(0, 0, 5, 5);
+		gbc_numeroBienLocataire.fill = GridBagConstraints.HORIZONTAL;
+		gbc_numeroBienLocataire.gridx = 1;
+		gbc_numeroBienLocataire.gridy = 7;
+		Informations.add(numeroBienLocataire, gbc_numeroBienLocataire);
+		numeroBienLocataire.setColumns(10);
 		
 		JLabel lblDateEntreeLocataire = new JLabel("Date d'entree :");
 		GridBagConstraints gbc_lblDateEntreeLocataire = new GridBagConstraints();
@@ -396,6 +414,9 @@ public class FenAjoutLocataire extends JFrame{
 		
 	}
 
+	public String getNumeroBien() {
+		return numeroBienLocataire.getText();
+	}
 	public String getPrenomLocataire() {
 		return prenomLocataire.getText();
 	}
@@ -459,6 +480,4 @@ public class FenAjoutLocataire extends JFrame{
 	public JRadioButton getRdbtnAncienOui() {
 		return rdbtnAncienOui;
 	}
-	
-	
 }
