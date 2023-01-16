@@ -106,7 +106,7 @@ public class GestionDetailsLocataire implements ActionListener, ListSelectionLis
 	}
 	
 	public void ecrireLigneTableColocataire(int numeroLigne, Locataire locataire) throws SQLException {
-		DefaultTableModel modeleTable = (DefaultTableModel) this.detailLocataire.getTableGarant().getModel();
+		DefaultTableModel modeleTable = (DefaultTableModel) this.detailLocataire.getTableColocataire().getModel();
 		modeleTable.setValueAt(locataire.getNom(), numeroLigne, 0);
 		modeleTable.setValueAt(locataire.getPrenom(), numeroLigne, 1);
 	}
