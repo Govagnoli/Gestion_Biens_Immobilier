@@ -6,6 +6,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -56,8 +58,7 @@ public class GestionAjoutLocataire implements ActionListener, ItemListener{
 				    statement.setString(7, emailGarant);
 				    statement.executeUpdate();
 				    
-				    connexion.close();
-
+					connexion.close();
 				} catch (SQLException e1) {
 				    e1.printStackTrace();
 				}
@@ -74,6 +75,8 @@ public class GestionAjoutLocataire implements ActionListener, ItemListener{
 			String dateDeNaissanceLocataire = this.fenAjoutLocataire.getDateDeNaissanceLocataire();
 			String adresseBienLocataire = this.fenAjoutLocataire.getAdresseBienLocataire();
 			String dateEntree = this.fenAjoutLocataire.getDateEntree();
+			String numBienLocataire = this.fenAjoutLocataire.getNumeroBien();
+			int numBien = Integer.parseInt(numBienLocataire);
 			int telLocataire = Integer.parseInt(telephoneLocataire);
 			int depotGarantie = Integer.parseInt("300");
 			int partPossession = Integer.parseInt("1");
@@ -103,6 +106,27 @@ public class GestionAjoutLocataire implements ActionListener, ItemListener{
 				    statement.setInt(8, partPossession);
 				    statement.executeUpdate();
 				    
+				    String req1 = "select ID_LOCATAIRE from S3_LOCATAIRE where TEL = ?";
+				    PreparedStatement stmt1 = connexion.prepareStatement(req1);
+				    stmt1.setInt(1, telLocataire);
+				    ResultSet res1 = stmt1.executeQuery();
+					res1.next();
+					int idLocataire = res1.getInt("ID_LOCATAIRE");
+					
+				    String req2 = "select ID_LOCATION from S3_LOCATION where ADRESSE = ? and NUMERO = ?";
+					PreparedStatement stmt2 = connexion.prepareStatement(req2);
+					stmt2.setString(1, adresseBienLocataire);
+					stmt2.setInt(2, numBien);
+					ResultSet res2 = stmt2.executeQuery();
+					res2.next();
+					int idLocation = res2.getInt("ID_LOCATION");
+					
+					String req3 = "insert into S3_LOUER values(?, ?)";
+					PreparedStatement stmt3 = connexion.prepareStatement(req3);
+					stmt3.setInt(1, idLocation);
+					stmt3.setInt(2, idLocataire);
+					stmt3.executeUpdate();
+					
 				    connexion.close();
 
 				} catch (SQLException e1) {
