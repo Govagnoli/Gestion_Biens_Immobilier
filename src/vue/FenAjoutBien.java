@@ -7,8 +7,11 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Enumeration;
 
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -29,7 +32,7 @@ import controleur.GestionFermerPages;
 public class FenAjoutBien extends JFrame {
 
 	private JPanel contentPane;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup ButtonGroup = new ButtonGroup();
 	private JTextField textAdresse;
 	private JTextField textVille;
 	private JFormattedTextField textCP;
@@ -42,6 +45,7 @@ public class FenAjoutBien extends JFrame {
 	private JRadioButton rdbtnGarage;
 	private GestionFermerPages gestionFermerPages;
 	private GestionAjoutBien gestionAjoutBien;
+	private JTextField TextField_Numero;
 	
 	public FenAjoutBien() {
 		this.gestionFermerPages = new GestionFermerPages(this);
@@ -60,9 +64,9 @@ public class FenAjoutBien extends JFrame {
 		contentPane.add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{131, 46, 86, 0};
-		gbl_panel.rowHeights = new int[]{20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		//pour formatter les nombres
@@ -120,7 +124,7 @@ public class FenAjoutBien extends JFrame {
 		panel.add(textVille, gbc_textVille);
 		textVille.setColumns(50);
 		
-		JLabel lblCodePostal = new JLabel("Code Postal");
+		JLabel lblCodePostal = new JLabel("Code Postal :");
 		GridBagConstraints gbc_lblCodePostal = new GridBagConstraints();
 		gbc_lblCodePostal.anchor = GridBagConstraints.EAST;
 		gbc_lblCodePostal.insets = new Insets(0, 0, 5, 5);
@@ -171,12 +175,29 @@ public class FenAjoutBien extends JFrame {
 		gbc_TextSuperficie.gridy = 6;
 		panel.add(TextSuperficie, gbc_TextSuperficie);
 		
+		JLabel lblNumro = new JLabel(" * Numéro :");
+		GridBagConstraints gbc_lblNumro = new GridBagConstraints();
+		gbc_lblNumro.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNumro.anchor = GridBagConstraints.EAST;
+		gbc_lblNumro.gridx = 0;
+		gbc_lblNumro.gridy = 7;
+		panel.add(lblNumro, gbc_lblNumro);
+		
+		TextField_Numero = new JTextField();
+		GridBagConstraints gbc_TextField_Numero = new GridBagConstraints();
+		gbc_TextField_Numero.insets = new Insets(0, 0, 5, 5);
+		gbc_TextField_Numero.fill = GridBagConstraints.HORIZONTAL;
+		gbc_TextField_Numero.gridx = 1;
+		gbc_TextField_Numero.gridy = 7;
+		panel.add(TextField_Numero, gbc_TextField_Numero);
+		TextField_Numero.setColumns(10);
+		
 		JLabel lblTantième = new JLabel("* Tantièmes :");
 		GridBagConstraints gbc_lblTantième = new GridBagConstraints();
 		gbc_lblTantième.anchor = GridBagConstraints.EAST;
 		gbc_lblTantième.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTantième.gridx = 0;
-		gbc_lblTantième.gridy = 7;
+		gbc_lblTantième.gridy = 8;
 		panel.add(lblTantième, gbc_lblTantième);
 		
 		this.textTantiemes = new JFormattedTextField(formatNumberTantiemes);
@@ -184,7 +205,7 @@ public class FenAjoutBien extends JFrame {
 		gbc_textTantiemes.insets = new Insets(0, 0, 5, 5);
 		gbc_textTantiemes.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textTantiemes.gridx = 1;
-		gbc_textTantiemes.gridy = 7;
+		gbc_textTantiemes.gridy = 8;
 		panel.add(textTantiemes, gbc_textTantiemes);
 		
 		JLabel lblNbrLocataireMax = new JLabel("Nombre de locataire maximum :");
@@ -192,16 +213,16 @@ public class FenAjoutBien extends JFrame {
 		gbc_lblNbrLocataireMax.anchor = GridBagConstraints.EAST;
 		gbc_lblNbrLocataireMax.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNbrLocataireMax.gridx = 0;
-		gbc_lblNbrLocataireMax.gridy = 8;
+		gbc_lblNbrLocataireMax.gridy = 9;
 		panel.add(lblNbrLocataireMax, gbc_lblNbrLocataireMax);
 		
 		this.spinnerNbrLocataireMax = new JSpinner();
-		spinnerNbrLocataireMax.setModel(new SpinnerNumberModel(1, null, 9, 1));
+		spinnerNbrLocataireMax.setModel(new SpinnerNumberModel(1, 1, 9, 1));
 		GridBagConstraints gbc_spinnerNbrLocataireMax = new GridBagConstraints();
 		gbc_spinnerNbrLocataireMax.anchor = GridBagConstraints.WEST;
 		gbc_spinnerNbrLocataireMax.insets = new Insets(0, 0, 5, 5);
 		gbc_spinnerNbrLocataireMax.gridx = 1;
-		gbc_spinnerNbrLocataireMax.gridy = 8;
+		gbc_spinnerNbrLocataireMax.gridy = 9;
 		panel.add(spinnerNbrLocataireMax, gbc_spinnerNbrLocataireMax);
 		
 		JLabel lblDateAcquisition = new JLabel("Date d'acquisition :");
@@ -210,7 +231,7 @@ public class FenAjoutBien extends JFrame {
 		gbc_lblDateAcquisition.anchor = GridBagConstraints.EAST;
 		gbc_lblDateAcquisition.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDateAcquisition.gridx = 0;
-		gbc_lblDateAcquisition.gridy = 9;
+		gbc_lblDateAcquisition.gridy = 10;
 		panel.add(lblDateAcquisition, gbc_lblDateAcquisition);
 		
 		
@@ -221,7 +242,7 @@ public class FenAjoutBien extends JFrame {
 		gbc_textDateAcquisition.insets = new Insets(0, 0, 5, 5);
 		gbc_textDateAcquisition.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textDateAcquisition.gridx = 1;
-		gbc_textDateAcquisition.gridy = 9;
+		gbc_textDateAcquisition.gridy = 10;
 		panel.add(textDateAcquisition, gbc_textDateAcquisition);
 		
 		JLabel lblTypeBien = new JLabel("Type de bien :");
@@ -229,25 +250,25 @@ public class FenAjoutBien extends JFrame {
 		gbc_lblTypeBien.anchor = GridBagConstraints.EAST;
 		gbc_lblTypeBien.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTypeBien.gridx = 0;
-		gbc_lblTypeBien.gridy = 10;
+		gbc_lblTypeBien.gridy = 11;
 		panel.add(lblTypeBien, gbc_lblTypeBien);
 		
 		this.rdbtnLogement = new JRadioButton("Logement");
 		rdbtnLogement.setSelected(true);
 		this.rdbtnLogement.addItemListener(this.gestionAjoutBien);
-		buttonGroup.add(rdbtnLogement);
+		ButtonGroup.add(rdbtnLogement);
 		GridBagConstraints gbc_rdbtnLogement = new GridBagConstraints();
 		gbc_rdbtnLogement.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnLogement.gridx = 1;
-		gbc_rdbtnLogement.gridy = 10;
+		gbc_rdbtnLogement.gridy = 11;
 		panel.add(rdbtnLogement, gbc_rdbtnLogement);
 		
 		this.rdbtnGarage = new JRadioButton("Garage");
-		buttonGroup.add(rdbtnGarage);
+		ButtonGroup.add(rdbtnGarage);
 		GridBagConstraints gbc_rdbtnGarage = new GridBagConstraints();
 		gbc_rdbtnGarage.insets = new Insets(0, 0, 5, 0);
 		gbc_rdbtnGarage.gridx = 2;
-		gbc_rdbtnGarage.gridy = 10;
+		gbc_rdbtnGarage.gridy = 11;
 		panel.add(rdbtnGarage, gbc_rdbtnGarage);
 		
 		JLabel lblFacultatif = new JLabel("Les éléments avec * sont facultatif");
@@ -271,7 +292,25 @@ public class FenAjoutBien extends JFrame {
 		lblTitreAjoutBien.setBounds(10, 9, 292, 25);
 		contentPane.add(lblTitreAjoutBien);
 	}
+	
+	public String getRadioSelected() {
+		ButtonModel selectedModel = ButtonGroup.getSelection();
 
+		JRadioButton selectedButton = null;
+		for (Enumeration<AbstractButton> buttons = ButtonGroup.getElements(); buttons.hasMoreElements();) {
+		    AbstractButton button = buttons.nextElement();
+		    if (button.getModel() == selectedModel) {
+		        selectedButton = (JRadioButton) button;
+		        break;
+		    }
+		}
+		String selectedText = selectedButton.getActionCommand();
+		return selectedText;
+	}
+	
+	public String getTextNumero() {
+		return TextField_Numero.getText();
+	}
 	public String getTextAdresse() {
 		return textAdresse.getText();
 	}
