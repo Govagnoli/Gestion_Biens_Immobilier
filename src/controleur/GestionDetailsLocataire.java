@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -28,9 +30,11 @@ public class GestionDetailsLocataire implements ActionListener, ListSelectionLis
 
 	private DetailsLocataire detailLocataire;
 	private Connection connexion;
+	private Map<Integer, Garant> mapGarant;
 	
 	public GestionDetailsLocataire(DetailsLocataire detailLocataire) {
 		this.detailLocataire = detailLocataire;
+		mapGarant = new HashMap<>();
 		try {
 			CictOracleDataSource.creerAcces("BNL4208A", "$iutinfo");
 			this.connexion = CictOracleDataSource.getConnexion();
@@ -61,7 +65,6 @@ public class GestionDetailsLocataire implements ActionListener, ListSelectionLis
 					ecrireLigneTableGarant(i, g);
 					i++;
 				}
-				
 				//MAJ tableau Colocataire
 				LinkedList<Locataire> colocataires = locataire.colocataires();
 				if(colocataires != null) {
@@ -83,6 +86,15 @@ public class GestionDetailsLocataire implements ActionListener, ListSelectionLis
 		if(ligneSelectionnee < 0) {
 		}else {
 			FenGarant fenGarant = new FenGarant();
+			Garant garant = this.mapGarant.get(ligneSelectionnee);
+			fenGarant.setIdentifiant(Integer.toString(garant.getIdGarant()));
+			fenGarant.setNomClient(garant.getNom());
+			fenGarant.setPrenomClient(garant.getPrenom());
+			fenGarant.setAdresseClient(garant.getAdresse());
+			fenGarant.setVille(garant.getVille());
+			fenGarant.setCp(Integer.toString(garant.getCp()));
+			fenGarant.setTelephoneClient(Integer.toString(garant.getTel()));
+			fenGarant.setEmailClient(garant.getEmail());
 			fenGarant.setVisible(true);
 		}		
 	}
@@ -90,6 +102,7 @@ public class GestionDetailsLocataire implements ActionListener, ListSelectionLis
 	public void ecrireLigneTableGarant(int numeroLigne, Garant garant) throws SQLException {
 		DefaultTableModel modeleTable = (DefaultTableModel) this.detailLocataire.getTableGarant().getModel();
 		modeleTable.setValueAt(garant.getNom(), numeroLigne, 0);
+		this.mapGarant.put(numeroLigne, garant);
 	}
 	
 	public void ecrireLigneTableColocataire(int numeroLigne, Locataire locataire) throws SQLException {
