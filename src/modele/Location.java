@@ -1,6 +1,12 @@
 package modele;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import JDBC.CictOracleDataSource;
 
 public class Location {
 	
@@ -12,10 +18,10 @@ public class Location {
 	private String ville;
 	private int cp;
 	private int numero;
+	private Connection connexion;
 	
 	public Location(int idLocation, String taxe_fonciere, int duree, Date dateDebContrat, String adresse,
-			String ville, int cp, int numero) {
-		super();
+			String ville, int cp, int numero) throws SQLException {
 		this.idLocation = idLocation;
 		this.taxe_fonciere = taxe_fonciere;
 		this.duree = duree; 
@@ -24,8 +30,33 @@ public class Location {
 		this.ville = ville;
 		this.cp = cp;
 		this.numero = numero;
+		CictOracleDataSource.creerAcces("BNL4208A", "$iutinfo");
+		this.connexion = CictOracleDataSource.getConnexion();
 	}
-
+	
+	public Location(int idLocation) throws SQLException {
+		CictOracleDataSource.creerAcces("BNL4208A", "$iutinfo");
+		this.connexion = CictOracleDataSource.getConnexion();
+		
+		String req = "select * "
+				+ "from S3_Location "
+				+ "where ID_LOCATION = ?";
+		PreparedStatement st = this.connexion.prepareStatement(req);
+		st.setInt(1, idLocation);
+		ResultSet res = st.executeQuery();
+		
+		while(res.next()) {
+			this.setIdLocation(idLocation);
+			this.setTaxe_fonciere(res.getString("TAXE_FONCIERE"));
+			this.setDuree(res.getInt("DUREE"));
+			this.setDateDebContrat(res.getDate("DATE_DEBUT_CONTRAT"));
+			this.setAdresse(res.getString("ADRESSE"));
+			this.setVille(res.getString("VILLE"));
+			this.setCp(res.getInt("CP"));
+			this.setNumero(res.getInt("NUMEREO"));
+		}	
+	}
+	
 	public int getIdLocation() {
 		return idLocation;
 	}
@@ -88,7 +119,5 @@ public class Location {
 
 	public void setNumero(int numero) {
 		this.numero = numero;
-	}
-	
-	
+	}	
 }
