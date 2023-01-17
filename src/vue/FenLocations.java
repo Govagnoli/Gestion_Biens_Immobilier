@@ -114,9 +114,26 @@ public class FenLocations extends JFrame {
 				{null, null, null, null, null, null},
 			},
 			new String[] {
-					"identifiant location", "Numéro", "Adresse", "Nom locataire", "Prenom locataire", "Date d'entrée"
+				"Id", "Numero", "Adresse", 
+				"Nom locataire", "Prenom locataire", "Date d'entree"
 			}
-		));
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		tableLocation.getColumnModel().getColumn(0).setPreferredWidth(25);
+		tableLocation.getColumnModel().getColumn(0).setMinWidth(3);
+		tableLocation.getColumnModel().getColumn(0).setMaxWidth(50);
+		tableLocation.getColumnModel().getColumn(1).setPreferredWidth(25);
+		tableLocation.getColumnModel().getColumn(1).setMaxWidth(50);
+		tableLocation.getColumnModel().getColumn(2).setMaxWidth(300);
+		tableLocation.getColumnModel().getColumn(3).setMaxWidth(200);
+		tableLocation.getColumnModel().getColumn(4).setMaxWidth(200);
+		tableLocation.getColumnModel().getColumn(5).setMaxWidth(100);
 		
 		this.getTableLocation().getSelectionModel().addListSelectionListener(this.gestionLocations);
 		

@@ -6,6 +6,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
 import controleur.GestionDetailsLocations;
+import modele.Location;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -14,9 +15,9 @@ import java.awt.event.ActionEvent;
 public class DetailsLocation extends JInternalFrame {
 
 	private GestionDetailsLocations gestionDetailsLocations;
+	private Location location;
 
 	public DetailsLocation() {
-		
 		this.gestionDetailsLocations = new GestionDetailsLocations(this);
 		
 		setBounds(100, 100, 500, 150);
@@ -32,5 +33,13 @@ public class DetailsLocation extends JInternalFrame {
 		btnSoldesDeToutCompte.addActionListener(this.gestionDetailsLocations);
 		getContentPane().add(btnSoldesDeToutCompte);
 
+	}
+
+	public Location getLoc() {
+		return this.location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 }
