@@ -105,6 +105,10 @@ public class FenLocataires extends JFrame{
 		JMenuItem locataires = new JMenuItem("Locataires");
 		locataires.addActionListener(this.gestionMenu);
 		gestion.add(locataires);
+		
+		JMenuItem locations = new JMenuItem("Locations");
+		locations.addActionListener(this.gestionMenu);
+		gestion.add(locations);
 
 		JMenuItem fermer = new JMenuItem("Fermer");
 		fermer.addActionListener(this.gestionMenu);
