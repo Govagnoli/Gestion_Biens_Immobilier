@@ -23,10 +23,12 @@ public class DetailsLocation extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		JButton btRegularisationDesCharges = new JButton("Regularisation des charges");
+		btRegularisationDesCharges.setBounds(20, 42, 200, 40);
 		btRegularisationDesCharges.addActionListener(this.gestionDetailsLocations);
 		getContentPane().add(btRegularisationDesCharges);
 		
 		JButton btnSoldesDeToutCompte = new JButton("Solde de tout compte");
+		btnSoldesDeToutCompte.setBounds(263, 42, 200, 40);
 		btnSoldesDeToutCompte.addActionListener(this.gestionDetailsLocations);
 		getContentPane().add(btnSoldesDeToutCompte);
 
