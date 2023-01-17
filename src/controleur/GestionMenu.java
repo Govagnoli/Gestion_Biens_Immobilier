@@ -7,6 +7,7 @@ import javax.swing.JMenuItem;
 import vue.FenBiensImmobilier;
 import vue.FenInformationsPersonelles;
 import vue.FenLocataires;
+import vue.FenLocations;
 import vue.FenStatistiques;
 
 public class GestionMenu implements ActionListener{
@@ -29,6 +30,11 @@ public class GestionMenu implements ActionListener{
 		case "Locataires":
 			FenLocataires fenLocataires = new FenLocataires();
 			fenLocataires.setVisible(true);
+			this.fen.dispose();
+			break;
+		case "Locations":
+			FenLocations fenLocations = new FenLocations();
+			fenLocations.setVisible(true);
 			this.fen.dispose();
 			break;
 		case "Statistiques":
