@@ -52,7 +52,7 @@ public class GestionDetailsLocataire implements ActionListener, ListSelectionLis
 			fenQuittance.setVisible(true);
 			break;
 		case "Modifier":
-			FenModifierLocataire fenModifierLocataire = new FenModifierLocataire();
+			FenModifierLocataire fenModifierLocataire = new FenModifierLocataire(0);
 			fenModifierLocataire.setVisible(true);
 			break;
 		case "Charger les tableaux": //Erreur, à compléter
