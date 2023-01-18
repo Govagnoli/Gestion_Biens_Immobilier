@@ -53,6 +53,9 @@ public class GestionAjoutBien implements ActionListener, ItemListener{
 			int Numero = Integer.parseInt(textNumero);
 			String textLG = this.fenAjoutBien.getRadioSelected();
 			String textTantieme = this.fenAjoutBien.getTextTantiemes();
+			textTantieme = textTantieme.replaceAll(",", ".");
+			double Tantiemes = Double.parseDouble(textTantieme);
+			int Tantieme2 = (int)Tantiemes;
 			int tantieme = java.sql.Types.INTEGER;
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
@@ -86,10 +89,10 @@ public class GestionAjoutBien implements ActionListener, ItemListener{
 	                if (textTantieme.isBlank()) {
 	                	statement.setNull(7, tantieme);
 	                }else {
-	                	statement.setInt(7, Integer.parseInt(textTantieme));
+	                	statement.setInt(7, Tantieme2);
 	                }
 	                statement.setInt(8, Loyer);
-	                statement.setString(9, textDateAcquisition);
+	                statement.setDate(9, sqlDate);
 	                statement.setInt(10, LocataireMax);
 	                statement.setInt(11, 1);
 	                statement.executeUpdate();
