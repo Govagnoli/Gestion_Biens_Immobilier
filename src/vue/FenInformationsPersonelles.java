@@ -15,12 +15,17 @@ import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import JDBC.CictOracleDataSource;
 import controleur.GestionInformationsPersonelles;
 import controleur.GestionMenu;
 
@@ -34,8 +39,33 @@ public class FenInformationsPersonelles extends JFrame {
 	private GestionMenu gestionMenu;
 	private JButton btnModifierAssociation;
 	private GestionInformationsPersonelles gestionInformationsPersonelles;
+	private PreparedStatement stmt;
+	private ResultSet res;
+	private String nomPro;
+	private String prenomPro;
+	private String telPro;
+	private String emailPro;
+	private String adrssPro;
 
 	public FenInformationsPersonelles() {
+		
+		try {
+			CictOracleDataSource.creerAcces("BNL4208A", "$iutinfo");
+			Connection connexion = CictOracleDataSource.getConnexion();
+			
+			String req = "select * from s3_propriétaire where NOM = 'MILLANT'";
+			stmt = connexion.prepareStatement(req);
+		    res = stmt.executeQuery();
+		    res.next();
+		    nomPro = res.getString("NOM");
+		    prenomPro = res.getString("PRENOM");
+			telPro = res.getString("TELEPHONE");
+			emailPro = res.getString("EMAIL");
+			adrssPro = res.getString("ADRESSE");
+			connexion.close();
+		} catch (SQLException e1) {
+		    e1.printStackTrace();
+		}
 		
 		this.gestionMenu = new GestionMenu(this);
 		this.gestionInformationsPersonelles = new GestionInformationsPersonelles(this);
@@ -159,7 +189,7 @@ public class FenInformationsPersonelles extends JFrame {
 		Documents.add(btnTelecharger);
 		
 		JPanel informationsGeneralesCLient = new JPanel();
-		informationsGeneralesCLient.setBounds(136, 47, 231, 204);
+		informationsGeneralesCLient.setBounds(136, 47, 264, 204);
 		Page.add(informationsGeneralesCLient);
 		informationsGeneralesCLient.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Information g\u00E9n\u00E9rales", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagLayout gbl_informationsGeneralesCLient = new GridBagLayout();
@@ -178,7 +208,8 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblNomClient.gridy = 0;
 		informationsGeneralesCLient.add(lblNomClient, gbc_lblNomClient);
 		
-		JLabel NomClient = new JLabel("nom");
+		JLabel NomClient = new JLabel();
+		NomClient.setText(nomPro);
 		GridBagConstraints gbc_NomClient = new GridBagConstraints();
 		gbc_NomClient.anchor = GridBagConstraints.WEST;
 		gbc_NomClient.insets = new Insets(0, 0, 5, 5);
@@ -195,7 +226,8 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblPrenomClient.gridy = 1;
 		informationsGeneralesCLient.add(lblPrenomClient, gbc_lblPrenomClient);
 		
-		JLabel PrenomClient = new JLabel("Pr\u00E9nom");
+		JLabel PrenomClient = new JLabel();
+		PrenomClient.setText(prenomPro);
 		GridBagConstraints gbc_PrenomClient = new GridBagConstraints();
 		gbc_PrenomClient.anchor = GridBagConstraints.WEST;
 		gbc_PrenomClient.insets = new Insets(0, 0, 5, 5);
@@ -213,6 +245,7 @@ public class FenInformationsPersonelles extends JFrame {
 		informationsGeneralesCLient.add(lblTelephoneClient, gbc_lblTelephoneClient);
 		
 		JLabel TelephoneClient = new JLabel("00-00-00-00-00");
+		TelephoneClient.setText(telPro);
 		GridBagConstraints gbc_TelephoneClient = new GridBagConstraints();
 		gbc_TelephoneClient.anchor = GridBagConstraints.WEST;
 		gbc_TelephoneClient.insets = new Insets(0, 0, 5, 5);
@@ -229,7 +262,8 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblEmailClient.gridy = 3;
 		informationsGeneralesCLient.add(lblEmailClient, gbc_lblEmailClient);
 		
-		JLabel EmailClient = new JLabel("nomprenom@gmail.com");
+		JLabel EmailClient = new JLabel();
+		EmailClient.setText(emailPro);
 		GridBagConstraints gbc_EmailClient = new GridBagConstraints();
 		gbc_EmailClient.insets = new Insets(0, 0, 5, 5);
 		gbc_EmailClient.gridx = 2;
@@ -245,7 +279,8 @@ public class FenInformationsPersonelles extends JFrame {
 		gbc_lblAdresseClient.gridy = 4;
 		informationsGeneralesCLient.add(lblAdresseClient, gbc_lblAdresseClient);
 		
-		JLabel AdresseClient = new JLabel("14 rue des tuilerie");
+		JLabel AdresseClient = new JLabel();
+		AdresseClient.setText(adrssPro);
 		GridBagConstraints gbc_AdresseClient = new GridBagConstraints();
 		gbc_AdresseClient.insets = new Insets(0, 0, 0, 5);
 		gbc_AdresseClient.anchor = GridBagConstraints.WEST;
